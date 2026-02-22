@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rewire Work — AI Agents for Growing Businesses</title>
+    <meta name="description" content="We rebuild your business operations with AI agents. Less manual work, more output. Built for small businesses ready to grow without growing their team.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --bg-dark:#07090f;
+            --bg-card:rgba(255,255,255,0.03);
+            --bg-light:#f8f9fc;
+            --bg-white:#fff;
+            --text-primary:#0a0a0f;
+            --text-secondary:#6b7280;
+            --text-white:#fff;
+            --text-muted:rgba(255,255,255,0.45);
+            --indigo:#6366f1;
+            --indigo-light:#818cf8;
+            --indigo-glow:rgba(99,102,241,0.35);
+            --cyan:#22d3ee;
+            --cyan-glow:rgba(34,211,238,0.2);
+            --border-light:rgba(255,255,255,0.06);
+            --border-dark:rgba(0,0,0,0.07);
+            --glass-bg:rgba(255,255,255,0.04);
+            --glass-border:rgba(255,255,255,0.08);
+        }
+        html{scroll-behavior:smooth}
+        body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--text-primary);background:var(--bg-white);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+        .container{max-width:1200px;margin:0 auto;padding:0 24px}
+        .container-narrow{max-width:800px;margin:0 auto;padding:0 24px}
+
+        /* NAV */
+        nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:18px 0;transition:all .3s ease;background:transparent}
+        nav.scrolled{background:rgba(7,9,15,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border-light)}
+        .nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:0 24px}
+        .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+        .nav-logo-mark{width:32px;height:32px;background:var(--indigo);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .nav-logo-mark svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+        .nav-logo-text{font-size:1.0625rem;font-weight:800;color:#fff;letter-spacing:-.02em}
+        .nav-logo-text span{color:var(--indigo-light)}
+        .nav-links{display:flex;align-items:center;gap:32px}
+        .nav-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.875rem;font-weight:500;transition:color .2s}
+        .nav-links a:hover{color:#fff}
+        .nav-cta{padding:10px 24px;background:var(--indigo);color:#fff;border-radius:8px;font-weight:600;font-size:.875rem;text-decoration:none;transition:all .3s}
+        .nav-cta:hover{box-shadow:0 0 24px var(--indigo-glow);transform:translateY(-1px);color:#fff!important}
+        .nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px}
+        .nav-mobile-toggle span{display:block;width:24px;height:2px;background:#fff;margin:5px 0;transition:.3s}
+
+        /* EYEBROW */
+        .eyebrow{text-transform:uppercase;font-size:.6875rem;font-weight:700;letter-spacing:.12em;margin-bottom:16px;display:inline-block}
+        .eyebrow-indigo{color:var(--indigo-light)}
+        .eyebrow-muted{color:var(--text-muted)}
+        .eyebrow-dark{color:#9ca3af}
+
+        /* HERO */
+        .hero{min-height:100vh;display:flex;align-items:center;background:var(--bg-dark);color:#fff;position:relative;overflow:hidden;padding:140px 0 180px}
+        .hero-circuit{position:absolute;inset:0;opacity:.4;pointer-events:none;background-image:linear-gradient(rgba(99,102,241,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,.06) 1px,transparent 1px);background-size:60px 60px}
+        .hero-nodes{position:absolute;inset:0;pointer-events:none}
+        .hero-orb{position:absolute;border-radius:50%;filter:blur(130px);pointer-events:none;animation:orbFloat 14s ease-in-out infinite}
+        .hero-orb-1{width:700px;height:700px;background:rgba(99,102,241,.18);top:-15%;left:-15%;animation-delay:0s}
+        .hero-orb-2{width:500px;height:500px;background:rgba(34,211,238,.07);bottom:-10%;right:-10%;animation-delay:-5s}
+        .hero-orb-3{width:350px;height:350px;background:rgba(139,92,246,.1);top:40%;right:15%;animation-delay:-9s}
+        @keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(20px,-30px) scale(1.04)}66%{transform:translate(-25px,20px) scale(.96)}}
+        .hero-content{position:relative;z-index:1;max-width:820px}
+        .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:100px;background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.25);font-size:.8125rem;color:rgba(255,255,255,.65);margin-bottom:36px;font-weight:500}
+        .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:#818cf8;animation:pulse 2s infinite}
+        @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+        .hero h1{font-size:clamp(3.25rem,6.5vw,5.5rem);font-weight:900;line-height:1.0;letter-spacing:-.05em;margin-bottom:28px}
+        .hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--indigo-light),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .hero-sub{font-size:clamp(1.0625rem,2vw,1.3125rem);color:rgba(255,255,255,.5);margin-bottom:52px;font-weight:300;line-height:1.75;max-width:580px}
+        .hero-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+        .hero-cta{display:inline-flex;align-items:center;gap:8px;padding:18px 40px;background:var(--indigo);color:#fff;text-decoration:none;border-radius:12px;font-weight:700;font-size:1.0625rem;transition:all .3s}
+        .hero-cta:hover{transform:translateY(-2px);box-shadow:0 0 48px var(--indigo-glow)}
+        .hero-cta svg{transition:transform .2s}.hero-cta:hover svg{transform:translateX(4px)}
+        .hero-link{font-size:.9375rem;color:rgba(255,255,255,.45);font-weight:500;text-decoration:none;transition:color .2s;display:flex;align-items:center;gap:6px}
+        .hero-link:hover{color:rgba(255,255,255,.8)}
+        .hero-stat-row{display:flex;gap:56px;margin-top:72px;padding-top:56px;border-top:1px solid rgba(255,255,255,.06)}
+        .hero-stat h3{font-size:2.25rem;font-weight:800;letter-spacing:-.04em;color:#fff;line-height:1}
+        .hero-stat h3 span{color:var(--indigo-light)}
+        .hero-stat p{font-size:.875rem;color:rgba(255,255,255,.4);margin-top:4px;font-weight:400}
+
+        /* SCROLL REVEAL */
+        .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+        .reveal-stagger .reveal-item{opacity:0;transform:translateY(28px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
+        .reveal-stagger.visible .reveal-item{opacity:1;transform:translateY(0)}
+
+        /* SECTIONS */
+        section{padding:140px 0}
+        h2{font-size:clamp(2rem,4vw,3.25rem);font-weight:800;line-height:1.1;letter-spacing:-.035em;margin-bottom:20px}
+        .section-intro{font-size:1.0625rem;color:var(--text-secondary);margin-bottom:72px;line-height:1.75;max-width:580px;font-weight:300}
+
+        /* MARQUEE */
+        .marquee-section{background:var(--bg-dark);padding:0;border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);overflow:hidden}
+        .marquee-track{display:flex;gap:0;width:max-content;animation:marquee 30s linear infinite}
+        @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+        .marquee-item{display:flex;align-items:center;gap:12px;padding:20px 40px;white-space:nowrap;font-size:.875rem;font-weight:500;color:rgba(255,255,255,.3);border-right:1px solid var(--border-light)}
+        .marquee-item svg{width:16px;height:16px;stroke:var(--indigo);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+        /* PROBLEM */
+        .problem{background:var(--bg-light)}
+        .problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+        .problem-card{padding:40px 32px;border-radius:18px;background:var(--bg-white);border:1px solid var(--border-dark);transition:all .4s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden}
+        .problem-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(99,102,241,.03),transparent);opacity:0;transition:opacity .4s}
+        .problem-card:hover{transform:translateY(-4px);box-shadow:0 20px 48px rgba(0,0,0,.06)}
+        .problem-card:hover::before{opacity:1}
+        .problem-card h3{font-size:1.1875rem;font-weight:700;margin-bottom:12px;letter-spacing:-.02em}
+        .problem-card p{color:var(--text-secondary);line-height:1.75;font-weight:300;font-size:.9375rem}
+        .problem-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;background:rgba(99,102,241,.08)}
+        .problem-icon svg{width:22px;height:22px;stroke:var(--indigo);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+        /* HOW IT WORKS */
+        .how-section{background:var(--bg-white)}
+        .timeline{position:relative;margin-top:80px}
+        .timeline::before{content:'';position:absolute;left:39px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--indigo),rgba(34,211,238,.4),transparent)}
+        .timeline-step{display:flex;gap:40px;margin-bottom:64px;align-items:flex-start}
+        .timeline-step:last-child{margin-bottom:0}
+        .step-num{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.375rem;font-weight:800;flex-shrink:0;position:relative;z-index:1;background:var(--bg-dark);color:var(--indigo-light);border:1px solid rgba(99,102,241,.2);letter-spacing:-.03em}
+        .step-body h3{font-size:1.5rem;font-weight:700;margin-bottom:10px;letter-spacing:-.025em}
+        .step-body p{color:var(--text-secondary);font-size:1.0625rem;line-height:1.75;font-weight:300}
+
+        /* AGENTS */
+        .agents-section{background:var(--bg-dark);color:#fff;position:relative;overflow:hidden;padding:140px 0}
+        .agents-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(99,102,241,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,.04) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+        .agents-orb{position:absolute;border-radius:50%;filter:blur(140px);pointer-events:none}
+        .agents-orb-1{width:500px;height:500px;background:rgba(99,102,241,.12);top:-20%;right:-10%}
+        .agents-orb-2{width:400px;height:400px;background:rgba(34,211,238,.05);bottom:-20%;left:-10%}
+        .agents-section .section-intro{color:var(--text-muted)}
+        .agent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;position:relative;z-index:1}
+        .agent-card{padding:32px 28px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:all .4s cubic-bezier(.16,1,.3,1)}
+        .agent-card:hover{background:rgba(99,102,241,.08);border-color:rgba(99,102,241,.3);transform:translateY(-2px)}
+        .agent-card-head{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+        .agent-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(99,102,241,.15);flex-shrink:0}
+        .agent-icon svg{width:20px;height:20px;stroke:var(--indigo-light);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+        .agent-card h3{font-size:1rem;font-weight:700;color:#fff;letter-spacing:-.01em}
+        .agent-card p{color:rgba(255,255,255,.45);font-size:.9rem;line-height:1.7;font-weight:300}
+
+        /* INDUSTRIES */
+        .industries{background:var(--bg-light)}
+        .industry-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+        .industry-card{padding:24px 20px;border-radius:12px;background:var(--bg-white);border:1px solid var(--border-dark);transition:all .35s cubic-bezier(.16,1,.3,1);display:flex;align-items:center;gap:14px}
+        .industry-card:hover{border-color:rgba(99,102,241,.3);transform:translateY(-2px);box-shadow:0 8px 24px rgba(99,102,241,.06)}
+        .industry-card svg{width:20px;height:20px;stroke:var(--indigo);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+        .industry-card p{color:var(--text-primary);font-weight:500;font-size:.9rem}
+
+        /* WHY US */
+        .why-section{background:var(--bg-white)}
+        .why-grid{margin-top:72px}
+        .why-item{display:grid;grid-template-columns:64px 1fr;gap:28px;align-items:start;padding:40px 0;border-bottom:1px solid var(--border-dark)}
+        .why-item:last-child{border-bottom:none}
+        .why-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:var(--bg-dark);flex-shrink:0}
+        .why-icon svg{width:22px;height:22px;stroke:var(--indigo-light);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+        .why-item h3{font-size:1.3125rem;font-weight:700;margin-bottom:8px;letter-spacing:-.025em}
+        .why-item p{color:var(--text-secondary);font-size:1rem;line-height:1.75;font-weight:300}
+
+        /* CONTACT */
+        .contact{background:var(--bg-dark);color:#fff;position:relative;overflow:hidden}
+        .contact-orb{position:absolute;width:700px;height:700px;border-radius:50%;background:rgba(99,102,241,.07);filter:blur(150px);top:-30%;right:-20%;pointer-events:none}
+        .contact-orb-2{position:absolute;width:400px;height:400px;border-radius:50%;background:rgba(34,211,238,.04);filter:blur(120px);bottom:-20%;left:-10%;pointer-events:none}
+        .contact .section-intro{color:var(--text-muted)}
+        .form-container{max-width:560px;margin:0 auto;position:relative;z-index:1}
+        .form-group{margin-bottom:20px}
+        .form-group label{display:block;margin-bottom:8px;font-size:.875rem;font-weight:500;color:rgba(255,255,255,.6)}
+        .form-group input,.form-group textarea{width:100%;padding:14px 18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:10px;color:#fff;font-family:inherit;font-size:.9375rem;transition:all .3s;outline:none}
+        .form-group input:focus,.form-group textarea:focus{border-color:var(--indigo);box-shadow:0 0 0 3px rgba(99,102,241,.15);background:rgba(255,255,255,.07)}
+        .form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,.2)}
+        .form-group textarea{resize:vertical;min-height:120px}
+        .submit-btn{width:100%;padding:18px;background:var(--indigo);color:#fff;border:none;border-radius:12px;font-size:1.0625rem;font-weight:700;cursor:pointer;transition:all .3s;font-family:inherit;letter-spacing:-.01em}
+        .submit-btn:hover{box-shadow:0 0 40px var(--indigo-glow);transform:translateY(-2px)}
+        .form-msg{margin-top:16px;padding:12px 16px;border-radius:10px;text-align:center;font-size:.9375rem;font-weight:500;display:none}
+        .form-msg.success{background:rgba(34,197,94,.12);color:#4ade80;border:1px solid rgba(34,197,94,.2);display:block}
+        .form-msg.error{background:rgba(239,68,68,.12);color:#f87171;border:1px solid rgba(239,68,68,.2);display:block}
+
+        /* FOOTER */
+        footer{background:var(--bg-dark);border-top:1px solid var(--border-light);padding:48px 0}
+        .footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+        .footer-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+        .footer-logo-mark{width:28px;height:28px;background:var(--indigo);border-radius:7px;display:flex;align-items:center;justify-content:center}
+        .footer-logo-mark svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+        .footer-logo-text{font-size:.9375rem;font-weight:800;color:#fff;letter-spacing:-.02em}
+        .footer-logo-text span{color:var(--indigo-light)}
+        footer p.copy{color:rgba(255,255,255,.25);font-size:.8125rem;font-weight:400}
+
+        /* RESPONSIVE */
+        @media(max-width:1024px){
+            .industry-grid{grid-template-columns:repeat(3,1fr)}
+            .agent-grid,.problem-grid{grid-template-columns:repeat(2,1fr)}
+        }
+        @media(max-width:768px){
+            section{padding:100px 0}
+            .nav-links{display:none;position:fixed;inset:0;background:rgba(7,9,15,.97);backdrop-filter:blur(20px);flex-direction:column;justify-content:center;gap:24px;padding:24px}
+            .nav-links.open{display:flex}
+            .nav-links a{font-size:1.25rem;color:rgba(255,255,255,.8)}
+            .nav-mobile-toggle{display:block}
+            .problem-grid,.agent-grid{grid-template-columns:1fr}
+            .industry-grid{grid-template-columns:repeat(2,1fr)}
+            .timeline::before{left:31px}
+            .step-num{width:64px;height:64px;font-size:1.125rem}
+            .timeline-step{gap:24px}
+            .why-item{grid-template-columns:1fr;gap:16px}
+            .hero-stat-row{gap:32px;flex-wrap:wrap}
+            .footer-inner{flex-direction:column;align-items:flex-start}
+        }
+        @media(max-width:480px){
+            .industry-grid{grid-template-columns:1fr}
+            .hero-actions{flex-direction:column;align-items:flex-start}
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">
+            <div class="nav-logo-mark">
+                <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <span class="nav-logo-text">Rewire<span> Work</span></span>
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="#problem">The problem</a>
+            <a href="#how">How it works</a>
+            <a href="#agents">What we build</a>
+            <a href="#industries">Industries</a>
+            <a href="#why">Why us</a>
+            <a href="#contact" class="nav-cta">Get in touch</a>
+        </div>
+        <button class="nav-mobile-toggle" id="navToggle" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-circuit"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-badge"><span class="dot"></span> Now accepting new clients</div>
+            <h1>Your business,<br><em>rewired for AI.</em></h1>
+            <p class="hero-sub">We replace manual processes and repetitive work with AI agents. Less headcount pressure, more output. Built for small businesses that want to grow without growing their team.</p>
+            <div class="hero-actions">
+                <a href="#contact" class="hero-cta">Start the conversation <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                <a href="#how" class="hero-link">See how it works <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></a>
+            </div>
+            <div class="hero-stat-row">
+                <div class="hero-stat">
+                    <h3>10–<span>100</span></h3>
+                    <p>People in your team</p>
+                </div>
+                <div class="hero-stat">
+                    <h3>£1–<span>10M</span></h3>
+                    <p>Annual revenue</p>
+                </div>
+                <div class="hero-stat">
+                    <h3><span>40</span>%+</h3>
+                    <p>Typical time saved</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+    <div class="marquee-track">
+        <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>AI Agents</div>
+        <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Process Automation</div>
+        <div class="marquee-item"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>Systems Thinking</div>
+        <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Bespoke Builds</div>
+        <div class="marquee-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>Machine Thinking</div>
+        <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>Real Results</div>
+        <!-- duplicate for seamless loop -->
+        <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>AI Agents</div>
+        <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Process Automation</div>
+        <div class="marquee-item"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>Systems Thinking</div>
+        <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Bespoke Builds</div>
+        <div class="marquee-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>Machine Thinking</div>
+        <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>Real Results</div>
+    </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem" id="problem">
+    <div class="container">
+        <div class="reveal">
+            <span class="eyebrow eyebrow-dark">The problem</span>
+            <h2>You're still running on<br>human-powered processes.</h2>
+            <p class="section-intro">Enterprise companies have teams of engineers automating everything. You're still copy-pasting between systems, chasing invoices, and answering the same ten questions every day.</p>
+        </div>
+        <div class="problem-grid reveal-stagger">
+            <div class="problem-card reveal-item">
+                <div class="problem-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg></div>
+                <h3>AI feels like guesswork</h3>
+                <p>Everyone's talking about it. Nobody's showing you how to actually apply it to your specific business without wasting £50k on a consultant.</p>
+            </div>
+            <div class="problem-card reveal-item">
+                <div class="problem-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+                <h3>Generic tools don't fit</h3>
+                <p>Off-the-shelf software promises everything and understands nothing about how your business actually works. You end up adapting to the tool instead of the other way around.</p>
+            </div>
+            <div class="problem-card reveal-item">
+                <div class="problem-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+                <h3>You hire when you should automate</h3>
+                <p>The instinct is to hire more people when you're overwhelmed. Most of that overwhelm is repetitive, rule-based work — exactly what AI agents are built for.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how">
+    <div class="container-narrow">
+        <div class="reveal">
+            <span class="eyebrow eyebrow-dark">How it works</span>
+            <h2>Three steps to a rewired business.</h2>
+            <p class="section-intro">We're not consultants who drop a report and leave. We learn your operations, build your AI system, and stay with you through to real results.</p>
+        </div>
+        <div class="timeline reveal-stagger">
+            <div class="timeline-step reveal-item">
+                <div class="step-num">01</div>
+                <div class="step-body">
+                    <h3>We map your operations</h3>
+                    <p>We spend time learning how your business actually works — not how you think it works, but what really happens day to day. Where time disappears. What's costing you money. What drives your team mad. No assumptions, just listening.</p>
+                </div>
+            </div>
+            <div class="timeline-step reveal-item">
+                <div class="step-num">02</div>
+                <div class="step-body">
+                    <h3>We design your AI system</h3>
+                    <p>A bespoke blueprint of agents, automations, and rebuilt workflows — designed specifically around your business. We show you exactly what we'll build, what it replaces, and how much time and money you'll save. No templates.</p>
+                </div>
+            </div>
+            <div class="timeline-step reveal-item">
+                <div class="step-num">03</div>
+                <div class="step-body">
+                    <h3>We build it and stay</h3>
+                    <p>We implement everything, train your team, and stick around until it's genuinely working in the real world. We don't invoice and disappear. We measure results and keep improving the system.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AGENTS / WHAT WE BUILD -->
+<section class="agents-section" id="agents">
+    <div class="agents-grid-bg"></div>
+    <div class="agents-orb agents-orb-1"></div>
+    <div class="agents-orb agents-orb-2"></div>
+    <div class="container" style="position:relative;z-index:1">
+        <div class="reveal">
+            <span class="eyebrow eyebrow-indigo">What we build</span>
+            <h2>AI agents that do real work.</h2>
+            <p class="section-intro">Not chatbots. Not dashboards. Agents that plug into your existing systems and handle the work that shouldn't need a human.</p>
+        </div>
+        <div class="agent-grid reveal-stagger">
+            <div class="agent-card reveal-item">
+                <div class="agent-card-head">
+                    <div class="agent-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+                    <h3>Customer communications</h3>
+                </div>
+                <p>Enquiries, follow-ups, booking confirmations, reminders — handled automatically while staying personal.</p>
+            </div>
+            <div class="agent-card reveal-item">
+                <div class="agent-card-head">
+                    <div class="agent-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+                    <h3>Scheduling & bookings</h3>
+                </div>
+                <p>Stop playing calendar tetris. AI scheduling that works the way your business actually operates.</p>
+            </div>
+            <div class="agent-card reveal-item">
+                <div class="agent-card-head">
+                    <div class="agent-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+                    <h3>Invoicing & payments</h3>
+                </div>
+                <p>Generate invoices, send reminders, chase overdue payments. Less manual chasing, better cash flow.</p>
+            </div>
+            <div class="agent-card reveal-item">
+                <div class="agent-card-head">
+                    <div class="agent-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+                    <h3>Document processing</h3>
+                </div>
+                <p>Contracts, quotes, forms — extracted, organised, and routed without anyone touching a keyboard.</p>
+            </div>
+            <div class="agent-card reveal-item">
+                <div class="agent-card-head">
+                    <div class="agent-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+                    <h3>Reporting & insights</h3>
+                </div>
+                <p>Your data actually tells you something useful instead of sitting untouched in five different systems.</p>
+            </div>
+            <div class="agent-card reveal-item">
+                <div class="agent-card-head">
+                    <div class="agent-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+                    <h3>Lead qualification</h3>
+                </div>
+                <p>Know which prospects are worth your time before you pick up the phone. Scored, routed, prioritised.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="industries" id="industries">
+    <div class="container">
+        <div class="reveal">
+            <span class="eyebrow eyebrow-dark">Who we help</span>
+            <h2>Built for growing UK businesses.</h2>
+            <p class="section-intro">Too big for spreadsheets, too small for enterprise software. 10–100 people, £1–10M revenue, and ready to stop wasting time on work AI should be doing.</p>
+        </div>
+        <div class="industry-grid reveal-stagger">
+            <div class="industry-card reveal-item"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9h1"/><path d="M9 13h1"/><path d="M9 17h1"/></svg><p>Boutique hotel chains</p></div>
+            <div class="industry-card reveal-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m14.5 9-5 6"/><path d="m9.5 9 5 6"/></svg><p>Law firms</p></div>
+            <div class="industry-card reveal-item"><svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg><p>Design studios</p></div>
+            <div class="industry-card reveal-item"><svg viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg><p>Estate agents</p></div>
+            <div class="industry-card reveal-item"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><p>Recruitment agencies</p></div>
+            <div class="industry-card reveal-item"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><p>Medical & dental practices</p></div>
+            <div class="industry-card reveal-item"><svg viewBox="0 0 24 24"><path d="M2 20h20"/><path d="M5 20V8.2a1 1 0 0 1 .4-.8l6-4.5a1 1 0 0 1 1.2 0l6 4.5a1 1 0 0 1 .4.8V20"/></svg><p>Architecture firms</p></div>
+            <div class="industry-card reveal-item"><svg viewBox="0 0 24 24"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg><p>PR & marketing agencies</p></div>
+            <div class="industry-card reveal-item"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg><p>Restaurant groups</p></div>
+            <div class="industry-card reveal-item"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><p>Construction firms</p></div>
+            <div class="industry-card reveal-item"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><p>Accounting firms</p></div>
+            <div class="industry-card reveal-item"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><p>HR consultancies</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-section" id="why">
+    <div class="container-narrow">
+        <div class="reveal">
+            <span class="eyebrow eyebrow-dark">Why Rewire Work</span>
+            <h2>Why work with us.</h2>
+            <p class="section-intro">We're not here to sell you software or a strategy deck. We're here to make your business run better — and we measure ourselves on that.</p>
+        </div>
+        <div class="why-grid reveal-stagger">
+            <div class="why-item reveal-item">
+                <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+                <div>
+                    <h3>We build, we don't just advise</h3>
+                    <p>Most consultants charge you for thinking about the problem. We charge you for solving it. We build the actual system and stay until it works.</p>
+                </div>
+            </div>
+            <div class="why-item reveal-item">
+                <div class="why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></div>
+                <div>
+                    <h3>Bespoke, not templated</h3>
+                    <p>Your business is not like any other. Your AI system shouldn't be either. Everything we build is designed specifically around how you operate.</p>
+                </div>
+            </div>
+            <div class="why-item reveal-item">
+                <div class="why-icon"><svg viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+                <div>
+                    <h3>Small business DNA</h3>
+                    <p>We understand that every pound matters and every hour counts. We've been there. We don't build bloated systems that take months to show ROI.</p>
+                </div>
+            </div>
+            <div class="why-item reveal-item">
+                <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+                <div>
+                    <h3>Partners, not vendors</h3>
+                    <p>We succeed when you succeed. We're not interested in upselling you or locking you into a contract. We're interested in getting you results.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+    <div class="contact-orb"></div>
+    <div class="contact-orb-2"></div>
+    <div class="container-narrow" style="position:relative;z-index:1">
+        <div class="reveal" style="text-align:center">
+            <span class="eyebrow eyebrow-indigo">Get started</span>
+            <h2>Let's talk about your business.</h2>
+            <p class="section-intro" style="margin-left:auto;margin-right:auto">No sales pitch. No obligation. Just an honest conversation about where AI can save you time and money.</p>
+        </div>
+        <div class="form-container reveal">
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Your name</label>
+                    <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+                </div>
+                <div class="form-group">
+                    <label for="business">Business name</label>
+                    <input type="text" id="business" name="business" placeholder="Acme Ltd" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="jane@acme.co.uk" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">What would you like to automate?</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Tell us about the repetitive work eating your team's time..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send message →</button>
+                <div class="form-msg" id="form-msg"></div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-inner">
+            <a href="#" class="footer-logo">
+                <div class="footer-logo-mark">
+                    <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                </div>
+                <span class="footer-logo-text">Rewire<span> Work</span></span>
+            </a>
+            <p class="copy">© 2026 Rewire Work. Based in London, UK.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Nav scroll
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50)});
+
+// Mobile nav
+const toggle=document.getElementById('navToggle'),links=document.getElementById('navLinks');
+toggle.addEventListener('click',()=>{links.classList.toggle('open')});
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+
+// Intersection Observer
+const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+        if(e.isIntersecting){
+            e.target.classList.add('visible');
+            if(e.target.classList.contains('reveal-stagger')){
+                e.target.querySelectorAll('.reveal-item').forEach((item,i)=>{
+                    item.style.transitionDelay=`${i*80}ms`;
+                    requestAnimationFrame(()=>requestAnimationFrame(()=>{item.style.opacity='1';item.style.transform='translateY(0)'}));
+                });
+            }
+        }
+    });
+},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal,.reveal-stagger').forEach(el=>io.observe(el));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',function(e){
+        e.preventDefault();
+        const t=document.querySelector(this.getAttribute('href'));
+        if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+});
+
+// Form
+const form=document.getElementById('contact-form'),msg=document.getElementById('form-msg');
+form.addEventListener('submit',e=>{
+    e.preventDefault();
+    const f=new FormData(form);
+    for(const[,v]of f)if(!v.trim()){msg.className='form-msg error';msg.textContent='Please fill in all fields.';return}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.get('email'))){msg.className='form-msg error';msg.textContent='Please enter a valid email.';return}
+    msg.className='form-msg success';msg.textContent="Thanks — we'll be in touch within 24 hours.";
+    form.reset();
+    setTimeout(()=>{msg.style.display='none'},6000);
+});
+</script>
+</body>
+</html>
