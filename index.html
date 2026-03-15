@@ -562,14 +562,25 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 
 // Form
 const form=document.getElementById('contact-form'),msg=document.getElementById('form-msg');
-form.addEventListener('submit',e=>{
+form.addEventListener('submit',async e=>{
     e.preventDefault();
     const f=new FormData(form);
     for(const[,v]of f)if(!v.trim()){msg.className='form-msg error';msg.textContent='Please fill in all fields.';return}
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.get('email'))){msg.className='form-msg error';msg.textContent='Please enter a valid email.';return}
-    msg.className='form-msg success';msg.textContent="Thanks — we'll be in touch within 24 hours.";
-    form.reset();
-    setTimeout(()=>{msg.style.display='none'},6000);
+    const btn=form.querySelector('.submit-btn');
+    btn.disabled=true;btn.textContent='Sending...';
+    try{
+        const res=await fetch('https://formsubmit.co/ajax/surendrachaplot@gmail.com',{method:'POST',body:f,headers:{Accept:'application/json'}});
+        if(res.ok){
+            msg.className='form-msg success';msg.textContent="Thanks — we'll be in touch within 24 hours.";
+            form.reset();
+            setTimeout(()=>{msg.style.display='none'},6000);
+        } else {
+            msg.className='form-msg error';msg.textContent='Something went wrong. Email us directly: surendrachaplot@gmail.com';
+        }
+    }catch(err){
+        msg.className='form-msg error';msg.textContent='Something went wrong. Email us directly: surendrachaplot@gmail.com';
+    }finally{btn.disabled=false;btn.textContent='Send message →';}
 });
 </script>
 </body>
