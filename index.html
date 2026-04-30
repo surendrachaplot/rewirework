@@ -21,23 +21,32 @@
     <meta name="twitter:title" content="SlowProof — AI Agents for Growing UK Businesses">
     <meta name="twitter:description" content="We build bespoke AI systems that cut hours of repetitive work from your week. Built for UK businesses with 10–100 people.">
 
-    <link rel="preload" href="fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/bodoni-moda-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/bodoni-moda-latin-italic.woff2" as="font" type="font/woff2" crossorigin>
 
     <style>
         @font-face {
-            font-family: 'PJS';
+            font-family: 'Bodoni Moda';
             font-style: normal;
-            font-weight: 100 900;
+            font-weight: 400 900;
             font-display: swap;
-            src: url('fonts/plus-jakarta-sans-latin.woff2') format('woff2');
+            src: url('fonts/bodoni-moda-latin.woff2') format('woff2');
             unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
         }
         @font-face {
-            font-family: 'PJS Fallback';
-            src: local('Arial');
-            size-adjust: 102%;
-            ascent-override: 96%;
-            descent-override: 25%;
+            font-family: 'Bodoni Moda';
+            font-style: italic;
+            font-weight: 400 900;
+            font-display: swap;
+            src: url('fonts/bodoni-moda-latin-italic.woff2') format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        @font-face {
+            font-family: 'Bodoni Moda Fallback';
+            src: local('Georgia');
+            size-adjust: 97%;
+            ascent-override: 85%;
+            descent-override: 22%;
             line-gap-override: 0%;
         }
 
@@ -58,7 +67,7 @@
 
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'PJS', 'PJS Fallback', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Bodoni Moda', 'Bodoni Moda Fallback', Georgia, serif;
             color: var(--text);
             background: var(--white);
             line-height: 1.65;
@@ -87,9 +96,10 @@
         .sec-hd { margin-bottom: 56px; }
         .sec-hd h2 {
             font-size: clamp(1.875rem, 3.2vw, 2.625rem);
-            font-weight: 800;
+            font-weight: 700;
             line-height: 1.1;
-            letter-spacing: -0.03em;
+            letter-spacing: -0.01em;
+            font-variation-settings: 'opsz' 48;
             max-width: 600px;
         }
         .sec-hd p {
@@ -227,8 +237,9 @@
         .hero h1 {
             font-size: clamp(3.5rem, 8.5vw, 7rem);
             font-weight: 800;
-            line-height: 0.93;
-            letter-spacing: -0.04em;
+            line-height: 0.95;
+            letter-spacing: -0.02em;
+            font-variation-settings: 'opsz' 96;
             max-width: 820px;
         }
         .hero h1 em {
@@ -312,9 +323,10 @@
         }
         .statement-left h2 {
             font-size: clamp(1.875rem, 3vw, 2.625rem);
-            font-weight: 800;
+            font-weight: 700;
             line-height: 1.1;
-            letter-spacing: -0.03em;
+            letter-spacing: -0.01em;
+            font-variation-settings: 'opsz' 48;
         }
         .statement-right p {
             font-size: 1.0625rem;
