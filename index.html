@@ -522,6 +522,7 @@
         /* ── REVEAL ── */
         .rev { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
         .rev.in { opacity: 1; transform: none; }
+        .no-js .rev, .rev.fallback { opacity: 1; transform: none; }
 
         /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
@@ -985,13 +986,22 @@
         });
     });
 
-    // Scroll reveal
-    var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-        });
-    }, { threshold: 0.07, rootMargin: '0px 0px -32px 0px' });
-    document.querySelectorAll('.rev').forEach(function (el) { io.observe(el); });
+    // Scroll reveal — with hard fallback so a JS error never blanks the page
+    var revEls = document.querySelectorAll('.rev');
+    try {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+            });
+        }, { threshold: 0.07, rootMargin: '0px 0px -32px 0px' });
+        revEls.forEach(function (el) { io.observe(el); });
+    } catch (err) {
+        revEls.forEach(function (el) { el.classList.add('in'); });
+    }
+    // Fallback: reveal anything still hidden after 1.5s (covers cached/slow pages)
+    setTimeout(function () {
+        revEls.forEach(function (el) { el.classList.add('in'); });
+    }, 1500);
 
     // Contact form
     var form = document.getElementById(‘contact-form’);
