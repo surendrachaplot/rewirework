@@ -353,6 +353,7 @@
         .tile-dk { background: var(--dark); }
         .tile-3 { grid-template-columns: repeat(3, 1fr); }
         .tile-2 { grid-template-columns: repeat(2, 1fr); }
+        .tile-4 { grid-template-columns: repeat(4, 1fr); }
 
         /* ── PROBLEMS ── */
         .problems { background: var(--white); }
@@ -387,7 +388,7 @@
             line-height: 1;
             margin-bottom: 36px;
         }
-        .process .tile h3 { color: #fff; font-size: 1.25rem; margin-bottom: 16px; }
+        .process .tile h3 { color: #fff; font-size: 1.125rem; margin-bottom: 12px; }
         .process .tile p { color: rgba(255,255,255,0.4); font-size: 0.9375rem; }
 
         /* ── CASES ── */
@@ -519,7 +520,7 @@
             .wrap, .wrap-sm { padding: 0 32px; }
             .nav-inner, .sectors-inner { padding: 0 32px; }
             .tile-3 { grid-template-columns: repeat(2, 1fr); }
-            .process .tile-grid { grid-template-columns: 1fr; }
+            .tile-4 { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 768px) {
             .wrap, .wrap-sm { padding: 0 24px; }
@@ -542,7 +543,7 @@
             .statement { padding: 80px 0; }
             .statement-grid { grid-template-columns: 1fr; gap: 40px; }
             .statement-right { padding-top: 0; }
-            .tile-3, .tile-2 { grid-template-columns: 1fr; }
+            .tile-3, .tile-2, .tile-4 { grid-template-columns: 1fr; }
             .hero-divide { grid-template-columns: 1fr; gap: 32px; }
             .hero-ctas { align-items: flex-start; }
             .hero-metrics { gap: 0; flex-wrap: wrap; row-gap: 24px; }
@@ -766,25 +767,29 @@
 <section class="process" id="process">
     <div class="wrap">
         <div class="sec-hd rev">
-            <span class="label">How it works</span>
-            <h2>Three steps to a rewired business.</h2>
-            <p>We're not consultants who drop a report and leave. We learn your operations, build your AI system, and stay with you until you're seeing real savings.</p>
+            <span class="label">How we work</span>
+            <h2>Simple process. Real results.</h2>
         </div>
-        <div class="tile-grid tile-3 rev">
+        <div class="tile-grid tile-4 rev">
             <div class="tile tile-dk">
-                <div class="process-num">01</div>
-                <h3>We map where time and money are leaking</h3>
-                <p>We spend time learning how your business actually works — not how you think it works, but what really happens day to day. Where hours disappear. What's costing you money. No assumptions, just listening.</p>
+                <div class="process-num">1</div>
+                <h3>Set a strategy</h3>
+                <p>We map your business, identify where time and money are leaking, and define exactly what AI should be doing for you.</p>
             </div>
             <div class="tile tile-dk">
-                <div class="process-num">02</div>
-                <h3>We design your AI system</h3>
-                <p>A bespoke blueprint of agents, automations, and rebuilt workflows designed specifically around your business. We show you exactly what we'll build, what it replaces, and what it will save you.</p>
+                <div class="process-num">2</div>
+                <h3>Build workflows</h3>
+                <p>We build the agents and automations — connected to your existing tools, designed around how you actually work.</p>
             </div>
             <div class="tile tile-dk">
-                <div class="process-num">03</div>
-                <h3>We build it and stay until it works</h3>
-                <p>We implement everything, train your team, and stick around until the savings are real and measurable. We don't invoice and disappear. We measure results, track hours saved, and keep improving as you grow.</p>
+                <div class="process-num">3</div>
+                <h3>Train your team</h3>
+                <p>We hand over the system, train your people, and make sure everyone knows how to get the most from it.</p>
+            </div>
+            <div class="tile tile-dk">
+                <div class="process-num">4</div>
+                <h3>Ongoing support</h3>
+                <p>We stick around as your AI partner — improving the system as your business grows and new opportunities emerge.</p>
             </div>
         </div>
     </div>
