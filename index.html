@@ -1004,69 +1004,69 @@
     }, 1500);
 
     // Contact form
-    var form = document.getElementById(‘contact-form’);
-    var msg  = document.getElementById(‘form-msg’);
+    var form = document.getElementById('contact-form');
+    var msg  = document.getElementById('form-msg');
 
-    // Clear a field’s error when the user edits it
-    form.querySelectorAll(‘input, textarea’).forEach(function (el) {
-        el.addEventListener(‘input’, function () {
-            this.classList.remove(‘invalid’);
-            var err = document.getElementById(this.id + ‘-error’);
-            if (err) err.textContent = ‘’;
-            msg.className = ‘form-msg’;
+    // Clear a field's error when the user edits it
+    form.querySelectorAll('input, textarea').forEach(function (el) {
+        el.addEventListener('input', function () {
+            this.classList.remove('invalid');
+            var err = document.getElementById(this.id + '-error');
+            if (err) err.textContent = '';
+            msg.className = 'form-msg';
         });
     });
 
-    form.addEventListener(‘submit’, function (e) {
+    form.addEventListener('submit', function (e) {
         e.preventDefault();
         var f = new FormData(form);
         var ok = true;
 
         function fieldErr(id, text) {
-            document.getElementById(id).classList.add(‘invalid’);
-            document.getElementById(id + ‘-error’).textContent = text;
+            document.getElementById(id).classList.add('invalid');
+            document.getElementById(id + '-error').textContent = text;
             if (ok) { document.getElementById(id).focus(); }
             ok = false;
         }
 
-        var name     = f.get(‘name’).trim();
-        var business = f.get(‘business’).trim();
-        var email    = f.get(‘email’).trim();
-        var phone    = f.get(‘phone’).trim();
-        var message  = f.get(‘message’).trim();
+        var name     = f.get('name').trim();
+        var business = f.get('business').trim();
+        var email    = f.get('email').trim();
+        var phone    = f.get('phone').trim();
+        var message  = f.get('message').trim();
 
         // Validate in reverse order so focus lands on the first error
         if (message.length < 10)
-            fieldErr(‘message’, ‘Please add a bit more detail — at least a sentence.’);
-        if (!/^\d{10,15}$/.test(phone.replace(/[\s\-\+\(\)]/g, ‘’)))
-            fieldErr(‘phone’, ‘Please enter a valid phone number.’);
+            fieldErr('message', 'Please add a bit more detail — at least a sentence.');
+        if (!/^\d{10,15}$/.test(phone.replace(/[\s\-\+\(\)]/g, '')))
+            fieldErr('phone', 'Please enter a valid phone number.');
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
-            fieldErr(‘email’, ‘Please enter a valid email address.’);
+            fieldErr('email', 'Please enter a valid email address.');
         if (business.length < 2)
-            fieldErr(‘business’, ‘Please enter your business name.’);
+            fieldErr('business', 'Please enter your business name.');
         if (name.length < 2)
-            fieldErr(‘name’, ‘Please enter your name.’);
+            fieldErr('name', 'Please enter your name.');
 
         if (!ok) return;
 
-        var SCRIPT_URL = ‘https://script.google.com/macros/s/AKfycbxXTZHqt9VokANGbA_xIFv-x7C_1rtGwkPDrFfb3cg8RIaZro7bOiLLqvdOsWTlAKs/exec’;
-        var btn = form.querySelector(‘.form-submit’);
-        btn.disabled = true; btn.textContent = ‘Sending…’;
-        fetch(SCRIPT_URL, { method: ‘POST’, body: f, mode: ‘no-cors’ })
+        var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxXTZHqt9VokANGbA_xIFv-x7C_1rtGwkPDrFfb3cg8RIaZro7bOiLLqvdOsWTlAKs/exec';
+        var btn = form.querySelector('.form-submit');
+        btn.disabled = true; btn.textContent = 'Sending…';
+        fetch(SCRIPT_URL, { method: 'POST', body: f, mode: 'no-cors' })
           .then(function () {
-            show(‘success’, "Thanks — we’ll be in touch within 24 hours.");
+            show('success', "Thanks — we'll be in touch within 24 hours.");
             form.reset();
-            setTimeout(function () { msg.style.display = ‘none’; }, 6000);
+            setTimeout(function () { msg.style.display = 'none'; }, 6000);
           })
           .catch(function () {
-            show(‘error’, ‘Something went wrong — please try again in a moment.’);
+            show('error', 'Something went wrong — please try again in a moment.');
           })
           .finally(function () {
-            btn.disabled = false; btn.textContent = ‘Send message →’;
+            btn.disabled = false; btn.textContent = 'Send message →';
           });
     });
 
-    function show(type, text) { msg.className = ‘form-msg ‘ + type; msg.textContent = text; }
+    function show(type, text) { msg.className = 'form-msg ' + type; msg.textContent = text; }
 })();
 </script>
 </body>
