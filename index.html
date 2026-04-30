@@ -1039,7 +1039,7 @@
 
         if (!ok) return;
 
-        var SCRIPT_URL = ‘GOOGLE_SCRIPT_URL_HERE’;
+        var SCRIPT_URL = ‘https://script.google.com/macros/s/AKfycbxXTZHqt9VokANGbA_xIFv-x7C_1rtGwkPDrFfb3cg8RIaZro7bOiLLqvdOsWTlAKs/exec’;
         var btn = form.querySelector(‘.form-submit’);
         btn.disabled = true; btn.textContent = ‘Sending…’;
         fetch(SCRIPT_URL, { method: ‘POST’, body: f, mode: ‘no-cors’ })
