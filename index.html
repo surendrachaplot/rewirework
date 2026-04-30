@@ -480,6 +480,9 @@
         .form-group input::placeholder,
         .form-group textarea::placeholder { color: #b5b3ae; }
         .form-group textarea { resize: vertical; min-height: 110px; }
+        .form-group input.invalid,
+        .form-group textarea.invalid { border-color: #dc2626; box-shadow: 0 0 0 3px rgba(220,38,38,0.1); }
+        .field-error { display: block; font-size: 0.8rem; color: #dc2626; font-weight: 500; margin-top: 5px; min-height: 1em; }
         .form-submit { width: 100%; font-size: 1rem; padding: 15px; margin-top: 6px; border-radius: 8px; }
         .form-msg {
             margin-top: 12px;
@@ -907,24 +910,35 @@
                 <p>No sales pitch. No obligation. Just an honest conversation about where AI can save you the most time and money.</p>
             </div>
             <div class="contact-form-wrap rev">
-                <form id="contact-form">
+                <form id="contact-form" novalidate>
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Your name</label>
-                            <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+                            <input type="text" id="name" name="name" placeholder="Jane Smith" autocomplete="name">
+                            <span class="field-error" id="name-error"></span>
                         </div>
                         <div class="form-group">
                             <label for="business">Business name</label>
-                            <input type="text" id="business" name="business" placeholder="Acme Ltd" required>
+                            <input type="text" id="business" name="business" placeholder="Acme Ltd" autocomplete="organization">
+                            <span class="field-error" id="business-error"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="jane@acme.co.uk" autocomplete="email">
+                            <span class="field-error" id="email-error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="07700 900123" autocomplete="tel">
+                            <span class="field-error" id="phone-error"></span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="jane@acme.co.uk" required>
-                    </div>
-                    <div class="form-group">
                         <label for="message">What would you like to automate?</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Tell us about the repetitive work eating your team's time..." required></textarea>
+                        <textarea id="message" name="message" rows="4" placeholder="Tell us about the repetitive work eating your team's time..."></textarea>
+                        <span class="field-error" id="message-error"></span>
                     </div>
                     <button type="submit" class="btn form-submit">Send message &rarr;</button>
                     <div class="form-msg" id="form-msg"></div>
@@ -980,17 +994,54 @@
     document.querySelectorAll('.rev').forEach(function (el) { io.observe(el); });
 
     // Contact form
-    var form = document.getElementById('contact-form');
-    var msg  = document.getElementById('form-msg');
-    form.addEventListener('submit', function (e) {
+    var form = document.getElementById(‘contact-form’);
+    var msg  = document.getElementById(‘form-msg’);
+
+    // Clear a field’s error when the user edits it
+    form.querySelectorAll(‘input, textarea’).forEach(function (el) {
+        el.addEventListener(‘input’, function () {
+            this.classList.remove(‘invalid’);
+            var err = document.getElementById(this.id + ‘-error’);
+            if (err) err.textContent = ‘’;
+            msg.className = ‘form-msg’;
+        });
+    });
+
+    form.addEventListener(‘submit’, function (e) {
         e.preventDefault();
         var f = new FormData(form);
-        for (var pair of f) { if (!pair[1].trim()) { show('error', 'Please fill in all fields.'); return; } }
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.get('email'))) { show('error', 'Please enter a valid email.'); return; }
+        var ok = true;
+
+        function fieldErr(id, text) {
+            document.getElementById(id).classList.add(‘invalid’);
+            document.getElementById(id + ‘-error’).textContent = text;
+            if (ok) { document.getElementById(id).focus(); }
+            ok = false;
+        }
+
+        var name     = f.get(‘name’).trim();
+        var business = f.get(‘business’).trim();
+        var email    = f.get(‘email’).trim();
+        var phone    = f.get(‘phone’).trim();
+        var message  = f.get(‘message’).trim();
+
+        // Validate in reverse order so focus lands on the first error
+        if (message.length < 10)
+            fieldErr(‘message’, ‘Please add a bit more detail — at least a sentence.’);
+        if (!/^\d{10,15}$/.test(phone.replace(/[\s\-\+\(\)]/g, ‘’)))
+            fieldErr(‘phone’, ‘Please enter a valid phone number.’);
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+            fieldErr(‘email’, ‘Please enter a valid email address.’);
+        if (business.length < 2)
+            fieldErr(‘business’, ‘Please enter your business name.’);
+        if (name.length < 2)
+            fieldErr(‘name’, ‘Please enter your name.’);
+
+        if (!ok) return;
+
         var SCRIPT_URL = ‘GOOGLE_SCRIPT_URL_HERE’;
         var btn = form.querySelector(‘.form-submit’);
         btn.disabled = true; btn.textContent = ‘Sending…’;
-        // no-cors avoids CORS preflight with Apps Script; response is opaque
         fetch(SCRIPT_URL, { method: ‘POST’, body: f, mode: ‘no-cors’ })
           .then(function () {
             show(‘success’, "Thanks — we’ll be in touch within 24 hours.");
@@ -1005,7 +1056,7 @@
           });
     });
 
-    function show(type, text) { msg.className = 'form-msg ' + type; msg.textContent = text; }
+    function show(type, text) { msg.className = ‘form-msg ‘ + type; msg.textContent = text; }
 })();
 </script>
 </body>

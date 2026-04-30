@@ -4,7 +4,7 @@
 //
 // 1. Create a new Google Sheet at sheets.google.com
 //    Add these headers in row 1:
-//    Timestamp | Name | Business | Email | Message
+//    Timestamp | Name | Business | Email | Phone | Message
 //
 // 2. In the Sheet, go to Extensions → Apps Script
 //
@@ -26,9 +26,10 @@ function doPost(e) {
   var name     = e.parameter.name     || '';
   var business = e.parameter.business || '';
   var email    = e.parameter.email    || '';
+  var phone    = e.parameter.phone    || '';
   var message  = e.parameter.message  || '';
 
-  sheet.appendRow([new Date(), name, business, email, message]);
+  sheet.appendRow([new Date(), name, business, email, phone, message]);
 
   return ContentService
     .createTextOutput(JSON.stringify({ result: 'success' }))
