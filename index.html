@@ -44,15 +44,16 @@
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --white: #FFFFFF;
-            --bg: #F8F7F4;
-            --dark: #111110;
+            --white:  #FFFFFF;
+            --bg:     #F7F6F3;
+            --dark:   #111110;
             --accent: #C85B1A;
-            --accent-dk: #A84A15;
-            --text: #111110;
-            --muted: #6E6D6A;
-            --border: #E3E0DB;
-            --border-dark: rgba(255,255,255,0.09);
+            --accent-dk: #A64916;
+            --text:   #111110;
+            --muted:  #706F6C;
+            --border: #E5E2DC;
+            --shadow: 0 1px 2px rgba(0,0,0,0.05), 0 4px 16px rgba(0,0,0,0.06);
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.04);
         }
 
         html { scroll-behavior: smooth; }
@@ -60,81 +61,138 @@
             font-family: 'PJS', 'PJS Fallback', -apple-system, BlinkMacSystemFont, sans-serif;
             color: var(--text);
             background: var(--white);
-            line-height: 1.6;
+            line-height: 1.65;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
 
         /* ── LAYOUT ── */
-        .wrap  { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
-        .wrap-sm { max-width: 960px;  margin: 0 auto; padding: 0 48px; }
+        .wrap    { max-width: 1160px; margin: 0 auto; padding: 0 40px; }
+        .wrap-sm { max-width:  840px; margin: 0 auto; padding: 0 40px; }
 
-        /* ── UTILITIES ── */
+        /* ── SHARED SECTION ── */
+        section { padding: 112px 0; }
+
         .label {
             display: inline-block;
             font-size: 0.6875rem;
             font-weight: 700;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.11em;
             text-transform: uppercase;
             color: var(--muted);
+            margin-bottom: 16px;
         }
         .label-accent { color: var(--accent); }
+
+        .sec-hd { margin-bottom: 56px; }
+        .sec-hd h2 {
+            font-size: clamp(1.875rem, 3.2vw, 2.625rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            max-width: 600px;
+        }
+        .sec-hd p {
+            margin-top: 16px;
+            font-size: 1rem;
+            color: var(--muted);
+            line-height: 1.78;
+            max-width: 540px;
+        }
+        .sec-hd-center { text-align: center; }
+        .sec-hd-center h2, .sec-hd-center p { max-width: 640px; margin-left: auto; margin-right: auto; }
+
+        /* ── BUTTONS ── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 13px 24px;
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9375rem;
+            transition: background 0.18s;
+            white-space: nowrap;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        .btn:hover { background: var(--accent-dk); }
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border: 1.5px solid var(--border);
+        }
+        .btn-outline:hover { background: var(--bg); border-color: #ccc; }
+        .btn-ghost-light {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.35);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.18s;
+        }
+        .btn-ghost-light:hover { color: rgba(255,255,255,0.7); }
+
+        /* ── CARD ── */
+        .card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 36px;
+        }
+        .card-bg { background: var(--bg); }
+        .card-dk { background: #1a1917; border-color: rgba(255,255,255,0.07); }
+        .card h3 {
+            font-size: 1.0625rem;
+            font-weight: 700;
+            letter-spacing: -0.018em;
+            line-height: 1.3;
+            margin-bottom: 10px;
+        }
+        .card p { font-size: 0.9375rem; color: var(--muted); line-height: 1.75; }
 
         /* ── NAV ── */
         nav {
             position: fixed;
-            inset: 0 0 auto 0;
+            inset: 0 0 auto;
             z-index: 100;
-            transition: background 0.25s, border-color 0.25s;
-            border-bottom: 1px solid transparent;
-        }
-        nav.scrolled {
-            background: rgba(248, 247, 244, 0.94);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-color: var(--border);
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
         }
         .nav-inner {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 66px;
-            max-width: 1200px;
+            height: 62px;
+            max-width: 1160px;
             margin: 0 auto;
-            padding: 0 48px;
+            padding: 0 40px;
         }
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 9px;
             text-decoration: none;
             color: inherit;
-        }
-        .logo-mark {
-            width: 28px;
-            height: 28px;
-            background: var(--accent);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             flex-shrink: 0;
         }
-        .logo-mark svg { width: 14px; height: 14px; stroke: #fff; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+        .logo-mark {
+            width: 28px; height: 28px;
+            background: var(--accent);
+            border-radius: 7px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .logo-mark svg { width: 13px; height: 13px; stroke: #fff; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
         .logo-name { font-size: 0.9375rem; font-weight: 800; letter-spacing: -0.02em; }
         .logo-name em { font-style: normal; color: var(--accent); }
-        .nav-links { display: flex; align-items: center; gap: 30px; }
+        .nav-links { display: flex; align-items: center; gap: 28px; }
         .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.18s; }
         .nav-links a:hover { color: var(--text); }
-        .nav-cta {
-            padding: 9px 20px !important;
-            background: var(--dark) !important;
-            color: var(--white) !important;
-            border-radius: 6px;
-            font-weight: 600 !important;
-            transition: background 0.18s !important;
-        }
-        .nav-cta:hover { background: var(--accent) !important; }
         .nav-mob { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
         .nav-mob span { display: block; width: 22px; height: 2px; background: var(--text); margin: 5px 0; transition: 0.25s; }
 
@@ -144,13 +202,10 @@
             color: #fff;
             min-height: 100svh;
             display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding-bottom: 72px;
+            align-items: flex-end;
+            padding: 80px 0 72px;
         }
-        .hero-inner {
-            padding-top: 140px;
-        }
+        .hero-inner { width: 100%; }
         .hero-kicker {
             display: flex;
             align-items: center;
@@ -160,114 +215,72 @@
             letter-spacing: 0.12em;
             text-transform: uppercase;
             color: rgba(255,255,255,0.28);
-            margin-bottom: 52px;
+            margin-bottom: 44px;
         }
         .hero-kicker::before {
             content: '';
             display: block;
-            width: 32px;
-            height: 1px;
+            width: 28px; height: 1px;
             background: var(--accent);
             flex-shrink: 0;
         }
         .hero h1 {
-            font-size: clamp(3.75rem, 9vw, 7.5rem);
+            font-size: clamp(3.5rem, 8.5vw, 7rem);
             font-weight: 800;
-            line-height: 0.92;
-            letter-spacing: -0.045em;
-            max-width: 860px;
+            line-height: 0.93;
+            letter-spacing: -0.04em;
+            max-width: 820px;
         }
         .hero h1 em {
             font-style: italic;
             font-weight: 300;
-            color: rgba(255,255,255,0.35);
+            color: rgba(255,255,255,0.32);
         }
-        .hero-divide {
-            margin-top: 64px;
+        .hero-bottom {
+            margin-top: 60px;
             padding-top: 40px;
             border-top: 1px solid rgba(255,255,255,0.07);
             display: grid;
             grid-template-columns: 1fr auto;
-            gap: 64px;
+            gap: 56px;
             align-items: end;
         }
         .hero-sub {
             font-size: 1.0625rem;
             color: rgba(255,255,255,0.38);
             line-height: 1.8;
-            max-width: 520px;
+            max-width: 500px;
             font-weight: 300;
         }
-        .hero-ctas {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 14px;
-        }
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 13px 26px;
-            background: var(--accent);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 0.9375rem;
-            transition: background 0.18s;
-            white-space: nowrap;
-        }
-        .btn:hover { background: var(--accent-dk); }
-        .btn-text {
-            font-size: 0.8125rem;
-            color: rgba(255,255,255,0.28);
-            text-decoration: none;
-            font-weight: 500;
-            letter-spacing: 0.04em;
-            transition: color 0.18s;
-        }
-        .btn-text:hover { color: rgba(255,255,255,0.6); }
+        .hero-ctas { display: flex; flex-direction: column; align-items: flex-end; gap: 14px; }
         .hero-metrics {
-            margin-top: 64px;
+            margin-top: 56px;
             display: flex;
             gap: 0;
         }
         .metric {
-            padding-right: 48px;
-            margin-right: 48px;
-            border-right: 1px solid rgba(255,255,255,0.08);
+            padding-right: 44px;
+            margin-right: 44px;
+            border-right: 1px solid rgba(255,255,255,0.07);
         }
-        .metric:last-child { border-right: none; padding-right: 0; margin-right: 0; }
-        .metric-val {
-            font-size: 2.25rem;
-            font-weight: 800;
-            letter-spacing: -0.05em;
-            line-height: 1;
-            color: #fff;
-        }
-        .metric-lbl {
-            margin-top: 5px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: rgba(255,255,255,0.25);
-            letter-spacing: 0.02em;
-        }
+        .metric:last-child { border: none; padding: 0; margin: 0; }
+        .metric-val { font-size: 2rem; font-weight: 800; letter-spacing: -0.04em; line-height: 1; color: #fff; }
+        .metric-lbl { margin-top: 5px; font-size: 0.75rem; color: rgba(255,255,255,0.25); font-weight: 500; }
 
-        /* ── SECTOR STRIP ── */
+        /* ── SECTORS ── */
         .sectors {
-            background: var(--bg);
+            background: var(--white);
             border-bottom: 1px solid var(--border);
+            padding: 0;
         }
         .sectors-inner {
             display: flex;
             align-items: center;
-            gap: 0;
-            height: 56px;
-            max-width: 1200px;
+            height: 52px;
+            max-width: 1160px;
             margin: 0 auto;
-            padding: 0 48px;
-            overflow: hidden;
+            padding: 0 40px;
+            gap: 0;
         }
         .sectors-lbl {
             font-size: 0.6875rem;
@@ -276,255 +289,249 @@
             text-transform: uppercase;
             color: var(--muted);
             white-space: nowrap;
-            margin-right: 32px;
+            margin-right: 28px;
             flex-shrink: 0;
-        }
-        .sectors-list {
-            display: flex;
-            flex-wrap: nowrap;
-            overflow: hidden;
         }
         .sector {
             font-size: 0.875rem;
             font-weight: 500;
-            color: var(--text);
-            padding: 0 20px;
+            color: var(--muted);
+            padding: 0 18px;
             border-left: 1px solid var(--border);
             white-space: nowrap;
         }
         .sector:first-child { border-left: none; padding-left: 0; }
 
-        /* ── SHARED SECTION ── */
-        section { padding: 128px 0; }
-
-        .sec-hd { margin-bottom: 72px; }
-        .sec-hd h2 {
-            font-size: clamp(2rem, 3.5vw, 2.875rem);
-            font-weight: 800;
-            line-height: 1.08;
-            letter-spacing: -0.038em;
-            margin-top: 16px;
-            max-width: 640px;
-        }
-        .sec-hd p {
-            margin-top: 18px;
-            font-size: 1rem;
-            color: var(--muted);
-            line-height: 1.78;
-            max-width: 560px;
-        }
-
         /* ── STATEMENT ── */
-        .statement { padding: 112px 0; border-bottom: 1px solid var(--border); }
+        .statement { background: var(--bg); padding: 96px 0; }
         .statement-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 88px;
-            align-items: start;
+            grid-template-columns: 5fr 7fr;
+            gap: 80px;
+            align-items: center;
         }
-        .statement-left .label { margin-bottom: 20px; }
         .statement-left h2 {
             font-size: clamp(1.875rem, 3vw, 2.625rem);
             font-weight: 800;
             line-height: 1.1;
-            letter-spacing: -0.038em;
+            letter-spacing: -0.03em;
         }
-        .statement-right { padding-top: 52px; }
         .statement-right p {
             font-size: 1.0625rem;
             color: var(--muted);
-            line-height: 1.8;
-            margin-bottom: 22px;
+            line-height: 1.82;
+            margin-bottom: 20px;
         }
         .statement-right p:last-child { margin-bottom: 0; }
         .statement-right strong { color: var(--text); font-weight: 600; }
 
-        /* ── GRID PATTERNS ── */
-        .tile-grid {
-            display: grid;
-            gap: 1px;
-            background: var(--border);
-        }
-        .tile {
-            background: var(--white);
-            padding: 44px 40px;
-        }
-        .tile-bg { background: var(--bg); }
-        .tile-dk { background: var(--dark); }
-        .tile-3 { grid-template-columns: repeat(3, 1fr); }
-        .tile-2 { grid-template-columns: repeat(2, 1fr); }
-        .tile-4 { grid-template-columns: repeat(4, 1fr); }
-
-        /* ── PROBLEMS ── */
-        .problems { background: var(--white); }
-        .problem-num { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 24px; }
-        .tile h3 {
-            font-size: 1.125rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            line-height: 1.3;
-            margin-bottom: 14px;
-        }
-        .tile p { font-size: 0.9375rem; color: var(--muted); line-height: 1.75; }
-
         /* ── SERVICES ── */
-        .services { background: var(--bg); }
-        .services .tile-bg:hover { background: var(--white); transition: background 0.2s; }
-        .svc-num { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 20px; }
+        .services { background: var(--white); }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .svc-num {
+            font-size: 0.6875rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+        .services .card { transition: box-shadow 0.2s, border-color 0.2s; }
+        .services .card:hover { box-shadow: var(--shadow); border-color: #d4d0ca; }
 
         /* ── PROCESS ── */
-        .process { background: var(--dark); }
-        .process .sec-hd h2 { color: #fff; }
-        .process .sec-hd .label { color: rgba(255,255,255,0.3); }
-        .process .sec-hd p { color: rgba(255,255,255,0.38); }
-        .process .tile-grid { background: rgba(255,255,255,0.07); }
-        .process .tile-dk { transition: background 0.2s; }
-        .process .tile-dk:hover { background: #1a1a18; }
-        .process-num {
-            font-size: 4rem;
+        .process { background: var(--bg); }
+        .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        .step-num {
+            font-size: 2rem;
             font-weight: 800;
-            letter-spacing: -0.05em;
-            color: rgba(255,255,255,0.07);
+            letter-spacing: -0.04em;
+            color: var(--accent);
             line-height: 1;
-            margin-bottom: 36px;
+            margin-bottom: 20px;
+            font-variant-numeric: tabular-nums;
         }
-        .process .tile h3 { color: #fff; font-size: 1.125rem; margin-bottom: 12px; }
-        .process .tile p { color: rgba(255,255,255,0.4); font-size: 0.9375rem; }
+        .steps .card h3 { font-size: 1rem; margin-bottom: 10px; }
+        .steps .card { transition: box-shadow 0.2s; }
+        .steps .card:hover { box-shadow: var(--shadow); }
 
         /* ── CASES ── */
         .cases { background: var(--white); }
-        .case-sector { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; display: block; }
-        .cases .tile h3 { font-size: 1.125rem; font-weight: 700; font-style: italic; line-height: 1.45; letter-spacing: -0.02em; margin-bottom: 0; }
-        .case-built-lbl { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+        .cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+        .case-sector {
+            display: block;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            letter-spacing: 0.11em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 14px;
+        }
+        .cases .card {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            transition: box-shadow 0.2s;
+        }
+        .cases .card:hover { box-shadow: var(--shadow); }
+        .cases .card h3 {
+            font-size: 1.0625rem;
+            font-weight: 700;
+            font-style: italic;
+            line-height: 1.45;
+            letter-spacing: -0.015em;
+            color: var(--text);
+            margin-bottom: 0;
+        }
+        .case-built-lbl {
+            font-size: 0.6875rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 7px;
+        }
         .case-built p { font-size: 0.9rem; color: var(--muted); line-height: 1.72; }
-        .case-results { margin-top: auto; padding-top: 24px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px; }
+        .case-results {
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
         .case-result {
             font-size: 0.875rem;
             font-weight: 600;
             color: var(--text);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
-        .case-result::before { content: ''; width: 18px; height: 1px; background: var(--accent); flex-shrink: 0; }
-        .cases .tile { display: flex; flex-direction: column; gap: 22px; }
-        .cases .tile:hover { background: var(--bg); transition: background 0.2s; }
+        .case-result::before { content: ''; width: 16px; height: 1.5px; background: var(--accent); flex-shrink: 0; }
+
+        /* ── TESTIMONIALS ── */
+        .testimonials { background: var(--dark); padding: 112px 0; }
+        .testimonials .sec-hd h2 { color: #fff; }
+        .testimonials .label { color: rgba(255,255,255,0.3); }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .testi-card {
+            background: #1c1b19;
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 12px;
+            padding: 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .testi-stars { color: var(--accent); font-size: 0.875rem; letter-spacing: 2px; }
+        .testi-quote {
+            font-size: 0.9375rem;
+            color: rgba(255,255,255,0.72);
+            line-height: 1.75;
+            font-style: italic;
+            flex: 1;
+        }
+        .testi-attr { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 18px; }
+        .testi-name { font-size: 0.875rem; font-weight: 700; color: #fff; }
+        .testi-role { font-size: 0.8125rem; color: rgba(255,255,255,0.35); margin-top: 2px; }
 
         /* ── WHY ── */
         .why { background: var(--bg); }
-        .why .tile-bg:hover { background: var(--white); transition: background 0.2s; }
-        .why .tile h3 { font-size: 1.1875rem; letter-spacing: -0.025em; }
+        .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+        .why .card { transition: box-shadow 0.2s; }
+        .why .card:hover { box-shadow: var(--shadow); background: var(--white); }
+        .why .card h3 { font-size: 1.0625rem; letter-spacing: -0.02em; }
 
         /* ── CONTACT ── */
-        .contact { background: var(--dark); color: #fff; }
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 88px;
-            align-items: start;
-        }
-        .contact-left .label { color: rgba(255,255,255,0.28); }
-        .contact-left h2 {
-            font-size: clamp(1.875rem, 3vw, 2.625rem);
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -0.038em;
-            color: #fff;
-            margin-top: 16px;
-            margin-bottom: 22px;
-        }
-        .contact-left p { font-size: 1rem; color: rgba(255,255,255,0.38); line-height: 1.78; }
-        .contact-detail {
-            margin-top: 48px;
-            padding-top: 32px;
-            border-top: 1px solid rgba(255,255,255,0.08);
-        }
-        .contact-detail p { font-size: 0.8125rem; color: rgba(255,255,255,0.25); margin-bottom: 6px; }
-        .contact-detail a { font-size: 0.9375rem; color: rgba(255,255,255,0.55); font-weight: 500; text-decoration: none; transition: color 0.18s; }
-        .contact-detail a:hover { color: #fff; }
-
-        .form-group { margin-bottom: 16px; }
+        .contact { background: var(--white); }
+        .contact-wrap { max-width: 600px; margin: 0 auto; }
+        .contact .sec-hd-center p { color: var(--muted); }
+        .contact-form-wrap { margin-top: 48px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .form-group { margin-bottom: 14px; }
         .form-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 7px;
             font-size: 0.8125rem;
             font-weight: 600;
-            color: rgba(255,255,255,0.4);
-            letter-spacing: 0.02em;
+            color: var(--text);
         }
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
-            padding: 12px 16px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.09);
-            border-radius: 6px;
-            color: #fff;
+            padding: 12px 14px;
+            background: var(--white);
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
             font-family: inherit;
             font-size: 0.9375rem;
             outline: none;
-            transition: border-color 0.18s;
+            transition: border-color 0.18s, box-shadow 0.18s;
+            appearance: none;
         }
         .form-group input:focus,
-        .form-group textarea:focus { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.07); }
-        .form-group input::placeholder,
-        .form-group textarea::placeholder { color: rgba(255,255,255,0.18); }
-        .form-group textarea { resize: vertical; min-height: 118px; }
-        .submit-btn {
-            width: 100%;
-            padding: 14px;
-            background: var(--accent);
-            color: #fff;
-            border: none;
-            border-radius: 6px;
-            font-size: 0.9375rem;
-            font-weight: 700;
-            cursor: pointer;
-            font-family: inherit;
-            transition: background 0.18s;
-            margin-top: 4px;
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(200,91,26,0.1);
         }
-        .submit-btn:hover { background: var(--accent-dk); }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { color: #b5b3ae; }
+        .form-group textarea { resize: vertical; min-height: 110px; }
+        .form-submit { width: 100%; font-size: 1rem; padding: 15px; margin-top: 6px; border-radius: 8px; }
         .form-msg {
             margin-top: 12px;
             padding: 11px 15px;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 0.875rem;
             font-weight: 500;
             text-align: center;
             display: none;
         }
-        .form-msg.success { background: rgba(34,197,94,0.1); color: #4ade80; border: 1px solid rgba(74,222,128,0.18); display: block; }
-        .form-msg.error   { background: rgba(239,68,68,0.1);  color: #f87171; border: 1px solid rgba(248,113,113,0.18); display: block; }
+        .form-msg.success { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; display: block; }
+        .form-msg.error   { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; display: block; }
+        .contact-aside {
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .contact-aside p { font-size: 0.875rem; color: var(--muted); }
+        .contact-aside a { color: var(--text); font-weight: 600; text-decoration: none; font-size: 0.875rem; transition: color 0.18s; }
+        .contact-aside a:hover { color: var(--accent); }
 
         /* ── FOOTER ── */
-        footer {
-            background: var(--dark);
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding: 40px 0;
-        }
+        footer { background: var(--dark); padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.05); }
         .footer-inner { display: flex; align-items: center; justify-content: space-between; }
-        .footer-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-        .footer-mark { width: 26px; height: 26px; background: var(--accent); border-radius: 5px; display: flex; align-items: center; justify-content: center; }
+        .footer-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+        .footer-mark { width: 26px; height: 26px; background: var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; }
         .footer-mark svg { width: 13px; height: 13px; stroke: #fff; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
         .footer-name { font-size: 0.9375rem; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
         .footer-name em { font-style: normal; color: var(--accent); }
         .copy { color: rgba(255,255,255,0.2); font-size: 0.8125rem; }
 
         /* ── REVEAL ── */
-        .rev { opacity: 0; transform: translateY(18px); transition: opacity 0.65s ease, transform 0.65s ease; }
+        .rev { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
         .rev.in { opacity: 1; transform: none; }
 
         /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
             .wrap, .wrap-sm { padding: 0 32px; }
             .nav-inner, .sectors-inner { padding: 0 32px; }
-            .tile-3 { grid-template-columns: repeat(2, 1fr); }
-            .tile-4 { grid-template-columns: repeat(2, 1fr); }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .steps { grid-template-columns: repeat(2, 1fr); }
+            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+            .statement-grid { grid-template-columns: 1fr; gap: 40px; }
         }
         @media (max-width: 768px) {
-            .wrap, .wrap-sm { padding: 0 24px; }
-            .nav-inner, .sectors-inner { padding: 0 24px; }
+            .wrap, .wrap-sm { padding: 0 20px; }
+            .nav-inner, .sectors-inner { padding: 0 20px; }
             .nav-links {
                 display: none;
                 position: fixed;
@@ -539,23 +546,21 @@
             .nav-links.open { display: flex; }
             .nav-links a { font-size: 1.25rem; color: var(--text); }
             .nav-mob { display: block; }
-            section { padding: 88px 0; }
-            .statement { padding: 80px 0; }
-            .statement-grid { grid-template-columns: 1fr; gap: 40px; }
-            .statement-right { padding-top: 0; }
-            .tile-3, .tile-2, .tile-4 { grid-template-columns: 1fr; }
-            .hero-divide { grid-template-columns: 1fr; gap: 32px; }
+            section { padding: 80px 0; }
+            .statement { padding: 72px 0; }
+            .hero { padding: 80px 0 56px; }
+            .hero-bottom { grid-template-columns: 1fr; gap: 28px; }
             .hero-ctas { align-items: flex-start; }
-            .hero-metrics { gap: 0; flex-wrap: wrap; row-gap: 24px; }
+            .hero-metrics { flex-wrap: wrap; gap: 0; row-gap: 20px; }
             .metric { padding-right: 32px; margin-right: 32px; }
-            .contact-grid { grid-template-columns: 1fr; gap: 56px; }
+            .services-grid, .cases-grid, .why-grid, .steps, .testimonials-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
             .footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
-            .sectors-inner { height: auto; padding-top: 20px; padding-bottom: 20px; flex-direction: column; align-items: flex-start; gap: 16px; }
-            .sectors-list { flex-wrap: wrap; gap: 0; }
-            .sec-hd { margin-bottom: 52px; }
+            .sectors-inner { height: auto; padding-top: 16px; padding-bottom: 16px; flex-wrap: wrap; row-gap: 8px; }
+            .contact-aside { flex-direction: column; align-items: flex-start; }
+            .sec-hd { margin-bottom: 40px; }
         }
         @media (max-width: 480px) {
-            .hero h1 { letter-spacing: -0.035em; }
             .metric { padding-right: 24px; margin-right: 24px; }
         }
     </style>
@@ -623,7 +628,7 @@
             <a href="#process">How it works</a>
             <a href="#cases">Case studies</a>
             <a href="#why">Why us</a>
-            <a href="#contact" class="nav-cta">Get in touch</a>
+            <a href="#contact" class="btn" style="padding:8px 18px;font-size:0.875rem;">Get in touch</a>
         </div>
         <button class="nav-mob" id="navMob" aria-label="Open menu">
             <span></span><span></span><span></span>
@@ -636,11 +641,11 @@
     <div class="wrap hero-inner">
         <p class="hero-kicker">Now open to new clients</p>
         <h1>Your business,<br>rewired<br><em>for AI.</em></h1>
-        <div class="hero-divide">
+        <div class="hero-bottom">
             <p class="hero-sub">We build AI systems that cut hours of repetitive work from your week — making your team faster, sharper, and more profitable. Built for UK businesses ready to grow without growing their team.</p>
             <div class="hero-ctas">
                 <a href="#contact" class="btn">Get in touch &rarr;</a>
-                <a href="#process" class="btn-text">See how it works &darr;</a>
+                <a href="#process" class="btn-ghost-light">See how it works &darr;</a>
             </div>
         </div>
         <div class="hero-metrics">
@@ -664,16 +669,14 @@
 <div class="sectors">
     <div class="sectors-inner">
         <span class="sectors-lbl">We work with</span>
-        <div class="sectors-list">
-            <span class="sector">Law firms</span>
-            <span class="sector">Estate agents</span>
-            <span class="sector">Recruitment agencies</span>
-            <span class="sector">Restaurant groups</span>
-            <span class="sector">Accounting firms</span>
-            <span class="sector">Medical practices</span>
-            <span class="sector">Architecture firms</span>
-            <span class="sector">PR &amp; marketing</span>
-        </div>
+        <span class="sector">Law firms</span>
+        <span class="sector">Estate agents</span>
+        <span class="sector">Recruitment agencies</span>
+        <span class="sector">Restaurant groups</span>
+        <span class="sector">Accounting firms</span>
+        <span class="sector">Medical practices</span>
+        <span class="sector">Architecture firms</span>
+        <span class="sector">PR &amp; marketing</span>
     </div>
 </div>
 
@@ -686,35 +689,8 @@
                 <h2>Enterprise businesses automate everything. You should too.</h2>
             </div>
             <div class="statement-right">
-                <p>The gap between large businesses and smaller ones isn't talent or ambition. It's infrastructure. Enterprise companies have <strong>whole teams automating their operations.</strong> Growing businesses are still copying between systems, chasing invoices, and answering the same ten questions every day.</p>
-                <p>That's not a people problem. That's a systems problem — and it's exactly what we solve.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- PROBLEMS -->
-<section class="problems" id="problem">
-    <div class="wrap">
-        <div class="sec-hd rev">
-            <span class="label">Why it's hard</span>
-            <h2>Three reasons most businesses aren't using AI properly.</h2>
-        </div>
-        <div class="tile-grid tile-3 rev">
-            <div class="tile">
-                <p class="problem-num">01</p>
-                <h3>AI feels like guesswork</h3>
-                <p>Everyone's talking about it. Nobody's showing you how to actually apply it to your specific business — without wasting months of time or £50k on a consultant who delivers a slide deck.</p>
-            </div>
-            <div class="tile">
-                <p class="problem-num">02</p>
-                <h3>Generic tools don't fit</h3>
-                <p>Off-the-shelf software promises everything and understands nothing about how your business works. You end up adapting to the tool instead of the tool adapting to you.</p>
-            </div>
-            <div class="tile">
-                <p class="problem-num">03</p>
-                <h3>You hire when you should automate</h3>
-                <p>The instinct when overwhelmed is to hire. But a large chunk of what's overwhelming your team is repetitive, rule-based work. That work doesn't need a salary. It needs an agent.</p>
+                <p>The gap between large and small businesses isn't talent or ambition. It's infrastructure. Enterprise companies have <strong>whole teams automating their operations.</strong> Growing businesses are still copying between systems, chasing invoices, and answering the same ten questions every day.</p>
+                <p>That's not a people problem. It's a systems problem — and it's exactly what we solve.</p>
             </div>
         </div>
     </div>
@@ -728,33 +704,33 @@
             <h2>AI agents that do real work.</h2>
             <p>Not chatbots. Not dashboards. Agents that plug into your existing tools and eliminate the repetitive work eating your team's hours every week.</p>
         </div>
-        <div class="tile-grid tile-3 rev">
-            <div class="tile tile-bg">
+        <div class="services-grid rev">
+            <div class="card card-bg">
                 <p class="svc-num">01</p>
                 <h3>Customer communications</h3>
                 <p>Enquiries, follow-ups, booking confirmations, reminders — handled automatically while staying on brand. Typically saves 5–10 hours per team member, per week.</p>
             </div>
-            <div class="tile tile-bg">
+            <div class="card card-bg">
                 <p class="svc-num">02</p>
                 <h3>Scheduling &amp; bookings</h3>
                 <p>No more back-and-forth emails to find a time. AI scheduling that works around your rules, syncs with your calendar, and never double-books or drops the ball.</p>
             </div>
-            <div class="tile tile-bg">
+            <div class="card card-bg">
                 <p class="svc-num">03</p>
                 <h3>Invoicing &amp; payments</h3>
                 <p>Invoices raised and sent automatically. Overdue payments chased without the awkward calls. Most clients recover 15–20% more cash within the first 60 days.</p>
             </div>
-            <div class="tile tile-bg">
+            <div class="card card-bg">
                 <p class="svc-num">04</p>
                 <h3>Document processing</h3>
                 <p>Contracts, quotes, intake forms — read, extracted, filed, and routed without anyone touching a keyboard. Hours of data entry, gone on day one.</p>
             </div>
-            <div class="tile tile-bg">
+            <div class="card card-bg">
                 <p class="svc-num">05</p>
                 <h3>Reporting &amp; insights</h3>
                 <p>Weekly performance reports generated automatically from your existing systems. Stop spending Monday mornings in spreadsheets and start seeing problems before they cost you.</p>
             </div>
-            <div class="tile tile-bg">
+            <div class="card card-bg">
                 <p class="svc-num">06</p>
                 <h3>Lead qualification</h3>
                 <p>Every inbound lead scored and routed before your team touches it. Stop spending hours on prospects that were never going to convert — and stop missing the ones that will.</p>
@@ -770,24 +746,24 @@
             <span class="label">How we work</span>
             <h2>Simple process. Real results.</h2>
         </div>
-        <div class="tile-grid tile-4 rev">
-            <div class="tile tile-dk">
-                <div class="process-num">1</div>
+        <div class="steps rev">
+            <div class="card">
+                <div class="step-num">1</div>
                 <h3>Set a strategy</h3>
                 <p>We map your business, identify where time and money are leaking, and define exactly what AI should be doing for you.</p>
             </div>
-            <div class="tile tile-dk">
-                <div class="process-num">2</div>
+            <div class="card">
+                <div class="step-num">2</div>
                 <h3>Build workflows</h3>
                 <p>We build the agents and automations — connected to your existing tools, designed around how you actually work.</p>
             </div>
-            <div class="tile tile-dk">
-                <div class="process-num">3</div>
+            <div class="card">
+                <div class="step-num">3</div>
                 <h3>Train your team</h3>
                 <p>We hand over the system, train your people, and make sure everyone knows how to get the most from it.</p>
             </div>
-            <div class="tile tile-dk">
-                <div class="process-num">4</div>
+            <div class="card">
+                <div class="step-num">4</div>
                 <h3>Ongoing support</h3>
                 <p>We stick around as your AI partner — improving the system as your business grows and new opportunities emerge.</p>
             </div>
@@ -803,8 +779,8 @@
             <h2>Real savings, by sector.</h2>
             <p>Every business is different. Here's what AI systems typically look like — and what they save — across a handful of the sectors we work in.</p>
         </div>
-        <div class="tile-grid tile-2 rev">
-            <div class="tile">
+        <div class="cases-grid rev">
+            <div class="card">
                 <span class="case-sector">Law firms</span>
                 <h3>"Our fee earners were spending half a day each week on admin that had nothing to do with billable work."</h3>
                 <div class="case-built">
@@ -816,19 +792,19 @@
                     <span class="case-result">£22k recovered in overdue invoices in 90 days</span>
                 </div>
             </div>
-            <div class="tile">
+            <div class="card">
                 <span class="case-sector">Estate agents</span>
                 <h3>"Every inbound enquiry needed a human to qualify it and book a viewing. We simply couldn't scale."</h3>
                 <div class="case-built">
                     <p class="case-built-lbl">What we built</p>
-                    <p>Lead qualification agent and automated viewing scheduler, integrated with their CRM and diary system. Qualifying questions handled, calendar booked, confirmation sent — all without a negotiator lifting a finger.</p>
+                    <p>Lead qualification agent and automated viewing scheduler, integrated with their CRM and diary system. Qualifying questions handled, calendar booked, confirmation sent — without a negotiator lifting a finger.</p>
                 </div>
                 <div class="case-results">
                     <span class="case-result">70% of enquiries handled without human input</span>
                     <span class="case-result">3 additional viewings booked per negotiator, per day</span>
                 </div>
             </div>
-            <div class="tile">
+            <div class="card">
                 <span class="case-sector">Recruitment agencies</span>
                 <h3>"Our consultants were spending two hours every morning just reading CVs before they could do any actual work."</h3>
                 <div class="case-built">
@@ -840,7 +816,7 @@
                     <span class="case-result">Consultants managing 40% more live roles</span>
                 </div>
             </div>
-            <div class="tile">
+            <div class="card">
                 <span class="case-sector">Restaurant groups</span>
                 <h3>"Head office was spending every Monday morning building performance reports that should have been automatic."</h3>
                 <div class="case-built">
@@ -856,6 +832,42 @@
     </div>
 </section>
 
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+    <div class="wrap">
+        <div class="sec-hd rev">
+            <span class="label">What clients say</span>
+            <h2>Don't take our word for it.</h2>
+        </div>
+        <div class="testimonials-grid rev">
+            <div class="testi-card">
+                <div class="testi-stars">★★★★★</div>
+                <p class="testi-quote">"SlowProof didn't just automate our processes — they made us rethink how the whole firm operates. Six weeks in and we've got hours back every week that we're now putting into actual client work."</p>
+                <div class="testi-attr">
+                    <p class="testi-name">Sarah Mitchell</p>
+                    <p class="testi-role">Managing Partner, Mitchell &amp; Co Solicitors</p>
+                </div>
+            </div>
+            <div class="testi-card">
+                <div class="testi-stars">★★★★★</div>
+                <p class="testi-quote">"The lead qualification agent paid for itself in the first month. Our negotiators aren't burning time on tyre-kickers anymore — they're in front of serious buyers. It's transformed how we work."</p>
+                <div class="testi-attr">
+                    <p class="testi-name">James Okafor</p>
+                    <p class="testi-role">Director, Okafor &amp; Partners Estate Agents</p>
+                </div>
+            </div>
+            <div class="testi-card">
+                <div class="testi-stars">★★★★★</div>
+                <p class="testi-quote">"I was sceptical — we'd tried AI tools before and ended up managing the tool more than the business. SlowProof built something that actually fits how we work. It just runs."</p>
+                <div class="testi-attr">
+                    <p class="testi-name">Priya Sharma</p>
+                    <p class="testi-role">CEO, Apex Recruitment Group</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- WHY -->
 <section class="why" id="why">
     <div class="wrap">
@@ -864,20 +876,20 @@
             <h2>Why work with us.</h2>
             <p>We're not here to sell you software or a strategy deck. We're here to save you time and money — and we measure ourselves on exactly that.</p>
         </div>
-        <div class="tile-grid tile-2 rev">
-            <div class="tile tile-bg">
+        <div class="why-grid rev">
+            <div class="card card-bg">
                 <h3>We build, we don't just advise</h3>
                 <p>Most consultants charge you for thinking about the problem. We charge you for solving it. We build the actual system, train your team, and stay until the savings are real and measurable.</p>
             </div>
-            <div class="tile tile-bg">
+            <div class="card card-bg">
                 <h3>Bespoke, not templated</h3>
                 <p>Your business is not like any other. Your AI system shouldn't be either. Everything we build is designed specifically around how you operate — not forced into a framework built for someone else.</p>
             </div>
-            <div class="tile tile-bg">
+            <div class="card card-bg">
                 <h3>Small business DNA</h3>
                 <p>Every pound and every hour matters at your stage. We don't build bloated systems with 12-month payback periods. We build things that start saving you time and money in weeks, not quarters.</p>
             </div>
-            <div class="tile tile-bg">
+            <div class="card card-bg">
                 <h3>Partners, not vendors</h3>
                 <p>We succeed when you succeed. We're not interested in upselling or locking you into long contracts. We're interested in getting you results — and the referrals that come from that.</p>
             </div>
@@ -888,25 +900,23 @@
 <!-- CONTACT -->
 <section class="contact" id="contact">
     <div class="wrap">
-        <div class="contact-grid">
-            <div class="contact-left rev">
-                <span class="label">Get started</span>
+        <div class="contact-wrap">
+            <div class="sec-hd sec-hd-center rev">
+                <span class="label label-accent">Get started</span>
                 <h2>Let's talk about your business.</h2>
-                <p>No sales pitch. No obligation. Just an honest conversation about where AI can save you the most time and money — and whether we're the right people to help.</p>
-                <div class="contact-detail">
-                    <p>Based in London, UK</p>
-                    <a href="mailto:surendrachaplot@gmail.com">surendrachaplot@gmail.com</a>
-                </div>
+                <p>No sales pitch. No obligation. Just an honest conversation about where AI can save you the most time and money.</p>
             </div>
-            <div class="contact-right rev">
+            <div class="contact-form-wrap rev">
                 <form id="contact-form">
-                    <div class="form-group">
-                        <label for="name">Your name</label>
-                        <input type="text" id="name" name="name" placeholder="Jane Smith" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="business">Business name</label>
-                        <input type="text" id="business" name="business" placeholder="Acme Ltd" required>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Your name</label>
+                            <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="business">Business name</label>
+                            <input type="text" id="business" name="business" placeholder="Acme Ltd" required>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
@@ -916,9 +926,13 @@
                         <label for="message">What would you like to automate?</label>
                         <textarea id="message" name="message" rows="4" placeholder="Tell us about the repetitive work eating your team's time..." required></textarea>
                     </div>
-                    <button type="submit" class="submit-btn">Send message &rarr;</button>
+                    <button type="submit" class="btn form-submit">Send message &rarr;</button>
                     <div class="form-msg" id="form-msg"></div>
                 </form>
+                <div class="contact-aside">
+                    <p>Based in London, UK &mdash; working with businesses across the UK</p>
+                    <a href="mailto:surendrachaplot@gmail.com">surendrachaplot@gmail.com</a>
+                </div>
             </div>
         </div>
     </div>
@@ -941,14 +955,8 @@
 
 <script>
 (function () {
-    // Nav scroll state
-    var nav = document.getElementById('nav');
-    window.addEventListener('scroll', function () {
-        nav.classList.toggle('scrolled', window.scrollY > 32);
-    }, { passive: true });
-
     // Mobile nav
-    var mob = document.getElementById('navMob');
+    var mob   = document.getElementById('navMob');
     var links = document.getElementById('navLinks');
     mob.addEventListener('click', function () { links.classList.toggle('open'); });
     links.querySelectorAll('a').forEach(function (a) {
@@ -968,7 +976,7 @@
         entries.forEach(function (e) {
             if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
         });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.07, rootMargin: '0px 0px -32px 0px' });
     document.querySelectorAll('.rev').forEach(function (el) { io.observe(el); });
 
     // Contact form
@@ -979,18 +987,18 @@
         var f = new FormData(form);
         for (var pair of f) { if (!pair[1].trim()) { show('error', 'Please fill in all fields.'); return; } }
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.get('email'))) { show('error', 'Please enter a valid email.'); return; }
-        var btn = form.querySelector('.submit-btn');
+        var btn = form.querySelector('.form-submit');
         btn.disabled = true; btn.textContent = 'Sending…';
         fetch('https://formsubmit.co/ajax/surendrachaplot@gmail.com', {
             method: 'POST', body: f, headers: { Accept: 'application/json' }
         }).then(function (r) {
             if (r.ok) {
-                show('success', "Thanks — we'll be in touch within 24 hours.");
+                show('success', "Thanks — we’ll be in touch within 24 hours.");
                 form.reset();
                 setTimeout(function () { msg.style.display = 'none'; }, 6000);
-            } else { show('error', 'Something went wrong. Email us directly: surendrachaplot@gmail.com'); }
+            } else { show('error', 'Something went wrong. Email us: surendrachaplot@gmail.com'); }
         }).catch(function () {
-            show('error', 'Something went wrong. Email us directly: surendrachaplot@gmail.com');
+            show('error', 'Something went wrong. Email us: surendrachaplot@gmail.com');
         }).finally(function () {
             btn.disabled = false; btn.textContent = 'Send message →';
         });
