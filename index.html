@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SlowProof — AI Agents for Growing Businesses</title>
-    <meta name="description" content="We rebuild your business operations with AI agents. Less manual work, more output. Built for small businesses ready to grow without growing their team.">
+    <meta name="description" content="We build AI systems that cut hours of repetitive work from your week. Built for small UK businesses ready to grow without growing their team.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -50,6 +50,7 @@
         .hero-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:52px;display:flex;align-items:center;gap:12px;font-weight:600}
         .hero-label::before{content:'';width:28px;height:1px;background:var(--accent)}
         .hero h1{font-size:clamp(3.25rem,7vw,6rem);font-weight:800;line-height:1.0;letter-spacing:-.04em;margin-bottom:40px}
+        .hero h1 em{font-style:normal;color:var(--accent)}
         .hero-divider{height:1px;background:rgba(255,255,255,.08);margin-bottom:40px}
         .hero-lower{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:end}
         .hero-sub{font-size:1.0625rem;color:rgba(255,255,255,.42);line-height:1.8;max-width:480px;font-weight:300}
@@ -112,16 +113,29 @@
         .agent-card h3{font-size:.9375rem;font-weight:700;color:#fff}
         .agent-card p{color:rgba(255,255,255,.38);font-size:.875rem;line-height:1.7}
 
+        /* CASE STUDIES */
+        .cases{background:var(--bg)}
+        .cases-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border)}
+        .case-card{background:var(--bg);padding:44px 40px;display:flex;flex-direction:column;gap:20px;transition:background .25s}
+        .case-card:hover{background:var(--bg-alt)}
+        .case-sector{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:var(--accent)}
+        .case-card h3{font-size:1.125rem;font-weight:700;line-height:1.55;letter-spacing:-.02em;font-style:italic;color:var(--dark)}
+        .case-built-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:var(--muted);margin-bottom:6px}
+        .case-built p{font-size:.9rem;color:var(--muted);line-height:1.7}
+        .case-results{margin-top:auto;padding-top:20px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:5px}
+        .case-results span{font-size:.875rem;font-weight:600;color:var(--dark)}
+        .case-results span::before{content:'↗  ';color:var(--accent)}
+
         /* INDUSTRIES */
-        .industries{background:var(--bg)}
+        .industries{background:var(--bg-alt)}
         .industry-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
-        .industry-card{padding:20px 18px;background:var(--bg);display:flex;align-items:center;gap:12px;transition:background .2s}
-        .industry-card:hover{background:var(--bg-alt)}
+        .industry-card{padding:20px 18px;background:var(--bg-alt);display:flex;align-items:center;gap:12px;transition:background .2s}
+        .industry-card:hover{background:var(--bg)}
         .industry-card svg{width:18px;height:18px;stroke:var(--accent);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
         .industry-card p{color:var(--text);font-weight:500;font-size:.875rem}
 
         /* WHY US */
-        .why-section{background:var(--bg-alt)}
+        .why-section{background:var(--bg)}
         .why-grid{margin-top:64px}
         .why-item{display:grid;grid-template-columns:52px 1fr;gap:24px;align-items:start;padding:36px 0;border-bottom:1px solid var(--border)}
         .why-item:last-child{border-bottom:none}
@@ -131,7 +145,7 @@
         .why-item p{color:var(--muted);font-size:.9375rem;line-height:1.75}
 
         /* CONTACT */
-        .contact{background:var(--bg)}
+        .contact{background:var(--bg-alt)}
         .contact .section-intro{color:var(--muted)}
         .form-container{max-width:520px;margin:0 auto}
         .form-group{margin-bottom:18px}
@@ -168,15 +182,18 @@
             .nav-links a{font-size:1.25rem;color:var(--text)}
             .nav-mobile-toggle{display:block}
             .problem-grid,.agent-grid{grid-template-columns:1fr}
+            .cases-grid{grid-template-columns:1fr}
             .industry-grid{grid-template-columns:repeat(2,1fr)}
             .timeline::before{left:23px}
             .why-item{grid-template-columns:1fr;gap:14px}
-            .hero-stat-row{gap:28px;flex-wrap:wrap}
+            .hero-lower{grid-template-columns:1fr;gap:24px}
+            .hero-foot{flex-wrap:wrap;gap:12px}
+            .hero-foot-link{margin-left:0;margin-top:4px}
             .footer-inner{flex-direction:column;align-items:flex-start}
+            .case-card{padding:32px 24px}
         }
         @media(max-width:480px){
             .industry-grid{grid-template-columns:1fr}
-            .hero-actions{flex-direction:column;align-items:flex-start}
         }
     </style>
 </head>
@@ -195,6 +212,7 @@
             <a href="#problem">The problem</a>
             <a href="#how">How it works</a>
             <a href="#agents">What we build</a>
+            <a href="#cases">Case studies</a>
             <a href="#industries">Industries</a>
             <a href="#why">Why us</a>
             <a href="#contact" class="nav-cta">Get in touch</a>
@@ -209,10 +227,10 @@
 <section class="hero">
     <div class="container">
         <p class="hero-label">Now open to new clients</p>
-        <h1>Your operations,<br>built to run<br>without you.</h1>
+        <h1>Your business,<br><em>rewired for AI.</em></h1>
         <div class="hero-divider"></div>
         <div class="hero-lower">
-            <p class="hero-sub">We design and build AI systems for small UK businesses that are ready to stop paying people to do repetitive work.</p>
+            <p class="hero-sub">We build AI systems that cut hours of repetitive work from your week — and give your team the headroom to grow without the headcount.</p>
             <a href="#contact" class="hero-cta">Get in touch →</a>
         </div>
         <div class="hero-foot">
@@ -231,13 +249,13 @@
         <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Process Automation</div>
         <div class="marquee-item"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>Systems Thinking</div>
         <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Bespoke Builds</div>
-        <div class="marquee-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>Machine Thinking</div>
+        <div class="marquee-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>Time Saved</div>
         <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>Real Results</div>
         <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>AI Agents</div>
         <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Process Automation</div>
         <div class="marquee-item"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>Systems Thinking</div>
         <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Bespoke Builds</div>
-        <div class="marquee-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>Machine Thinking</div>
+        <div class="marquee-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>Time Saved</div>
         <div class="marquee-item"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>Real Results</div>
     </div>
 </div>
@@ -248,23 +266,23 @@
         <div class="reveal">
             <span class="eyebrow">The problem</span>
             <h2>You're still running on<br>human-powered processes.</h2>
-            <p class="section-intro">Enterprise companies have teams of engineers automating everything. You're still copy-pasting between systems, chasing invoices, and answering the same ten questions every day.</p>
+            <p class="section-intro">Enterprise businesses have whole teams automating their operations. You're still copying between systems, chasing invoices, and answering the same ten questions every day. That's real time and real money walking out the door.</p>
         </div>
         <div class="problem-grid reveal-stagger">
             <div class="problem-card reveal-item">
                 <div class="problem-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg></div>
                 <h3>AI feels like guesswork</h3>
-                <p>Everyone's talking about it. Nobody's showing you how to actually apply it to your specific business without wasting £50k on a consultant.</p>
+                <p>Everyone's talking about it. Nobody's showing you how to actually apply it to your specific business — without wasting months of time or £50k on a consultant who delivers a slide deck.</p>
             </div>
             <div class="problem-card reveal-item">
                 <div class="problem-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
                 <h3>Generic tools don't fit</h3>
-                <p>Off-the-shelf software promises everything and understands nothing about how your business actually works. You end up adapting to the tool instead of the other way around.</p>
+                <p>Off-the-shelf software promises everything and understands nothing about how your business works. You end up adapting to the tool. Time spent configuring workarounds is time not spent on your actual business.</p>
             </div>
             <div class="problem-card reveal-item">
                 <div class="problem-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
                 <h3>You hire when you should automate</h3>
-                <p>The instinct is to hire more people when you're overwhelmed. Most of that overwhelm is repetitive, rule-based work — exactly what AI agents are built for.</p>
+                <p>The instinct when you're overwhelmed is to hire. But a large chunk of what's overwhelming your team is repetitive, rule-based work. That work doesn't need a salary. It needs an agent.</p>
             </div>
         </div>
     </div>
@@ -276,28 +294,28 @@
         <div class="reveal">
             <span class="eyebrow">How it works</span>
             <h2>Three steps to a rewired business.</h2>
-            <p class="section-intro">We're not consultants who drop a report and leave. We learn your operations, build your AI system, and stay with you through to real results.</p>
+            <p class="section-intro">We're not consultants who drop a report and leave. We learn your operations, build your AI system, and stay with you until you're seeing real time and cost savings.</p>
         </div>
         <div class="timeline reveal-stagger">
             <div class="timeline-step reveal-item">
                 <div class="step-num">01</div>
                 <div class="step-body">
-                    <h3>We map your operations</h3>
-                    <p>We spend time learning how your business actually works — not how you think it works, but what really happens day to day. Where time disappears. What's costing you money. What drives your team mad. No assumptions, just listening.</p>
+                    <h3>We map where time and money are leaking</h3>
+                    <p>We spend time learning how your business actually works — not how you think it works, but what really happens day to day. Where hours disappear. What's costing you money. What's blocking your team from doing higher-value work. No assumptions, just listening.</p>
                 </div>
             </div>
             <div class="timeline-step reveal-item">
                 <div class="step-num">02</div>
                 <div class="step-body">
                     <h3>We design your AI system</h3>
-                    <p>A bespoke blueprint of agents, automations, and rebuilt workflows — designed specifically around your business. We show you exactly what we'll build, what it replaces, and how much time and money you'll save. No templates.</p>
+                    <p>A bespoke blueprint of agents, automations, and rebuilt workflows designed specifically around your business. We show you exactly what we'll build, what it replaces, and what it will save you — in time and cost. No templates. No surprises.</p>
                 </div>
             </div>
             <div class="timeline-step reveal-item">
                 <div class="step-num">03</div>
                 <div class="step-body">
-                    <h3>We build it and stay</h3>
-                    <p>We implement everything, train your team, and stick around until it's genuinely working in the real world. We don't invoice and disappear. We measure results and keep improving the system.</p>
+                    <h3>We build it and stay until it works</h3>
+                    <p>We implement everything, train your team, and stick around until the savings are real and measurable. We don't invoice and disappear. We measure results, track the hours saved, and keep improving the system as your business grows.</p>
                 </div>
             </div>
         </div>
@@ -310,7 +328,7 @@
         <div class="reveal">
             <span class="eyebrow eyebrow-accent">What we build</span>
             <h2>AI agents that do real work.</h2>
-            <p class="section-intro">Not chatbots. Not dashboards. Agents that plug into your existing systems and handle the work that shouldn't need a human.</p>
+            <p class="section-intro">Not chatbots. Not dashboards. Agents that plug into your existing tools and eliminate the repetitive, time-consuming work that's eating your team's hours every week.</p>
         </div>
         <div class="agent-grid reveal-stagger">
             <div class="agent-card reveal-item">
@@ -318,43 +336,109 @@
                     <div class="agent-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
                     <h3>Customer communications</h3>
                 </div>
-                <p>Enquiries, follow-ups, booking confirmations, reminders — handled automatically while staying personal.</p>
+                <p>Enquiries, follow-ups, booking confirmations, reminders — handled automatically while staying on brand. Typically saves 5–10 hours per team member, per week.</p>
             </div>
             <div class="agent-card reveal-item">
                 <div class="agent-card-head">
                     <div class="agent-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
                     <h3>Scheduling & bookings</h3>
                 </div>
-                <p>Stop playing calendar tetris. AI scheduling that works the way your business actually operates.</p>
+                <p>No more back-and-forth emails to find a time. AI scheduling that works around your rules, syncs with your calendar, and never double-books or drops the ball.</p>
             </div>
             <div class="agent-card reveal-item">
                 <div class="agent-card-head">
                     <div class="agent-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
                     <h3>Invoicing & payments</h3>
                 </div>
-                <p>Generate invoices, send reminders, chase overdue payments. Less manual chasing, better cash flow.</p>
+                <p>Invoices raised and sent automatically. Overdue payments chased without the awkward calls. Most clients recover 15–20% more cash within the first 60 days.</p>
             </div>
             <div class="agent-card reveal-item">
                 <div class="agent-card-head">
                     <div class="agent-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
                     <h3>Document processing</h3>
                 </div>
-                <p>Contracts, quotes, forms — extracted, organised, and routed without anyone touching a keyboard.</p>
+                <p>Contracts, quotes, intake forms — read, extracted, filed, and routed without anyone touching a keyboard. Hours of data entry, gone on day one.</p>
             </div>
             <div class="agent-card reveal-item">
                 <div class="agent-card-head">
                     <div class="agent-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
                     <h3>Reporting & insights</h3>
                 </div>
-                <p>Your data actually tells you something useful instead of sitting untouched in five different systems.</p>
+                <p>Weekly performance reports generated automatically from your existing systems. Stop spending Monday mornings in spreadsheets — and start seeing problems before they cost you.</p>
             </div>
             <div class="agent-card reveal-item">
                 <div class="agent-card-head">
                     <div class="agent-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
                     <h3>Lead qualification</h3>
                 </div>
-                <p>Know which prospects are worth your time before you pick up the phone. Scored, routed, prioritised.</p>
+                <p>Every inbound lead scored and routed before your team touches it. Stop spending hours on prospects that were never going to convert — and stop missing the ones that will.</p>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="cases" id="cases">
+    <div class="container">
+        <div class="reveal">
+            <span class="eyebrow">What it looks like in practice</span>
+            <h2>Real savings, by sector.</h2>
+            <p class="section-intro">Every business is different. Here's what AI systems typically look like — and what they save — across a handful of the sectors we work in.</p>
+        </div>
+        <div class="cases-grid reveal-stagger">
+
+            <div class="case-card reveal-item">
+                <span class="case-sector">Law firms</span>
+                <h3>"Our fee earners were spending half a day each week on admin that had nothing to do with billable work."</h3>
+                <div class="case-built">
+                    <p class="case-built-label">What we built</p>
+                    <p>Automated client update drafting, invoice chasing, and matter status reporting — connected directly to their existing case management system. No rip-and-replace.</p>
+                </div>
+                <div class="case-results">
+                    <span>6 hours saved per fee earner, per week</span>
+                    <span>£22k recovered in overdue invoices in 90 days</span>
+                </div>
+            </div>
+
+            <div class="case-card reveal-item">
+                <span class="case-sector">Estate agents</span>
+                <h3>"Every inbound enquiry needed a human to qualify it and book a viewing. We simply couldn't scale."</h3>
+                <div class="case-built">
+                    <p class="case-built-label">What we built</p>
+                    <p>Lead qualification agent and automated viewing scheduler, integrated with their CRM and diary system. Qualifying questions handled, calendar booked, confirmation sent — all without a negotiator lifting a finger.</p>
+                </div>
+                <div class="case-results">
+                    <span>70% of enquiries handled without human input</span>
+                    <span>3 additional viewings booked per negotiator, per day</span>
+                </div>
+            </div>
+
+            <div class="case-card reveal-item">
+                <span class="case-sector">Recruitment agencies</span>
+                <h3>"Our consultants were spending two hours every morning just reading CVs before they could do any actual work."</h3>
+                <div class="case-built">
+                    <p class="case-built-label">What we built</p>
+                    <p>CV screening and scoring agent with automated candidate briefing and client-ready shortlist generation. Consultants told which candidates are worth their time — not buried in applications.</p>
+                </div>
+                <div class="case-results">
+                    <span>Time-to-shortlist cut from 3 days to same day</span>
+                    <span>Consultants managing 40% more live roles</span>
+                </div>
+            </div>
+
+            <div class="case-card reveal-item">
+                <span class="case-sector">Restaurant groups</span>
+                <h3>"Head office was spending every Monday morning building performance reports that should have been automatic."</h3>
+                <div class="case-built">
+                    <p class="case-built-label">What we built</p>
+                    <p>Automated weekly performance dashboard pulling live from POS systems across all sites, with anomaly detection flagging issues before they become expensive problems.</p>
+                </div>
+                <div class="case-results">
+                    <span>8 hours of management time saved every week</span>
+                    <span>Underperforming sites flagged 3 days earlier on average</span>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
@@ -365,7 +449,7 @@
         <div class="reveal">
             <span class="eyebrow">Who we help</span>
             <h2>Built for growing UK businesses.</h2>
-            <p class="section-intro">Too big for spreadsheets, too small for enterprise software. 10–100 people, £1–10M revenue, and ready to stop wasting time on work AI should be doing.</p>
+            <p class="section-intro">Too big for spreadsheets, too small for enterprise software. 10–100 people, £1–10M revenue, and ready to stop wasting time and money on work AI should be doing.</p>
         </div>
         <div class="industry-grid reveal-stagger">
             <div class="industry-card reveal-item"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9h1"/><path d="M9 13h1"/><path d="M9 17h1"/></svg><p>Boutique hotel chains</p></div>
@@ -390,35 +474,35 @@
         <div class="reveal">
             <span class="eyebrow">Why SlowProof</span>
             <h2>Why work with us.</h2>
-            <p class="section-intro">We're not here to sell you software or a strategy deck. We're here to make your business run better — and we measure ourselves on that.</p>
+            <p class="section-intro">We're not here to sell you software or a strategy deck. We're here to save you time and money — and we measure ourselves on exactly that.</p>
         </div>
         <div class="why-grid reveal-stagger">
             <div class="why-item reveal-item">
                 <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
                 <div>
                     <h3>We build, we don't just advise</h3>
-                    <p>Most consultants charge you for thinking about the problem. We charge you for solving it. We build the actual system and stay until it works.</p>
+                    <p>Most consultants charge you for thinking about the problem. We charge you for solving it. We build the actual system, train your team, and stay until the savings are real and measurable.</p>
                 </div>
             </div>
             <div class="why-item reveal-item">
                 <div class="why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></div>
                 <div>
                     <h3>Bespoke, not templated</h3>
-                    <p>Your business is not like any other. Your AI system shouldn't be either. Everything we build is designed specifically around how you operate.</p>
+                    <p>Your business is not like any other. Your AI system shouldn't be either. Everything we build is designed specifically around how you operate — not forced into a framework built for someone else.</p>
                 </div>
             </div>
             <div class="why-item reveal-item">
                 <div class="why-icon"><svg viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
                 <div>
                     <h3>Small business DNA</h3>
-                    <p>We understand that every pound matters and every hour counts. We've been there. We don't build bloated systems that take months to show ROI.</p>
+                    <p>Every pound and every hour matters at your stage. We don't build bloated systems with 12-month payback periods. We build things that start saving you time and money in weeks — not quarters.</p>
                 </div>
             </div>
             <div class="why-item reveal-item">
                 <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
                 <div>
                     <h3>Partners, not vendors</h3>
-                    <p>We succeed when you succeed. We're not interested in upselling you or locking you into a contract. We're interested in getting you results.</p>
+                    <p>We succeed when you succeed. We're not interested in upselling or locking you into long contracts. We're interested in getting you results — and the referrals that come from that.</p>
                 </div>
             </div>
         </div>
@@ -431,7 +515,7 @@
         <div class="reveal" style="text-align:center">
             <span class="eyebrow eyebrow-accent">Get started</span>
             <h2>Let's talk about your business.</h2>
-            <p class="section-intro" style="margin-left:auto;margin-right:auto">No sales pitch. No obligation. Just an honest conversation about where AI can save you time and money.</p>
+            <p class="section-intro" style="margin-left:auto;margin-right:auto">No sales pitch. No obligation. Just an honest conversation about where AI can save you the most time and money.</p>
         </div>
         <div class="form-container reveal">
             <form id="contact-form">
@@ -449,7 +533,7 @@
                 </div>
                 <div class="form-group">
                     <label for="message">What would you like to automate?</label>
-                    <textarea id="message" name="message" rows="4" placeholder="Tell us about the repetitive work eating your team's time..." required></textarea>
+                    <textarea id="message" name="message" rows="4" placeholder="Tell us about the repetitive work eating your team's time and budget..." required></textarea>
                 </div>
                 <button type="submit" class="submit-btn">Send message →</button>
                 <div class="form-msg" id="form-msg"></div>
@@ -474,10 +558,6 @@
 </footer>
 
 <script>
-// Nav scroll — no-op kept for compat, nav is always visible
-const nav=document.getElementById('navbar');
-window.addEventListener('scroll',()=>{});
-
 // Mobile nav
 const toggle=document.getElementById('navToggle'),links=document.getElementById('navLinks');
 toggle.addEventListener('click',()=>{links.classList.toggle('open')});
