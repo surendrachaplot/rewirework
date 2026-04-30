@@ -3,12 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SlowProof — AI Agents for Growing Businesses</title>
-    <meta name="description" content="We build AI systems that cut hours of repetitive work from your week. Built for small UK businesses ready to grow without growing their team.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>SlowProof — AI Agents for Growing UK Businesses</title>
+    <meta name="description" content="SlowProof builds bespoke AI systems that cut hours of repetitive work from your week. Built for UK businesses with 10–100 people ready to grow without growing their team.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#161616">
+
+    <!-- Canonical & hreflang -->
+    <link rel="canonical" href="https://surendrachaplot.github.io/rewirework/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://surendrachaplot.github.io/rewirework/">
+    <meta property="og:title" content="SlowProof — AI Agents for Growing UK Businesses">
+    <meta property="og:description" content="We build bespoke AI systems that cut hours of repetitive work from your week. Invoicing, scheduling, lead qualification, communications — automated and running in weeks.">
+    <meta property="og:site_name" content="SlowProof">
+    <meta property="og:locale" content="en_GB">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SlowProof — AI Agents for Growing UK Businesses">
+    <meta name="twitter:description" content="We build bespoke AI systems that cut hours of repetitive work from your week. Built for UK businesses with 10–100 people.">
+
+    <!-- Self-hosted font — Latin subset only, variable weight 400–800 -->
+    <link rel="preload" href="fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
     <style>
+        @font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:400 800;font-display:swap;src:url('fonts/plus-jakarta-sans-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+        /* Size-adjusted fallback prevents layout shift when web font swaps in */
+        @font-face{font-family:'Plus Jakarta Sans Fallback';src:local('Arial');size-adjust:102%;ascent-override:96%;descent-override:25%;line-gap-override:0%}
         *{margin:0;padding:0;box-sizing:border-box}
         :root{
             --bg:#FAFAF8;
@@ -21,7 +42,7 @@
             --white:#fff;
         }
         html{scroll-behavior:smooth}
-        body{font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+        body{font-family:'Plus Jakarta Sans','Plus Jakarta Sans Fallback',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
         .container{max-width:1200px;margin:0 auto;padding:0 24px}
         .container-narrow{max-width:800px;margin:0 auto;padding:0 24px}
 
@@ -196,6 +217,73 @@
             .industry-grid{grid-template-columns:1fr}
         }
     </style>
+
+    <!-- JSON-LD structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://surendrachaplot.github.io/rewirework/#organization",
+          "name": "SlowProof",
+          "url": "https://surendrachaplot.github.io/rewirework/",
+          "description": "SlowProof builds bespoke AI systems for growing UK businesses, automating repetitive work so teams can focus on higher-value tasks.",
+          "areaServed": {
+            "@type": "Country",
+            "name": "United Kingdom"
+          },
+          "foundingLocation": {
+            "@type": "Place",
+            "name": "London, UK"
+          },
+          "knowsAbout": ["AI Agents", "Business Process Automation", "Workflow Automation", "Small Business Technology"]
+        },
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://surendrachaplot.github.io/rewirework/#service",
+          "name": "SlowProof AI Automation",
+          "provider": {"@id": "https://surendrachaplot.github.io/rewirework/#organization"},
+          "serviceType": "AI Business Automation",
+          "description": "Bespoke AI agents that automate customer communications, scheduling, invoicing, document processing, reporting, and lead qualification for UK SMEs.",
+          "areaServed": {"@type": "Country", "name": "United Kingdom"},
+          "audience": {
+            "@type": "Audience",
+            "audienceType": "Small and medium-sized businesses with 10–100 employees and £1–10M revenue"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What kinds of businesses does SlowProof work with?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "SlowProof works with UK businesses with 10–100 people and £1–10M revenue — law firms, estate agents, recruitment agencies, restaurant groups, accounting firms, and more."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How long does it take to see results?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Most clients start seeing measurable time and cost savings within the first few weeks of deployment. SlowProof stays with clients until the savings are real and measurable."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What does SlowProof actually build?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "SlowProof builds AI agents for customer communications, scheduling and bookings, invoicing and payment chasing, document processing, reporting and insights, and lead qualification — all connected to your existing tools."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
 
