@@ -931,7 +931,7 @@
                 </form>
                 <div class="contact-aside">
                     <p>Based in London, UK &mdash; working with businesses across the UK</p>
-                    <a href="mailto:surendrachaplot@gmail.com">surendrachaplot@gmail.com</a>
+                    <p>We'll reply within 24 hours.</p>
                 </div>
             </div>
         </div>
@@ -987,21 +987,22 @@
         var f = new FormData(form);
         for (var pair of f) { if (!pair[1].trim()) { show('error', 'Please fill in all fields.'); return; } }
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.get('email'))) { show('error', 'Please enter a valid email.'); return; }
-        var btn = form.querySelector('.form-submit');
-        btn.disabled = true; btn.textContent = 'Sending…';
-        fetch('https://formsubmit.co/ajax/surendrachaplot@gmail.com', {
-            method: 'POST', body: f, headers: { Accept: 'application/json' }
-        }).then(function (r) {
-            if (r.ok) {
-                show('success', "Thanks — we’ll be in touch within 24 hours.");
-                form.reset();
-                setTimeout(function () { msg.style.display = 'none'; }, 6000);
-            } else { show('error', 'Something went wrong. Email us: surendrachaplot@gmail.com'); }
-        }).catch(function () {
-            show('error', 'Something went wrong. Email us: surendrachaplot@gmail.com');
-        }).finally(function () {
-            btn.disabled = false; btn.textContent = 'Send message →';
-        });
+        var SCRIPT_URL = ‘GOOGLE_SCRIPT_URL_HERE’;
+        var btn = form.querySelector(‘.form-submit’);
+        btn.disabled = true; btn.textContent = ‘Sending…’;
+        // no-cors avoids CORS preflight with Apps Script; response is opaque
+        fetch(SCRIPT_URL, { method: ‘POST’, body: f, mode: ‘no-cors’ })
+          .then(function () {
+            show(‘success’, "Thanks — we’ll be in touch within 24 hours.");
+            form.reset();
+            setTimeout(function () { msg.style.display = ‘none’; }, 6000);
+          })
+          .catch(function () {
+            show(‘error’, ‘Something went wrong — please try again in a moment.’);
+          })
+          .finally(function () {
+            btn.disabled = false; btn.textContent = ‘Send message →’;
+          });
     });
 
     function show(type, text) { msg.className = 'form-msg ' + type; msg.textContent = text; }
