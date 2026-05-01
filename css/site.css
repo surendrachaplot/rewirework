@@ -264,15 +264,12 @@ nav.site-nav {
     padding: var(--s-4) var(--s-6);
     gap: var(--s-5);
 }
-/* Square logo lockup — inline SVG, themed via CSS custom props.
-   The same SVG is reused in the footer with the colour roles flipped. */
+/* Square logo — uses the vector file at assets/logo-square.svg directly.
+   One source image, sized via CSS, inverted via filter for the footer. */
 .logo-square {
     width: 76px;
     height: 76px;
     display: block;
-    --logo-bg:  var(--ink);
-    --logo-fg:  var(--washi);
-    --logo-dot: var(--momiji);
 }
 .nav-logo {
     display: inline-block;
@@ -282,11 +279,9 @@ nav.site-nav {
     flex-shrink: 0;
 }
 .footer-mark .logo-square {
-    --logo-bg:  var(--washi);
-    --logo-fg:  var(--ink);
-    --logo-dot: var(--momiji);
     width: 132px;
     height: 132px;
+    filter: invert(1);
 }
 .nav-links {
     display: flex;
