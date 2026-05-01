@@ -99,11 +99,6 @@
         }
         .a-block-inner .dot-list p { margin-bottom: 0; }
 
-        /* Editorial hairline between content sections (not on hero) */
-        .a-block + .a-block,
-        .a-block + .bios,
-        .bios + .a-block { border-top: 1px solid var(--rule); }
-
         /* ── BIOS GRID ── */
         .bios-grid {
             display: grid;
@@ -138,19 +133,30 @@
             border-top: 1px solid var(--rule);
         }
 
-        /* ── COLOPHON + CTA BACK ── */
+        /* ── COLOPHON + CTA BACK ──
+           Single paper card on the dotted page surface — one container,
+           one internal hairline. Replaces stacked section-borders. */
         .colophon { padding-top: 0; }
-        .colophon-inner { max-width: var(--container-prose); }
+        .colophon-inner {
+            max-width: var(--container-prose);
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: var(--r-md);
+            padding: var(--s-7);
+            box-shadow: var(--shadow-xs);
+        }
         .colophon .eyebrow { margin-bottom: var(--s-4); }
-        .colophon h3 { font-size: var(--t-h4); margin-bottom: var(--s-3); }
+        .colophon h3 { font-size: var(--t-h3); margin-bottom: var(--s-4); }
         .colophon p {
             font-size: var(--t-body);
             color: var(--ink-2);
             line-height: var(--lh-relaxed);
-            margin-bottom: var(--s-7);
+            margin-bottom: 0;
         }
         .a-cta {
-            padding-top: var(--s-6);
+            margin-top: var(--s-6);
+            padding-top: var(--s-5);
             border-top: 1px solid var(--rule);
             display: flex;
             align-items: center;
@@ -188,8 +194,18 @@
 <nav class="site-nav" id="nav">
     <div class="nav-inner">
         <a href="/" class="nav-logo" aria-label="Two Slow People — home">
-            <span class="nav-mark" aria-hidden="true"><span></span><span></span></span>
-            <span class="nav-wordmark">Two Slow People</span>
+            <svg class="logo-square" viewBox="0 0 600 600" role="img" aria-label="Two Slow People">
+                <rect width="600" height="600" fill="var(--logo-bg)"/>
+                <g fill="var(--logo-fg)" font-family="'Bodoni Moda', 'Didot', Georgia, serif" font-weight="600" text-anchor="middle">
+                    <text x="300" y="220" font-size="120" letter-spacing="-4">TWO</text>
+                    <text x="300" y="345" font-size="120" letter-spacing="-4">SLOW</text>
+                    <text x="300" y="470" font-size="120" letter-spacing="-4">PEOPLE</text>
+                </g>
+                <g fill="var(--logo-dot)">
+                    <circle cx="445" cy="180" r="14"/>
+                    <circle cx="445" cy="225" r="10"/>
+                </g>
+            </svg>
         </a>
         <div class="nav-links" id="navLinks">
             <a href="index.html#what">What we build</a>
@@ -353,8 +369,18 @@
     <div class="wrap">
         <div class="footer-top">
             <a href="/" class="footer-mark" aria-label="Two Slow People">
-                <span class="footer-dotpair" aria-hidden="true"><span></span><span></span></span>
-                <span class="footer-wordmark">Two Slow People</span>
+                <svg class="logo-square" viewBox="0 0 600 600" role="img" aria-label="Two Slow People">
+                    <rect width="600" height="600" fill="var(--logo-bg)"/>
+                    <g fill="var(--logo-fg)" font-family="'Bodoni Moda', 'Didot', Georgia, serif" font-weight="600" text-anchor="middle">
+                        <text x="300" y="220" font-size="120" letter-spacing="-4">TWO</text>
+                        <text x="300" y="345" font-size="120" letter-spacing="-4">SLOW</text>
+                        <text x="300" y="470" font-size="120" letter-spacing="-4">PEOPLE</text>
+                    </g>
+                    <g fill="var(--logo-dot)">
+                        <circle cx="445" cy="180" r="14"/>
+                        <circle cx="445" cy="225" r="10"/>
+                    </g>
+                </svg>
             </a>
             <div class="footer-cols">
                 <div class="footer-col">

@@ -4,6 +4,22 @@
    Page-specific styles (hero variants, grids) stay in each page's <style>.
    ========================================================================= */
 
+/* Bodoni Moda — used only inside the square logo lockup. */
+@font-face {
+    font-family: 'Bodoni Moda';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('../fonts/bodoni-moda-latin.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Bodoni Moda';
+    font-style: italic;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('../fonts/bodoni-moda-latin-italic.woff2') format('woff2');
+}
+
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
@@ -228,9 +244,10 @@ section { padding: var(--s-10) 0; }
 }
 
 /* ── NAV ──
-   Editorial stacked layout on desktop: wordmark centred up top,
-   links + CTA centred underneath. On mobile we collapse back to a
-   single row with the logo centred and the hamburger pinned right. */
+   Square logo on the left, nav links + CTA on the right. The logo
+   markup is the actual stacked-wordmark SVG from the design system,
+   themed via CSS variables so the same SVG works on light and dark
+   surfaces (header light, footer dark inverse). */
 nav.site-nav {
     position: sticky;
     top: 0;
@@ -240,50 +257,36 @@ nav.site-nav {
 }
 .nav-inner {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: var(--s-3);
+    justify-content: space-between;
     max-width: var(--container);
     margin: 0 auto;
-    padding: 22px var(--s-6) 18px;
+    padding: var(--s-4) var(--s-6);
+    gap: var(--s-5);
 }
-/* Nav logo lockup — dot-pair ornament + display wordmark.
-   The SVG version of the lockup is a 1024² black-square cutout that
-   degrades to noise at nav sizes; the typographic lockup reads at every size. */
+/* Square logo lockup — inline SVG, themed via CSS custom props.
+   The same SVG is reused in the footer with the colour roles flipped. */
+.logo-square {
+    width: 76px;
+    height: 76px;
+    display: block;
+    --logo-bg:  var(--ink);
+    --logo-fg:  var(--washi);
+    --logo-dot: var(--momiji);
+}
 .nav-logo {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--s-2);
+    display: inline-block;
+    line-height: 0;
     text-decoration: none;
     border-bottom: none;
-    color: var(--ink);
-}
-.nav-logo:hover { color: var(--ink); }
-.nav-mark {
-    display: inline-flex;
-    flex-direction: column;
-    gap: 3px;
-    color: var(--momiji);
     flex-shrink: 0;
 }
-.nav-mark span {
-    display: block;
-    width: 11px; height: 11px;
-    border-radius: 50%;
-    background: currentColor;
-}
-.nav-mark span:last-child {
-    width: 8px; height: 8px;
-    margin-left: 3px;
-}
-.nav-wordmark {
-    font-family: var(--font-display);
-    font-weight: var(--w-semibold);
-    font-size: 30px;
-    line-height: 1;
-    letter-spacing: var(--ls-tight);
-    color: var(--ink);
-    white-space: nowrap;
+.footer-mark .logo-square {
+    --logo-bg:  var(--washi);
+    --logo-fg:  var(--ink);
+    --logo-dot: var(--momiji);
+    width: 132px;
+    height: 132px;
 }
 .nav-links {
     display: flex;
@@ -425,41 +428,12 @@ footer.site-footer {
     padding-bottom: var(--s-7);
     border-bottom: 1px solid var(--rule-inverse);
 }
-/* Footer mark — same dot-pair + wordmark lockup, larger and inverted for ink bg */
+/* Footer mark — same inline-SVG square logo, inverse colours. */
 .footer-mark {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--s-3);
+    display: inline-block;
+    line-height: 0;
     text-decoration: none;
     border-bottom: none;
-    color: var(--washi);
-}
-.footer-mark:hover { color: var(--washi); }
-.footer-dotpair {
-    display: inline-flex;
-    flex-direction: column;
-    gap: 4px;
-    color: var(--momiji);
-    flex-shrink: 0;
-}
-.footer-dotpair span {
-    display: block;
-    width: 12px; height: 12px;
-    border-radius: 50%;
-    background: currentColor;
-}
-.footer-dotpair span:last-child {
-    width: 9px; height: 9px;
-    margin-left: 3px;
-}
-.footer-wordmark {
-    font-family: var(--font-display);
-    font-weight: var(--w-semibold);
-    font-size: 24px;
-    line-height: 1;
-    letter-spacing: var(--ls-tight);
-    color: var(--washi);
-    white-space: nowrap;
 }
 .footer-cols {
     display: grid;
@@ -506,18 +480,12 @@ footer.site-footer {
 }
 @media (max-width: 768px) {
     .wrap, .wrap-md, .wrap-sm { padding: 0 var(--s-5); }
-    /* Mobile collapses the stacked nav back to one row:
-       logo centred via flex; hamburger pinned right via absolute. */
     .nav-inner {
-        flex-direction: row;
-        justify-content: center;
         position: relative;
-        padding: 14px var(--s-5);
-        gap: 0;
+        padding: var(--s-3) var(--s-5);
     }
-    .nav-wordmark { font-size: 20px; }
-    .nav-mark span { width: 9px; height: 9px; }
-    .nav-mark span:last-child { width: 6px; height: 6px; margin-left: 2px; }
+    .logo-square { width: 56px; height: 56px; }
+    .footer-mark .logo-square { width: 100px; height: 100px; }
     .nav-links {
         display: none;
         position: fixed;
@@ -556,13 +524,11 @@ footer.site-footer {
 }
 @media (max-width: 480px) {
     .wrap, .wrap-md, .wrap-sm { padding: 0 var(--s-4); }
-    .nav-inner { padding: 12px var(--s-4); }
+    .nav-inner { padding: var(--s-3) var(--s-4); }
     .nav-mob { right: var(--s-4); }
-    .nav-wordmark { font-size: 18px; }
-    .nav-mark span { width: 8px; height: 8px; }
-    .nav-mark span:last-child { width: 5px; height: 5px; margin-left: 2px; }
+    .logo-square { width: 48px; height: 48px; }
+    .footer-mark .logo-square { width: 88px; height: 88px; }
     .footer-cols { grid-template-columns: 1fr; gap: var(--s-5); }
-    .footer-wordmark { font-size: 20px; }
     .form-submit { width: 100%; justify-content: center; }
     .section-break { padding: var(--s-6) 0; }
     .section-break-inner { gap: var(--s-3); padding: 0 var(--s-4); }
