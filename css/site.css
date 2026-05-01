@@ -244,8 +244,44 @@ nav.site-nav {
     padding: 18px var(--s-6);
     gap: var(--s-6);
 }
-.nav-logo { display: inline-flex; align-items: center; line-height: 0; }
-.nav-logo img { height: 40px; width: auto; }
+/* Nav logo lockup — dot-pair ornament + display wordmark.
+   The SVG version of the lockup is a 1024² black-square cutout that
+   degrades to noise at nav sizes; the typographic lockup reads at every size. */
+.nav-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s-2);
+    text-decoration: none;
+    border-bottom: none;
+    color: var(--ink);
+}
+.nav-logo:hover { color: var(--ink); }
+.nav-mark {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 2px;
+    color: var(--momiji);
+    flex-shrink: 0;
+}
+.nav-mark span {
+    display: block;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+}
+.nav-mark span:last-child {
+    width: 5px; height: 5px;
+    margin-left: 2px;
+}
+.nav-wordmark {
+    font-family: var(--font-display);
+    font-weight: var(--w-semibold);
+    font-size: 16px;
+    line-height: 1;
+    letter-spacing: var(--ls-tight);
+    color: var(--ink);
+    white-space: nowrap;
+}
 .nav-links {
     display: flex;
     align-items: center;
@@ -384,10 +420,41 @@ footer.site-footer {
     padding-bottom: var(--s-7);
     border-bottom: 1px solid var(--rule-inverse);
 }
-.footer-mark { line-height: 0; }
-.footer-mark img {
-    width: 120px; height: auto;
-    filter: invert(1) brightness(1.05);
+/* Footer mark — same dot-pair + wordmark lockup, larger and inverted for ink bg */
+.footer-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s-3);
+    text-decoration: none;
+    border-bottom: none;
+    color: var(--washi);
+}
+.footer-mark:hover { color: var(--washi); }
+.footer-dotpair {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 4px;
+    color: var(--momiji);
+    flex-shrink: 0;
+}
+.footer-dotpair span {
+    display: block;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: currentColor;
+}
+.footer-dotpair span:last-child {
+    width: 9px; height: 9px;
+    margin-left: 3px;
+}
+.footer-wordmark {
+    font-family: var(--font-display);
+    font-weight: var(--w-semibold);
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: var(--ls-tight);
+    color: var(--washi);
+    white-space: nowrap;
 }
 .footer-cols {
     display: grid;
@@ -452,18 +519,27 @@ footer.site-footer {
     .nav-mob { display: block; }
     section { padding: var(--s-9) 0; }
     .form-row { grid-template-columns: 1fr; }
-    .footer-cols { grid-template-columns: 1fr 1fr; gap: var(--s-6); justify-content: start; }
-    .footer-bot { flex-direction: column; gap: var(--s-2); }
     .card { padding: var(--s-5); }
     .sec-hd { margin-bottom: var(--s-7); }
     .section-break { padding: var(--s-7) 0; }
     .section-break-inner { padding: 0 var(--s-5); gap: var(--s-4); }
+
+    /* Footer — center everything on phone */
+    footer.site-footer { text-align: center; }
+    .footer-top { grid-template-columns: 1fr; justify-items: center; gap: var(--s-6); padding-bottom: var(--s-6); }
+    .footer-mark { justify-content: center; }
+    .footer-cols { grid-template-columns: 1fr 1fr; gap: var(--s-6); justify-content: center; }
+    .footer-col { text-align: center; }
+    .footer-bot { flex-direction: column; align-items: center; gap: var(--s-2); justify-content: center; }
 }
 @media (max-width: 480px) {
     .wrap, .wrap-md, .wrap-sm { padding: 0 var(--s-4); }
     .nav-inner { padding: 14px var(--s-4); }
-    .nav-logo img { height: 32px; }
+    .nav-wordmark { font-size: 14px; }
+    .nav-mark span { width: 6px; height: 6px; }
+    .nav-mark span:last-child { width: 4px; height: 4px; margin-left: 2px; }
     .footer-cols { grid-template-columns: 1fr; gap: var(--s-5); }
+    .footer-wordmark { font-size: 20px; }
     .form-submit { width: 100%; justify-content: center; }
     .section-break { padding: var(--s-6) 0; }
     .section-break-inner { gap: var(--s-3); padding: 0 var(--s-4); }
