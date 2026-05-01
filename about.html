@@ -161,9 +161,16 @@
 
         /* ── PAGE-SPECIFIC RESPONSIVE ── */
         @media (max-width: 768px) {
-            .a-hero { padding: var(--s-9) 0; }
+            .a-hero { padding: 96px 0 var(--s-8); }
+            .a-hero h1 { font-size: clamp(36px, 9vw, 56px); }
+            .a-block-inner h2 { font-size: clamp(28px, 7vw, 44px); }
             .bios-grid { grid-template-columns: 1fr; }
+            .bio.card { padding: var(--s-6); }
             .a-cta { flex-direction: column; align-items: flex-start; }
+        }
+        @media (max-width: 480px) {
+            .hero-mark { display: none; }
+            .a-hero h1 { font-size: clamp(32px, 9vw, 48px); }
         }
     </style>
 </head>
