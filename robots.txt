@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://surendrachaplot.github.io/rewirework/sitemap.xml
+Sitemap: https://twoslowpeople.com/sitemap.xml

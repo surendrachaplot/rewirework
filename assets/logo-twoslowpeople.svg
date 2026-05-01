@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <rect width="600" height="600" fill="#0E0E0E"></rect>
+  <g fill="#F4EFE6" font-family="&#39;Bodoni Moda&#39;, &#39;Didot&#39;, Georgia, serif" font-weight="600" text-anchor="middle">
+    <text x="300" y="220" font-size="120" letter-spacing="-4">TWO</text>
+    <text x="300" y="345" font-size="120" letter-spacing="-4">SLOW</text>
+    <text x="300" y="470" font-size="120" letter-spacing="-4">PEOPLE</text>
+    <circle cx="445" cy="180" r="14"></circle>
+    <circle cx="445" cy="225" r="10"></circle>
+  </g>
+</svg>

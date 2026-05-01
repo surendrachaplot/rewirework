@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — Two Slow People</title>
+    <meta name="description" content="Two Slow People is Karan Baweja and Surendra Chaplot — two people who used to work for other people. Now we build proper AI systems, by hand, for UK businesses.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#1B1916">
+
+    <link rel="canonical" href="https://twoslowpeople.com/about">
+    <link rel="icon" type="image/svg+xml" href="assets/dot-pair.svg">
+    <link rel="apple-touch-icon" href="assets/logo-twoslowpeople-vector.svg">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://twoslowpeople.com/about">
+    <meta property="og:title" content="About — Two Slow People">
+    <meta property="og:description" content="Two Slow People is Karan Baweja and Surendra Chaplot — two people who used to work for other people. Now we build proper AI systems, by hand, for UK businesses.">
+    <meta property="og:site_name" content="Two Slow People">
+    <meta property="og:locale" content="en_GB">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About — Two Slow People">
+    <meta name="twitter:description" content="Two people, one studio, building proper AI systems by hand for UK businesses.">
+
+    <link rel="stylesheet" href="css/tokens.css?v=1">
+    <link rel="stylesheet" href="css/site.css?v=1">
+
+    <style>
+        /* ──────────────────────────────────────────────────────
+           about.html — page-specific styles only.
+           Body uses .surface-dotted (writing-paper bg from the
+           design system) — sections are transparent so the dots
+           pervade the whole page. Only cards are solid surfaces.
+           ────────────────────────────────────────────────────── */
+
+        /* ── ABOUT HERO ── */
+        .a-hero {
+            position: relative;
+            padding: 120px 0 var(--s-9);
+            overflow: hidden;
+        }
+        .hero-mark {
+            position: absolute;
+            top: var(--s-8);
+            right: max(var(--s-6), calc(50% - 460px));
+            opacity: 0.85;
+            pointer-events: none;
+        }
+        @media (max-width: 768px) {
+            .hero-mark { top: var(--s-5); right: var(--s-4); }
+            .hero-mark svg { width: 96px; height: 96px; }
+        }
+        .a-hero-inner { max-width: var(--container-prose); }
+        .a-hero .eyebrow { margin-bottom: var(--s-5); }
+        .a-hero h1 {
+            font-size: var(--t-h1);
+            margin-bottom: var(--s-5);
+            text-wrap: balance;
+        }
+        .a-hero h1 em {
+            font-weight: var(--w-regular);
+            color: var(--momiji);
+        }
+        .a-hero .lede {
+            font-size: var(--t-body-lg);
+            color: var(--ink-2);
+            line-height: var(--lh-relaxed);
+            text-wrap: pretty;
+        }
+
+        /* ── REUSABLE PROSE BLOCK ── */
+        .a-block-inner { max-width: var(--container-prose); }
+        .a-block-inner .eyebrow { margin-bottom: var(--s-4); }
+        .a-block-inner h2 {
+            font-size: var(--t-h2);
+            margin-bottom: var(--s-5);
+            text-wrap: balance;
+        }
+        .a-block-inner h2 em {
+            font-weight: var(--w-regular);
+            color: var(--momiji);
+        }
+        .a-block-inner h3 {
+            font-size: var(--t-h3);
+            margin-bottom: var(--s-4);
+        }
+        .a-block-inner p {
+            font-size: var(--t-body-lg);
+            color: var(--ink-2);
+            line-height: var(--lh-relaxed);
+            margin-bottom: var(--s-4);
+            text-wrap: pretty;
+        }
+        .a-block-inner p:last-child { margin-bottom: 0; }
+        .a-block-inner p strong {
+            color: var(--ink);
+            font-weight: var(--w-semibold);
+        }
+        .a-block-inner .dot-list p { margin-bottom: 0; }
+
+        /* Editorial hairline between content sections (not on hero) */
+        .a-block + .a-block,
+        .a-block + .bios,
+        .bios + .a-block { border-top: 1px solid var(--rule); }
+
+        /* ── BIOS GRID ── */
+        .bios-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--s-5);
+            max-width: var(--container-prose);
+            margin: 0 auto;
+        }
+        .bio.card { display: flex; flex-direction: column; gap: var(--s-3); padding: var(--s-7); }
+        .bio h4 {
+            font-size: var(--t-h4);
+            margin-bottom: var(--s-1);
+        }
+        .bio .role {
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: var(--w-medium);
+            letter-spacing: var(--ls-eyebrow);
+            text-transform: uppercase;
+            color: var(--momiji);
+            margin-bottom: var(--s-3);
+        }
+        .bio p {
+            font-size: var(--t-body-sm);
+            color: var(--ink-2);
+            line-height: var(--lh-relaxed);
+            margin-bottom: 0;
+        }
+        .bio .bio-link {
+            margin-top: auto;
+            padding-top: var(--s-5);
+            border-top: 1px solid var(--rule);
+        }
+
+        /* ── COLOPHON + CTA BACK ── */
+        .colophon { padding-top: 0; }
+        .colophon-inner { max-width: var(--container-prose); }
+        .colophon .eyebrow { margin-bottom: var(--s-4); }
+        .colophon h3 { font-size: var(--t-h4); margin-bottom: var(--s-3); }
+        .colophon p {
+            font-size: var(--t-body);
+            color: var(--ink-2);
+            line-height: var(--lh-relaxed);
+            margin-bottom: var(--s-7);
+        }
+        .a-cta {
+            padding-top: var(--s-6);
+            border-top: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--s-4);
+            flex-wrap: wrap;
+        }
+
+        /* ── PAGE-SPECIFIC RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .a-hero { padding: var(--s-9) 0; }
+            .bios-grid { grid-template-columns: 1fr; }
+            .a-cta { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body class="surface-dotted">
+
+<!-- WOBBLE FILTER (used by every felt-pen mark on this page) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <filter id="wobble">
+        <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="2" seed="3" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.6" />
+    </filter>
+</svg>
+
+<!-- NAV -->
+<nav class="site-nav" id="nav">
+    <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="Two Slow People — home">
+            <img src="assets/logo-twoslowpeople-vector.svg" alt="Two Slow People" />
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html#what">What we build</a>
+            <a href="index.html#how">How we work</a>
+            <a href="about.html" aria-current="page">About</a>
+            <a href="index.html#contact" class="btn btn-primary">Get in touch</a>
+        </div>
+        <button class="nav-mob" id="navMob" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="a-hero">
+    <!-- Felt-pen plant mark — quiet ornament, top-right of the hero -->
+    <div class="hero-mark felt-pen-mark animated" aria-hidden="true">
+        <svg viewBox="0 0 100 100" width="140" height="140">
+            <g style="filter:url(#wobble);fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round">
+                <path stroke="#2E3A22" d="M50 56 Q44 44 36 32 Q34 30 36 28" />
+                <path stroke="#2E3A22" d="M50 56 Q56 38 64 28 Q66 26 68 27" />
+                <path stroke="#2E3A22" d="M50 56 Q49 42 50 28 Q50 25 52 24" />
+                <path stroke="#2E3A22" d="M50 56 Q53 46 60 40" />
+                <path stroke="#2E3A22" d="M50 56 Q46 48 40 44" />
+                <path stroke="#6B5230" d="M40 58 Q40 56 42 56 L58 56 Q60 56 60 58 Q59 68 56 76 Q55 78 53 78 L47 78 Q45 78 44 76 Q41 68 40 58 Z" />
+            </g>
+        </svg>
+    </div>
+    <div class="wrap">
+        <div class="a-hero-inner rev">
+            <div class="eyebrow">
+                <span class="dotpair-mark"><span></span><span></span></span>
+                <span>About · Two of us</span>
+            </div>
+            <h1 class="h1">A studio of <em>two</em>.</h1>
+            <p class="lede">We are two people who used to work for other people. Now we work with each other, and occasionally for someone who asks nicely. Two Slow People is Karan Baweja and Surendra Chaplot — and the work we make together.</p>
+        </div>
+    </div>
+</section>
+
+<!-- WHY NOW -->
+<section class="a-block">
+    <div class="wrap">
+        <div class="a-block-inner rev">
+            <div class="eyebrow">
+                <span class="dotpair-mark"><span></span><span></span></span>
+                <span>Why now</span>
+            </div>
+            <h2>We wanted to do this <em>ourselves</em>.</h2>
+            <p>There is an opportunity in the air around AI right now, and the temptation is to disappear into a larger consultancy where you can lean on someone else's brand. We took the other path. We wanted to remain close to the building — to keep the agency that comes from making the thing yourself.</p>
+            <p>Working as two means we can move quickly when we want to and slowly when we should. It also means every piece of work we ship has both of our names on it — which is a useful constraint.</p>
+        </div>
+    </div>
+</section>
+
+<!-- BREAK -->
+<div class="section-break" aria-hidden="true">
+    <div class="section-break-inner">
+        <span class="line"></span>
+        <span class="ornament"><span></span><span></span></span>
+        <span class="line"></span>
+    </div>
+</div>
+
+<!-- WHAT WE BELIEVE -->
+<section class="a-block">
+    <div class="wrap">
+        <div class="a-block-inner rev">
+            <div class="eyebrow">
+                <span class="dotpair-mark"><span></span><span></span></span>
+                <span>What we believe</span>
+            </div>
+            <h2>Four things, not <em>in order</em>.</h2>
+            <ul class="dot-list">
+                <li><p><strong>Deliver value without fuss.</strong> The work either makes a real difference to your business or it doesn't — and we'd rather know which, sooner than later. We don't pad. We don't dress things up.</p></li>
+                <li><p><strong>Integrity, before anything.</strong> We will tell you when something we built isn't working, and we will tell you when something you asked for is the wrong thing. The shorter conversation, both times.</p></li>
+                <li><p><strong>High agency, on purpose.</strong> We don't wait for permission. If a system needs a piece we hadn't planned for, we build it. If a tool is wrong for the job, we say so.</p></li>
+                <li><p><strong>Build useful things only.</strong> No software for software's sake. If a problem can be solved by a conversation, a checklist, or a different process — that is what we'll suggest first.</p></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- WHAT WE WON'T WORK ON -->
+<section class="a-block">
+    <div class="wrap">
+        <div class="a-block-inner rev">
+            <div class="eyebrow">
+                <span class="dotpair-mark"><span></span><span></span></span>
+                <span>Where we draw a line</span>
+            </div>
+            <h2>We won't help <em>everyone</em>.</h2>
+            <p>There are businesses we won't work with — gambling and betting; companies whose values cross a line we wouldn't cross ourselves; anything we'd be embarrassed to explain to our families. We say this out loud because we'd rather not have the awkward conversation later.</p>
+        </div>
+    </div>
+</section>
+
+<!-- BREAK -->
+<div class="section-break" aria-hidden="true">
+    <div class="section-break-inner">
+        <span class="line"></span>
+        <span class="ornament"><span></span><span></span></span>
+        <span class="line"></span>
+    </div>
+</div>
+
+<!-- THE TWO OF US -->
+<section class="bios">
+    <div class="wrap">
+        <div class="a-block-inner rev" style="margin-bottom: var(--s-7);">
+            <div class="eyebrow">
+                <span class="dotpair-mark"><span></span><span></span></span>
+                <span>The two of us</span>
+            </div>
+            <h2>Karan and <em>Surendra</em>.</h2>
+        </div>
+        <div class="bios-grid rev">
+            <article class="card bio">
+                <h4>Karan Baweja</h4>
+                <p class="role">Most recently at Cosmos Video</p>
+                <p>Building social spaces that brought people together at Cosmos Video, in London. Background in robotics and embedded-systems research — published in IEEE and at IHCI. London Business School. Founder's Award from Deloitte. Wayra UK alum (one of twenty from a hundred and seventy applicants).</p>
+                <div class="bio-link">
+                    <a class="arrow-link" href="https://www.linkedin.com/in/karandb/" target="_blank" rel="noopener noreferrer">Karan on LinkedIn</a>
+                </div>
+            </article>
+            <article class="card bio">
+                <h4>Surendra Chaplot</h4>
+                <p class="role">Bio coming</p>
+                <p>A short bio is on its way. In the meantime, Surendra's own words live on his LinkedIn — feel free to read there.</p>
+                <div class="bio-link">
+                    <a class="arrow-link" href="https://www.linkedin.com/in/chaplot/" target="_blank" rel="noopener noreferrer">Surendra on LinkedIn</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- COLOPHON + CTA BACK -->
+<section class="colophon a-block">
+    <div class="wrap">
+        <div class="colophon-inner rev">
+            <div class="eyebrow">
+                <span class="dotpair-mark"><span></span><span></span></span>
+                <span>Colophon</span>
+            </div>
+            <h3>Made slowly, on purpose.</h3>
+            <p>Set in Plus Jakarta Sans throughout. The dot pair is borrowed from the wordmark — two stacked circles, one a little smaller. The palette is Maple Stream — washi, paper, sumi, and a maple-rust accent we use sparingly. The site is hand-built and quietly maintained.</p>
+            <div class="a-cta">
+                <div class="eyebrow">
+                    <span class="dotpair-mark"><span></span><span></span></span>
+                    <span>Want to talk?</span>
+                </div>
+                <a class="arrow-link" href="index.html#contact">Send us a note</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="wrap">
+        <div class="footer-top">
+            <a href="/" class="footer-mark" aria-label="Two Slow People">
+                <img src="assets/logo-twoslowpeople-vector.svg" alt="Two Slow People" />
+            </a>
+            <div class="footer-cols">
+                <div class="footer-col">
+                    <h6>Site</h6>
+                    <a href="/">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h6>Find us</h6>
+                    <a href="https://www.linkedin.com/in/karandb/" target="_blank" rel="noopener noreferrer">Karan on LinkedIn</a>
+                    <a href="https://www.linkedin.com/in/chaplot/" target="_blank" rel="noopener noreferrer">Surendra on LinkedIn</a>
+                </div>
+                <div class="footer-col">
+                    <h6>Hello</h6>
+                    <a href="index.html#contact">Send us a note</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bot">
+            <span>© 2026 Two Slow People · London</span>
+            <span>Made slowly, on purpose.</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+(function () {
+    var mob   = document.getElementById('navMob');
+    var links = document.getElementById('navLinks');
+    if (mob && links) {
+        mob.addEventListener('click', function () {
+            var open = links.classList.toggle('open');
+            mob.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        links.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', function () {
+                links.classList.remove('open');
+                mob.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+            var href = this.getAttribute('href');
+            if (href === '#' || href.length < 2) return;
+            var t = document.querySelector(href);
+            if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        });
+    });
+
+    var revEls = document.querySelectorAll('.rev');
+    try {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+            });
+        }, { threshold: 0.07, rootMargin: '0px 0px -32px 0px' });
+        revEls.forEach(function (el) { io.observe(el); });
+    } catch (err) {
+        revEls.forEach(function (el) { el.classList.add('in'); });
+    }
+    setTimeout(function () {
+        revEls.forEach(function (el) { el.classList.add('in'); });
+    }, 1500);
+})();
+</script>
+</body>
+</html>

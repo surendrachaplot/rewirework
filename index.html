@@ -3,569 +3,253 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SlowProof — AI Agents for Growing UK Businesses</title>
-    <meta name="description" content="SlowProof builds bespoke AI systems that cut hours of repetitive work from your week. Built for UK businesses with 10–100 people ready to grow without growing their team.">
+    <title>Two Slow People — AI consulting for UK businesses</title>
+    <meta name="description" content="Two Slow People is a small AI consultancy run by Karan Baweja and Surendra Chaplot. We build proper AI systems by hand for UK businesses ready to scale.">
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#111110">
+    <meta name="theme-color" content="#1B1916">
 
-    <link rel="canonical" href="https://surendrachaplot.github.io/rewirework/">
+    <link rel="canonical" href="https://twoslowpeople.com/">
+    <link rel="icon" type="image/svg+xml" href="assets/dot-pair.svg">
+    <link rel="apple-touch-icon" href="assets/logo-twoslowpeople-vector.svg">
 
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://surendrachaplot.github.io/rewirework/">
-    <meta property="og:title" content="SlowProof — AI Agents for Growing UK Businesses">
-    <meta property="og:description" content="We build bespoke AI systems that cut hours of repetitive work from your week. Invoicing, scheduling, lead qualification, communications — automated and running in weeks.">
-    <meta property="og:site_name" content="SlowProof">
+    <meta property="og:url" content="https://twoslowpeople.com/">
+    <meta property="og:title" content="Two Slow People — AI consulting for UK businesses">
+    <meta property="og:description" content="A small AI consultancy run by two people, by hand. We work with UK businesses — restaurants, hotels, real estate, property, private equity.">
+    <meta property="og:site_name" content="Two Slow People">
     <meta property="og:locale" content="en_GB">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="SlowProof — AI Agents for Growing UK Businesses">
-    <meta name="twitter:description" content="We build bespoke AI systems that cut hours of repetitive work from your week. Built for UK businesses with 10–100 people.">
+    <meta name="twitter:title" content="Two Slow People — AI consulting for UK businesses">
+    <meta name="twitter:description" content="A small AI consultancy run by two people, by hand. UK SMBs — restaurants, hotels, real estate, property, private equity.">
 
-    <link rel="preload" href="fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/tokens.css?v=1">
+    <link rel="stylesheet" href="css/site.css?v=1">
 
     <style>
-        @font-face {
-            font-family: 'PJS';
-            font-style: normal;
-            font-weight: 100 900;
-            font-display: swap;
-            src: url('fonts/plus-jakarta-sans-latin.woff2') format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-        }
-        @font-face {
-            font-family: 'PJS Fallback';
-            src: local('Arial');
-            size-adjust: 102%;
-            ascent-override: 96%;
-            descent-override: 25%;
-            line-gap-override: 0%;
-        }
-
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-        :root {
-            --white:  #FFFFFF;
-            --bg:     #F7F6F3;
-            --dark:   #111110;
-            --accent: #C85B1A;
-            --accent-dk: #A64916;
-            --text:   #111110;
-            --muted:  #706F6C;
-            --border: #E5E2DC;
-            --shadow: 0 1px 2px rgba(0,0,0,0.05), 0 4px 16px rgba(0,0,0,0.06);
-            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.04);
-        }
-
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'PJS', 'PJS Fallback', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--text);
-            background: var(--white);
-            line-height: 1.65;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-
-        /* ── LAYOUT ── */
-        .wrap    { max-width: 1160px; margin: 0 auto; padding: 0 40px; }
-        .wrap-sm { max-width:  840px; margin: 0 auto; padding: 0 40px; }
-
-        /* ── SHARED SECTION ── */
-        section { padding: 112px 0; }
-
-        .label {
-            display: inline-block;
-            font-size: 0.6875rem;
-            font-weight: 700;
-            letter-spacing: 0.11em;
-            text-transform: uppercase;
-            color: var(--muted);
-            margin-bottom: 16px;
-        }
-        .label-accent { color: var(--accent); }
-
-        .sec-hd { margin-bottom: 56px; }
-        .sec-hd h2 {
-            font-size: clamp(1.875rem, 3.2vw, 2.625rem);
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
-            max-width: 600px;
-        }
-        .sec-hd p {
-            margin-top: 16px;
-            font-size: 1rem;
-            color: var(--muted);
-            line-height: 1.78;
-            max-width: 540px;
-        }
-        .sec-hd-center { text-align: center; }
-        .sec-hd-center h2, .sec-hd-center p { max-width: 640px; margin-left: auto; margin-right: auto; }
-
-        /* ── BUTTONS ── */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            padding: 13px 24px;
-            background: var(--accent);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 0.9375rem;
-            transition: background 0.18s;
-            white-space: nowrap;
-            border: none;
-            cursor: pointer;
-            font-family: inherit;
-        }
-        .btn:hover { background: var(--accent-dk); }
-        .btn-outline {
-            background: transparent;
-            color: var(--text);
-            border: 1.5px solid var(--border);
-        }
-        .btn-outline:hover { background: var(--bg); border-color: #ccc; }
-        .btn-ghost-light {
-            font-size: 0.875rem;
-            color: rgba(255,255,255,0.35);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.18s;
-        }
-        .btn-ghost-light:hover { color: rgba(255,255,255,0.7); }
-
-        /* ── CARD ── */
-        .card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 36px;
-        }
-        .card-bg { background: var(--bg); }
-        .card-dk { background: #1a1917; border-color: rgba(255,255,255,0.07); }
-        .card h3 {
-            font-size: 1.0625rem;
-            font-weight: 700;
-            letter-spacing: -0.018em;
-            line-height: 1.3;
-            margin-bottom: 10px;
-        }
-        .card p { font-size: 0.9375rem; color: var(--muted); line-height: 1.75; }
-
-        /* ── NAV ── */
-        nav {
-            position: fixed;
-            inset: 0 0 auto;
-            z-index: 100;
-            background: rgba(255,255,255,0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-        }
-        .nav-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 62px;
-            max-width: 1160px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 9px;
-            text-decoration: none;
-            color: inherit;
-            flex-shrink: 0;
-        }
-        .logo-mark {
-            width: 28px; height: 28px;
-            background: var(--accent);
-            border-radius: 7px;
-            display: flex; align-items: center; justify-content: center;
-        }
-        .logo-mark svg { width: 13px; height: 13px; stroke: #fff; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-        .logo-name { font-size: 0.9375rem; font-weight: 800; letter-spacing: -0.02em; }
-        .logo-name em { font-style: normal; color: var(--accent); }
-        .nav-links { display: flex; align-items: center; gap: 28px; }
-        .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.18s; }
-        .nav-links a:hover { color: var(--text); }
-        .nav-mob { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
-        .nav-mob span { display: block; width: 22px; height: 2px; background: var(--text); margin: 5px 0; transition: 0.25s; }
+        /* ──────────────────────────────────────────────────────
+           index.html — page-specific styles only.
+           Tokens come from tokens.css; shared chrome (nav, footer,
+           buttons, cards, forms, eyebrow, reveal) lives in site.css.
+           ────────────────────────────────────────────────────── */
 
         /* ── HERO ── */
         .hero {
-            background: var(--dark);
-            color: #fff;
-            min-height: 100svh;
-            display: flex;
-            align-items: flex-end;
-            padding: 80px 0 72px;
+            position: relative;
+            padding: 120px 0 var(--s-10);
+            text-align: center;
+            background: var(--bg-page);
+            overflow: hidden;
         }
-        .hero-inner { width: 100%; }
-        .hero-kicker {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 0.6875rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.28);
-            margin-bottom: 44px;
+        .hero-mark {
+            position: absolute;
+            top: var(--s-9);
+            right: max(var(--s-6), calc(50% - 460px));
+            opacity: 0.9;
+            pointer-events: none;
         }
-        .hero-kicker::before {
-            content: '';
-            display: block;
-            width: 28px; height: 1px;
-            background: var(--accent);
-            flex-shrink: 0;
+        @media (max-width: 768px) {
+            .hero-mark { top: var(--s-6); right: var(--s-4); }
+            .hero-mark svg { width: 96px; height: 96px; }
         }
+        .hero .eyebrow { margin-bottom: var(--s-6); }
         .hero h1 {
-            font-size: clamp(3.5rem, 8.5vw, 7rem);
-            font-weight: 800;
-            line-height: 0.93;
-            letter-spacing: -0.04em;
-            max-width: 820px;
+            font-size: var(--t-display);
+            margin-bottom: var(--s-5);
+            max-width: 920px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .hero h1 em {
-            font-style: italic;
-            font-weight: 300;
-            color: rgba(255,255,255,0.32);
+            font-weight: var(--w-regular);
+            color: var(--momiji);
         }
-        .hero-bottom {
-            margin-top: 60px;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255,255,255,0.07);
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 56px;
-            align-items: end;
+        .hero .lede {
+            max-width: 560px;
+            margin: 0 auto var(--s-7);
+            color: var(--ink-2);
+            text-wrap: pretty;
         }
-        .hero-sub {
-            font-size: 1.0625rem;
-            color: rgba(255,255,255,0.38);
-            line-height: 1.8;
-            max-width: 500px;
-            font-weight: 300;
+        .hero-ctas {
+            display: inline-flex;
+            gap: var(--s-3);
+            flex-wrap: wrap;
+            justify-content: center;
         }
-        .hero-ctas { display: flex; flex-direction: column; align-items: flex-end; gap: 14px; }
-        .hero-metrics {
-            margin-top: 56px;
-            display: flex;
-            gap: 0;
-        }
-        .metric {
-            padding-right: 44px;
-            margin-right: 44px;
-            border-right: 1px solid rgba(255,255,255,0.07);
-        }
-        .metric:last-child { border: none; padding: 0; margin: 0; }
-        .metric-val { font-size: 2rem; font-weight: 800; letter-spacing: -0.04em; line-height: 1; color: #fff; }
-        .metric-lbl { margin-top: 5px; font-size: 0.75rem; color: rgba(255,255,255,0.25); font-weight: 500; }
 
-        /* ── SECTORS ── */
+        /* ── SECTORS STRIP ── */
         .sectors {
-            background: var(--white);
-            border-bottom: 1px solid var(--border);
-            padding: 0;
+            padding: var(--s-7) 0;
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            background: var(--bg-page);
+            text-align: center;
         }
-        .sectors-inner {
-            display: flex;
-            align-items: center;
-            height: 52px;
-            max-width: 1160px;
-            margin: 0 auto;
-            padding: 0 40px;
-            gap: 0;
+        .sectors .eyebrow { margin-bottom: var(--s-3); justify-content: center; }
+        .sectors-line {
+            font-family: var(--font-body);
+            font-size: 15px;
+            color: var(--ink-2);
+            line-height: var(--lh-relaxed);
         }
-        .sectors-lbl {
-            font-size: 0.6875rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--muted);
-            white-space: nowrap;
-            margin-right: 28px;
-            flex-shrink: 0;
-        }
-        .sector {
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--muted);
-            padding: 0 18px;
-            border-left: 1px solid var(--border);
-            white-space: nowrap;
-        }
-        .sector:first-child { border-left: none; padding-left: 0; }
+        .sectors-line .sep { color: var(--momiji); margin: 0 6px; }
 
         /* ── STATEMENT ── */
-        .statement { background: var(--bg); padding: 96px 0; }
+        .statement { background: var(--bg-page); padding-top: var(--s-9); padding-bottom: var(--s-9); }
         .statement-grid {
             display: grid;
             grid-template-columns: 5fr 7fr;
-            gap: 80px;
-            align-items: center;
+            gap: var(--s-8);
+            align-items: start;
         }
-        .statement-left h2 {
-            font-size: clamp(1.875rem, 3vw, 2.625rem);
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
+        .statement h2 {
+            font-size: var(--t-h2);
+            text-wrap: balance;
         }
         .statement-right p {
-            font-size: 1.0625rem;
-            color: var(--muted);
-            line-height: 1.82;
-            margin-bottom: 20px;
+            font-size: var(--t-body-lg);
+            color: var(--ink-2);
+            line-height: var(--lh-relaxed);
+            margin-bottom: var(--s-4);
         }
         .statement-right p:last-child { margin-bottom: 0; }
-        .statement-right strong { color: var(--text); font-weight: 600; }
+        .statement-right em { color: var(--ink); font-weight: var(--w-semibold); }
 
-        /* ── SERVICES ── */
-        .services { background: var(--white); }
-        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        /* ── WHAT WE BUILD (services grid) ── */
+        .what { background: var(--bg-page); }
+        .what-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--s-4);
+        }
         .svc-num {
-            font-size: 0.6875rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            color: var(--accent);
-            margin-bottom: 16px;
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: var(--w-medium);
+            letter-spacing: var(--ls-eyebrow);
+            text-transform: uppercase;
+            color: var(--momiji);
+            margin-bottom: var(--s-4);
         }
-        .services .card { transition: box-shadow 0.2s, border-color 0.2s; }
-        .services .card:hover { box-shadow: var(--shadow); border-color: #d4d0ca; }
 
-        /* ── PROCESS ── */
-        .process { background: var(--bg); }
-        .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        /* ── WHO WE WORK WITH ── */
+        .who { background: var(--bg-card); }
+        .who-inner { max-width: var(--container-prose); }
+        .who h2 { font-size: var(--t-h2); margin-bottom: var(--s-5); text-wrap: balance; }
+        .who h2 em { font-weight: var(--w-regular); color: var(--momiji); }
+        .who p { font-size: var(--t-body-lg); color: var(--ink-2); line-height: var(--lh-relaxed); margin-bottom: var(--s-4); }
+        .who p:last-child { margin-bottom: 0; }
+        .who .engagement {
+            margin-top: var(--s-6);
+            padding-top: var(--s-5);
+            border-top: 1px solid var(--rule);
+            font-size: var(--t-body);
+            color: var(--ink-3);
+        }
+        .who .engagement strong { color: var(--ink); font-weight: var(--w-semibold); }
+
+        /* ── HOW WE WORK ── */
+        .how { background: var(--bg-page); }
+        .how-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--s-4);
+        }
+        .how-grid .card { display: flex; flex-direction: column; gap: var(--s-3); }
         .step-num {
-            font-size: 2rem;
-            font-weight: 800;
-            letter-spacing: -0.04em;
-            color: var(--accent);
+            font-family: var(--font-display);
+            font-size: 64px;
+            font-weight: var(--w-semibold);
             line-height: 1;
-            margin-bottom: 20px;
-            font-variant-numeric: tabular-nums;
+            letter-spacing: var(--ls-tightest);
+            color: var(--ink);
+            margin-bottom: var(--s-3);
         }
-        .steps .card h3 { font-size: 1rem; margin-bottom: 10px; }
-        .steps .card { transition: box-shadow 0.2s; }
-        .steps .card:hover { box-shadow: var(--shadow); }
+        .how-grid .card h3 { font-size: var(--t-h4); margin-bottom: var(--s-2); }
 
-        /* ── CASES ── */
-        .cases { background: var(--white); }
-        .cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-        .case-sector {
-            display: block;
-            font-size: 0.6875rem;
-            font-weight: 700;
-            letter-spacing: 0.11em;
+        /* ── PULL QUOTE — kit pattern: curly opening quote in clay-soft, no closing ── */
+        .pull {
+            background: var(--bg-inverse);
+            color: var(--washi);
+            padding: var(--s-10) 0;
+            text-align: center;
+        }
+        .pull-quote {
+            font-family: var(--font-display);
+            font-size: clamp(34px, 4.5vw, 56px);
+            font-weight: var(--w-semibold);
+            line-height: var(--lh-snug);
+            letter-spacing: var(--ls-tight);
+            color: var(--washi);
+            margin: 0 auto var(--s-6);
+            max-width: 820px;
+            text-wrap: balance;
+        }
+        .pull-quote::before {
+            content: '\201C';            /* left double quotation mark — curly */
+            color: var(--momiji-soft);
+            margin-right: 0.08em;
+        }
+        .pull-attr {
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: var(--w-medium);
+            letter-spacing: var(--ls-eyebrow);
             text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 14px;
-        }
-        .cases .card {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            transition: box-shadow 0.2s;
-        }
-        .cases .card:hover { box-shadow: var(--shadow); }
-        .cases .card h3 {
-            font-size: 1.0625rem;
-            font-weight: 700;
-            font-style: italic;
-            line-height: 1.45;
-            letter-spacing: -0.015em;
-            color: var(--text);
-            margin-bottom: 0;
-        }
-        .case-built-lbl {
-            font-size: 0.6875rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--muted);
-            margin-bottom: 7px;
-        }
-        .case-built p { font-size: 0.9rem; color: var(--muted); line-height: 1.72; }
-        .case-results {
-            margin-top: auto;
-            padding-top: 20px;
-            border-top: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            gap: 7px;
-        }
-        .case-result {
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--text);
-            display: flex;
+            color: rgba(220,219,208,0.6);
+            display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: var(--s-3);
         }
-        .case-result::before { content: ''; width: 16px; height: 1.5px; background: var(--accent); flex-shrink: 0; }
+        .pull-attr .dotpair-mark span { background: var(--momiji); }
 
-        /* ── TESTIMONIALS ── */
-        .testimonials { background: var(--dark); padding: 112px 0; }
-        .testimonials .sec-hd h2 { color: #fff; }
-        .testimonials .label { color: rgba(255,255,255,0.3); }
-        .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-        .testi-card {
-            background: #1c1b19;
-            border: 1px solid rgba(255,255,255,0.07);
-            border-radius: 12px;
-            padding: 36px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .testi-stars { color: var(--accent); font-size: 0.875rem; letter-spacing: 2px; }
-        .testi-quote {
-            font-size: 0.9375rem;
-            color: rgba(255,255,255,0.72);
-            line-height: 1.75;
-            font-style: italic;
-            flex: 1;
-        }
-        .testi-attr { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 18px; }
-        .testi-name { font-size: 0.875rem; font-weight: 700; color: #fff; }
-        .testi-role { font-size: 0.8125rem; color: rgba(255,255,255,0.35); margin-top: 2px; }
-
-        /* ── WHY ── */
-        .why { background: var(--bg); }
-        .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-        .why .card { transition: box-shadow 0.2s; }
-        .why .card:hover { box-shadow: var(--shadow); background: var(--white); }
-        .why .card h3 { font-size: 1.0625rem; letter-spacing: -0.02em; }
+        /* ── WHERE WE ARE (replaces fake cases) ── */
+        .where { background: var(--bg-page); }
+        .where-inner { max-width: var(--container-prose); }
+        .where h3 { font-size: var(--t-h3); margin-bottom: var(--s-4); margin-top: var(--s-4); }
+        .where p { font-size: var(--t-body-lg); color: var(--ink-2); line-height: var(--lh-relaxed); margin-bottom: var(--s-5); }
+        .where-links { display: flex; gap: var(--s-7); flex-wrap: wrap; padding-top: var(--s-5); border-top: 1px solid var(--rule); }
 
         /* ── CONTACT ── */
-        .contact { background: var(--white); }
-        .contact-wrap { max-width: 600px; margin: 0 auto; }
-        .contact .sec-hd-center p { color: var(--muted); }
-        .contact-form-wrap { margin-top: 48px; }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-        .form-group { margin-bottom: 14px; }
-        .form-group label {
-            display: block;
-            margin-bottom: 7px;
-            font-size: 0.8125rem;
-            font-weight: 600;
-            color: var(--text);
+        .contact {
+            background: var(--bg-page);
+            padding: var(--s-10) 0 var(--s-11);
         }
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 12px 14px;
-            background: var(--white);
-            border: 1.5px solid var(--border);
-            border-radius: 8px;
-            color: var(--text);
-            font-family: inherit;
-            font-size: 0.9375rem;
-            outline: none;
-            transition: border-color 0.18s, box-shadow 0.18s;
-            appearance: none;
+        .contact-card {
+            max-width: 720px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: var(--r-lg);
+            padding: var(--s-7);
         }
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(200,91,26,0.1);
+        .contact-card.surface-dotted-sm {
+            background-color: var(--bg-card);
         }
-        .form-group input::placeholder,
-        .form-group textarea::placeholder { color: #b5b3ae; }
-        .form-group textarea { resize: vertical; min-height: 110px; }
-        .form-group input.invalid,
-        .form-group textarea.invalid { border-color: #dc2626; box-shadow: 0 0 0 3px rgba(220,38,38,0.1); }
-        .field-error { display: block; font-size: 0.8rem; color: #dc2626; font-weight: 500; margin-top: 5px; min-height: 1em; }
-        .form-submit { width: 100%; font-size: 1rem; padding: 15px; margin-top: 6px; border-radius: 8px; }
-        .form-msg {
-            margin-top: 12px;
-            padding: 11px 15px;
-            border-radius: 8px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            text-align: center;
-            display: none;
+        .contact-hd {
+            margin-bottom: var(--s-6);
+            padding-bottom: var(--s-5);
+            border-bottom: 1px solid var(--rule);
         }
-        .form-msg.success { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; display: block; }
-        .form-msg.error   { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; display: block; }
-        .contact-aside {
-            margin-top: 40px;
-            padding-top: 32px;
-            border-top: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 24px;
-            flex-wrap: wrap;
+        .contact-hd .eyebrow { margin-bottom: var(--s-3); color: var(--momiji); }
+        .contact-hd h2 {
+            font-size: clamp(34px, 4vw, 52px);
+            margin-bottom: var(--s-3);
         }
-        .contact-aside p { font-size: 0.875rem; color: var(--muted); }
-        .contact-aside a { color: var(--text); font-weight: 600; text-decoration: none; font-size: 0.875rem; transition: color 0.18s; }
-        .contact-aside a:hover { color: var(--accent); }
+        .contact-hd h2 em { font-weight: var(--w-regular); color: var(--momiji); }
+        .contact-hd p { font-size: var(--t-body); color: var(--ink-2); max-width: 480px; }
 
-        /* ── FOOTER ── */
-        footer { background: var(--dark); padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.05); }
-        .footer-inner { display: flex; align-items: center; justify-content: space-between; }
-        .footer-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
-        .footer-mark { width: 26px; height: 26px; background: var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; }
-        .footer-mark svg { width: 13px; height: 13px; stroke: #fff; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-        .footer-name { font-size: 0.9375rem; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
-        .footer-name em { font-style: normal; color: var(--accent); }
-        .copy { color: rgba(255,255,255,0.2); font-size: 0.8125rem; }
-
-        /* ── REVEAL ── */
-        .rev { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
-        .rev.in { opacity: 1; transform: none; }
-        .no-js .rev, .rev.fallback { opacity: 1; transform: none; }
-
-        /* ── RESPONSIVE ── */
+        /* ── PAGE-SPECIFIC RESPONSIVE ── */
         @media (max-width: 1024px) {
-            .wrap, .wrap-sm { padding: 0 32px; }
-            .nav-inner, .sectors-inner { padding: 0 32px; }
-            .services-grid { grid-template-columns: repeat(2, 1fr); }
-            .steps { grid-template-columns: repeat(2, 1fr); }
-            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
-            .statement-grid { grid-template-columns: 1fr; gap: 40px; }
+            .what-grid  { grid-template-columns: repeat(2, 1fr); }
+            .how-grid   { grid-template-columns: repeat(2, 1fr); }
+            .statement-grid { grid-template-columns: 1fr; gap: var(--s-6); }
         }
         @media (max-width: 768px) {
-            .wrap, .wrap-sm { padding: 0 20px; }
-            .nav-inner, .sectors-inner { padding: 0 20px; }
-            .nav-links {
-                display: none;
-                position: fixed;
-                inset: 0;
-                background: var(--white);
-                flex-direction: column;
-                justify-content: center;
-                gap: 24px;
-                padding: 24px;
-                z-index: 99;
-            }
-            .nav-links.open { display: flex; }
-            .nav-links a { font-size: 1.25rem; color: var(--text); }
-            .nav-mob { display: block; }
-            section { padding: 80px 0; }
-            .statement { padding: 72px 0; }
-            .hero { padding: 80px 0 56px; }
-            .hero-bottom { grid-template-columns: 1fr; gap: 28px; }
-            .hero-ctas { align-items: flex-start; }
-            .hero-metrics { flex-wrap: wrap; gap: 0; row-gap: 20px; }
-            .metric { padding-right: 32px; margin-right: 32px; }
-            .services-grid, .cases-grid, .why-grid, .steps, .testimonials-grid { grid-template-columns: 1fr; }
-            .form-row { grid-template-columns: 1fr; }
-            .footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
-            .sectors-inner { height: auto; padding-top: 16px; padding-bottom: 16px; flex-wrap: wrap; row-gap: 8px; }
-            .contact-aside { flex-direction: column; align-items: flex-start; }
-            .sec-hd { margin-bottom: 40px; }
-        }
-        @media (max-width: 480px) {
-            .metric { padding-right: 24px; margin-right: 24px; }
+            .hero { padding: var(--s-9) 0; }
+            .hero h1 { font-size: clamp(44px, 11vw, 72px); }
+            .what-grid, .how-grid { grid-template-columns: 1fr; }
+            .where-links { gap: var(--s-4); }
         }
     </style>
 
@@ -575,21 +259,25 @@
       "@graph": [
         {
           "@type": "Organization",
-          "@id": "https://surendrachaplot.github.io/rewirework/#organization",
-          "name": "SlowProof",
-          "url": "https://surendrachaplot.github.io/rewirework/",
-          "description": "SlowProof builds bespoke AI systems for growing UK businesses, automating repetitive work so teams can focus on higher-value tasks.",
+          "@id": "https://twoslowpeople.com/#organization",
+          "name": "Two Slow People",
+          "url": "https://twoslowpeople.com/",
+          "description": "Two Slow People is a small AI consultancy run by Karan Baweja and Surendra Chaplot. We build proper AI systems by hand for UK businesses ready to scale.",
+          "founder": [
+            { "@type": "Person", "name": "Karan Baweja",     "sameAs": "https://www.linkedin.com/in/karandb/" },
+            { "@type": "Person", "name": "Surendra Chaplot", "sameAs": "https://www.linkedin.com/in/chaplot/" }
+          ],
           "areaServed": { "@type": "Country", "name": "United Kingdom" },
           "foundingLocation": { "@type": "Place", "name": "London, UK" },
-          "knowsAbout": ["AI Agents", "Business Process Automation", "Workflow Automation", "Small Business Technology"]
+          "knowsAbout": ["AI consulting", "Bespoke automation", "Small Business Technology", "Workflow Automation"]
         },
         {
           "@type": "ProfessionalService",
-          "@id": "https://surendrachaplot.github.io/rewirework/#service",
-          "name": "SlowProof AI Automation",
-          "provider": { "@id": "https://surendrachaplot.github.io/rewirework/#organization" },
-          "serviceType": "AI Business Automation",
-          "description": "Bespoke AI agents that automate customer communications, scheduling, invoicing, document processing, reporting, and lead qualification for UK SMEs.",
+          "@id": "https://twoslowpeople.com/#service",
+          "name": "Two Slow People — AI consulting",
+          "provider": { "@id": "https://twoslowpeople.com/#organization" },
+          "serviceType": "AI consulting and bespoke automation",
+          "description": "Bespoke AI systems for UK SMBs — customer communications, scheduling, invoicing, document processing, reporting, and lead qualification.",
           "areaServed": { "@type": "Country", "name": "United Kingdom" }
         },
         {
@@ -597,18 +285,18 @@
           "mainEntity": [
             {
               "@type": "Question",
-              "name": "What kinds of businesses does SlowProof work with?",
-              "acceptedAnswer": { "@type": "Answer", "text": "SlowProof works with UK businesses with 10–100 people and £1–10M revenue — law firms, estate agents, recruitment agencies, restaurant groups, accounting firms, and more." }
+              "name": "What kind of businesses do you work with?",
+              "acceptedAnswer": { "@type": "Answer", "text": "UK businesses with 10–30 people and £100,000+ a month in revenue. Industries include restaurants, hotels, real estate, property managers, property due diligence, and private equity." }
             },
             {
               "@type": "Question",
-              "name": "How long does it take to see results?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Most clients start seeing measurable time and cost savings within the first few weeks of deployment." }
+              "name": "How do you engage?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Fixed scope plus retainer. We start with a defined piece of work and a price, then stay on as your AI partner once it is running. Not day rates." }
             },
             {
               "@type": "Question",
-              "name": "What does SlowProof actually build?",
-              "acceptedAnswer": { "@type": "Answer", "text": "SlowProof builds AI agents for customer communications, scheduling and bookings, invoicing and payment chasing, document processing, reporting and insights, and lead qualification." }
+              "name": "What do you actually build?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Bespoke AI systems for customer communications, scheduling and bookings, invoicing and payments, document processing, reporting and insights, and lead qualification." }
             }
           ]
         }
@@ -618,23 +306,27 @@
 </head>
 <body>
 
+<!-- WOBBLE FILTER (used by every felt-pen mark on this page) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <filter id="wobble">
+        <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="2" seed="3" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.6" />
+    </filter>
+</svg>
+
 <!-- NAV -->
-<nav id="nav">
+<nav class="site-nav" id="nav">
     <div class="nav-inner">
-        <a href="#" class="logo">
-            <div class="logo-mark">
-                <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-            </div>
-            <span class="logo-name">Slow<em>Proof</em></span>
+        <a href="/" class="nav-logo" aria-label="Two Slow People — home">
+            <img src="assets/logo-twoslowpeople-vector.svg" alt="Two Slow People" />
         </a>
         <div class="nav-links" id="navLinks">
-            <a href="#services">What we build</a>
-            <a href="#process">How it works</a>
-            <a href="#cases">Case studies</a>
-            <a href="#why">Why us</a>
-            <a href="#contact" class="btn" style="padding:8px 18px;font-size:0.875rem;">Get in touch</a>
+            <a href="#what">What we build</a>
+            <a href="#how">How we work</a>
+            <a href="about.html">About</a>
+            <a href="#contact" class="btn btn-primary">Get in touch</a>
         </div>
-        <button class="nav-mob" id="navMob" aria-label="Open menu">
+        <button class="nav-mob" id="navMob" aria-label="Open menu" aria-expanded="false">
             <span></span><span></span><span></span>
         </button>
     </div>
@@ -642,260 +334,200 @@
 
 <!-- HERO -->
 <section class="hero">
-    <div class="wrap hero-inner">
-        <p class="hero-kicker">Now open to new clients</p>
-        <h1>Your business,<br>rewired<br><em>for AI.</em></h1>
-        <div class="hero-bottom">
-            <p class="hero-sub">We build AI systems that cut hours of repetitive work from your week — making your team faster, sharper, and more profitable. Built for UK businesses ready to grow without growing their team.</p>
-            <div class="hero-ctas">
-                <a href="#contact" class="btn">Get in touch &rarr;</a>
-                <a href="#process" class="btn-ghost-light">See how it works &darr;</a>
-            </div>
+    <!-- Felt-pen tea mark — the brand mascot, top-right of the viewport -->
+    <div class="hero-mark felt-pen-mark animated" aria-hidden="true">
+        <svg viewBox="0 0 100 100" width="140" height="140">
+            <g style="filter:url(#wobble);fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round">
+                <path stroke="#6B5230" d="M28 46 Q28 44 30 44 L66 44 Q68 44 68 46 L68 76 Q68 84 60 84 L36 84 Q28 84 28 76 Z" />
+                <path stroke="#6B5230" d="M68 54 Q82 54 82 66 Q82 76 68 76" />
+                <path stroke="#6E8390" d="M38 32 Q40 24 38 18 Q36 14 38 10" />
+                <path stroke="#6E8390" d="M48 30 Q50 22 48 16 Q46 12 48 8" />
+                <path stroke="#6E8390" d="M58 32 Q60 26 58 20 Q56 16 58 12" />
+            </g>
+        </svg>
+    </div>
+    <div class="wrap-md">
+        <div class="eyebrow rev">
+            <span class="dotpair-mark"><span></span><span></span></span>
+            <span>A small studio · est. 2026 · London</span>
         </div>
-        <div class="hero-metrics">
-            <div class="metric">
-                <div class="metric-val">40%+</div>
-                <div class="metric-lbl">Average time saved</div>
-            </div>
-            <div class="metric">
-                <div class="metric-val">10–100</div>
-                <div class="metric-lbl">People in your team</div>
-            </div>
-            <div class="metric">
-                <div class="metric-val">Weeks</div>
-                <div class="metric-lbl">Not months, to results</div>
-            </div>
+        <h1 class="display rev">We make things <em>slowly</em>,<br>on purpose.</h1>
+        <p class="lead lede rev">Two people, building bespoke AI systems by hand for UK businesses. We work with restaurants, hotels, real estate, property, and private equity — operators who already do the work properly and want their tools to match.</p>
+        <div class="hero-ctas rev">
+            <a href="#contact" class="btn btn-primary">Get in touch <span aria-hidden="true">→</span></a>
+            <a href="#what" class="btn btn-outline">What we build</a>
         </div>
     </div>
 </section>
 
 <!-- SECTORS -->
 <div class="sectors">
-    <div class="sectors-inner">
-        <span class="sectors-lbl">We work with</span>
-        <span class="sector">Law firms</span>
-        <span class="sector">Estate agents</span>
-        <span class="sector">Recruitment agencies</span>
-        <span class="sector">Restaurant groups</span>
-        <span class="sector">Accounting firms</span>
-        <span class="sector">Medical practices</span>
-        <span class="sector">Architecture firms</span>
-        <span class="sector">PR &amp; marketing</span>
+    <div class="wrap">
+        <div class="eyebrow">
+            <span class="dotpair-mark"><span></span><span></span></span>
+            <span>We work with</span>
+        </div>
+        <p class="sectors-line">Restaurants <span class="sep">·</span> hotels <span class="sep">·</span> real estate <span class="sep">·</span> property managers <span class="sep">·</span> property due diligence <span class="sep">·</span> private equity</p>
     </div>
 </div>
 
-<!-- STATEMENT -->
+<!-- STATEMENT / THESIS -->
 <section class="statement">
     <div class="wrap">
         <div class="statement-grid rev">
-            <div class="statement-left">
-                <span class="label">The opportunity</span>
-                <h2>Enterprise businesses automate everything. You should too.</h2>
+            <div>
+                <div class="eyebrow" style="margin-bottom: var(--s-4);">
+                    <span class="dotpair-mark"><span></span><span></span></span>
+                    <span>Our thesis</span>
+                </div>
+                <h2>Slow isn't behind. It's <em>by hand</em>.</h2>
             </div>
             <div class="statement-right">
-                <p>The gap between large and small businesses isn't talent or ambition. It's infrastructure. Enterprise companies have <strong>whole teams automating their operations.</strong> Growing businesses are still copying between systems, chasing invoices, and answering the same ten questions every day.</p>
-                <p>That's not a people problem. It's a systems problem — and it's exactly what we solve.</p>
+                <p>Most AI work right now is rushed. Half-built agents, generic dashboards, demos that don't survive contact with a real business. We work the other way — carefully, properly, two people on the tools, building things that fit the way your operators already run.</p>
+                <p>We are not the largest consultancy. We are two of us. <em>That is the point.</em></p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- SERVICES -->
-<section class="services" id="services">
+<!-- BREAK -->
+<div class="section-break" aria-hidden="true">
+    <div class="section-break-inner">
+        <span class="line"></span>
+        <span class="ornament"><span></span><span></span></span>
+        <span class="line"></span>
+    </div>
+</div>
+
+<!-- WHAT WE BUILD -->
+<section class="what" id="what">
     <div class="wrap">
         <div class="sec-hd rev">
-            <span class="label">What we build</span>
-            <h2>AI agents that do real work.</h2>
-            <p>Not chatbots. Not dashboards. Agents that plug into your existing tools and eliminate the repetitive work eating your team's hours every week.</p>
+            <div class="eyebrow">
+                <span class="dotpair-mark"><span></span><span></span></span>
+                <span>What we build</span>
+            </div>
+            <h2>Six places we make work <em>disappear</em>.</h2>
+            <p class="lede">Not chatbots. Not dashboards. Bespoke systems that plug into the tools you already use and quietly carry the repetitive load.</p>
         </div>
-        <div class="services-grid rev">
-            <div class="card card-bg">
+        <div class="what-grid rev">
+            <article class="card">
                 <p class="svc-num">01</p>
                 <h3>Customer communications</h3>
-                <p>Enquiries, follow-ups, booking confirmations, reminders — handled automatically while staying on brand. Typically saves 5–10 hours per team member, per week.</p>
-            </div>
-            <div class="card card-bg">
+                <p>Enquiries, follow-ups, booking confirmations, reminders — handled in your voice, on your schedule. Not by you.</p>
+            </article>
+            <article class="card">
                 <p class="svc-num">02</p>
-                <h3>Scheduling &amp; bookings</h3>
-                <p>No more back-and-forth emails to find a time. AI scheduling that works around your rules, syncs with your calendar, and never double-books or drops the ball.</p>
-            </div>
-            <div class="card card-bg">
+                <h3>Scheduling and bookings</h3>
+                <p>No back-and-forth to find a time. The system reads the room — your rules, your calendars, your busy seasons — and proposes the right slot.</p>
+            </article>
+            <article class="card">
                 <p class="svc-num">03</p>
-                <h3>Invoicing &amp; payments</h3>
-                <p>Invoices raised and sent automatically. Overdue payments chased without the awkward calls. Most clients recover 15–20% more cash within the first 60 days.</p>
-            </div>
-            <div class="card card-bg">
+                <h3>Invoicing and payments</h3>
+                <p>Invoices raised the moment they should be. Reminders sent without the awkward email. Cash that arrives on time, more often.</p>
+            </article>
+            <article class="card">
                 <p class="svc-num">04</p>
                 <h3>Document processing</h3>
-                <p>Contracts, quotes, intake forms — read, extracted, filed, and routed without anyone touching a keyboard. Hours of data entry, gone on day one.</p>
-            </div>
-            <div class="card card-bg">
+                <p>Contracts, due-diligence packs, intake forms, leases — read, extracted, filed, and routed without anyone touching a keyboard.</p>
+            </article>
+            <article class="card">
                 <p class="svc-num">05</p>
-                <h3>Reporting &amp; insights</h3>
-                <p>Weekly performance reports generated automatically from your existing systems. Stop spending Monday mornings in spreadsheets and start seeing problems before they cost you.</p>
-            </div>
-            <div class="card card-bg">
+                <h3>Reporting and insights</h3>
+                <p>Performance reports built once, refreshed on their own. The Monday-morning spreadsheet ritual — quietly retired.</p>
+            </article>
+            <article class="card">
                 <p class="svc-num">06</p>
                 <h3>Lead qualification</h3>
-                <p>Every inbound lead scored and routed before your team touches it. Stop spending hours on prospects that were never going to convert — and stop missing the ones that will.</p>
-            </div>
+                <p>Every inbound enquiry triaged before a human sees it. Time spent on the right people, not the wrong ones.</p>
+            </article>
         </div>
     </div>
 </section>
 
-<!-- PROCESS -->
-<section class="process" id="process">
+<!-- WHO WE WORK WITH -->
+<section class="who" id="who">
     <div class="wrap">
-        <div class="sec-hd rev">
-            <span class="label">How we work</span>
-            <h2>Simple process. Real results.</h2>
-        </div>
-        <div class="steps rev">
-            <div class="card">
-                <div class="step-num">1</div>
-                <h3>Set a strategy</h3>
-                <p>We map your business, identify where time and money are leaking, and define exactly what AI should be doing for you.</p>
+        <div class="who-inner rev">
+            <div class="eyebrow" style="margin-bottom: var(--s-4);">
+                <span class="dotpair-mark"><span></span><span></span></span>
+                <span>Who we work with</span>
             </div>
-            <div class="card">
-                <div class="step-num">2</div>
-                <h3>Build workflows</h3>
-                <p>We build the agents and automations — connected to your existing tools, designed around how you actually work.</p>
-            </div>
-            <div class="card">
-                <div class="step-num">3</div>
-                <h3>Train your team</h3>
-                <p>We hand over the system, train your people, and make sure everyone knows how to get the most from it.</p>
-            </div>
-            <div class="card">
-                <div class="step-num">4</div>
-                <h3>Ongoing support</h3>
-                <p>We stick around as your AI partner — improving the system as your business grows and new opportunities emerge.</p>
-            </div>
+            <h2>Small enough to know your business. Big enough to <em>afford</em> this.</h2>
+            <p>We work best with UK businesses — 10 to 30 people, £100,000 a month or more in revenue — that are doing real work and stuck between scrappy and scaled. You can afford operators but not an in-house tech team. We are the in-house tech team you don't have.</p>
+            <div class="engagement"><strong>How we engage —</strong> fixed scope plus retainer. We start with a defined piece of work and a price, then stay on as your AI partner once it is running. Not day rates.</div>
         </div>
     </div>
 </section>
 
-<!-- CASES -->
-<section class="cases" id="cases">
+<!-- HOW WE WORK -->
+<section class="how" id="how">
     <div class="wrap">
         <div class="sec-hd rev">
-            <span class="label">Case studies</span>
-            <h2>Real savings, by sector.</h2>
-            <p>Every business is different. Here's what AI systems typically look like — and what they save — across a handful of the sectors we work in.</p>
+            <div class="eyebrow">
+                <span class="dotpair-mark"><span></span><span></span></span>
+                <span>How we work</span>
+            </div>
+            <h2>Four steps. <em>No drama.</em></h2>
         </div>
-        <div class="cases-grid rev">
-            <div class="card">
-                <span class="case-sector">Law firms</span>
-                <h3>"Our fee earners were spending half a day each week on admin that had nothing to do with billable work."</h3>
-                <div class="case-built">
-                    <p class="case-built-lbl">What we built</p>
-                    <p>Automated client update drafting, invoice chasing, and matter status reporting — connected directly to their existing case management system. No rip-and-replace.</p>
-                </div>
-                <div class="case-results">
-                    <span class="case-result">6 hours saved per fee earner, per week</span>
-                    <span class="case-result">£22k recovered in overdue invoices in 90 days</span>
-                </div>
-            </div>
-            <div class="card">
-                <span class="case-sector">Estate agents</span>
-                <h3>"Every inbound enquiry needed a human to qualify it and book a viewing. We simply couldn't scale."</h3>
-                <div class="case-built">
-                    <p class="case-built-lbl">What we built</p>
-                    <p>Lead qualification agent and automated viewing scheduler, integrated with their CRM and diary system. Qualifying questions handled, calendar booked, confirmation sent — without a negotiator lifting a finger.</p>
-                </div>
-                <div class="case-results">
-                    <span class="case-result">70% of enquiries handled without human input</span>
-                    <span class="case-result">3 additional viewings booked per negotiator, per day</span>
-                </div>
-            </div>
-            <div class="card">
-                <span class="case-sector">Recruitment agencies</span>
-                <h3>"Our consultants were spending two hours every morning just reading CVs before they could do any actual work."</h3>
-                <div class="case-built">
-                    <p class="case-built-lbl">What we built</p>
-                    <p>CV screening and scoring agent with automated candidate briefing and client-ready shortlist generation. Consultants told which candidates are worth their time — not buried in applications.</p>
-                </div>
-                <div class="case-results">
-                    <span class="case-result">Time-to-shortlist cut from 3 days to same day</span>
-                    <span class="case-result">Consultants managing 40% more live roles</span>
-                </div>
-            </div>
-            <div class="card">
-                <span class="case-sector">Restaurant groups</span>
-                <h3>"Head office was spending every Monday morning building performance reports that should have been automatic."</h3>
-                <div class="case-built">
-                    <p class="case-built-lbl">What we built</p>
-                    <p>Automated weekly performance dashboard pulling live from POS systems across all sites, with anomaly detection flagging issues before they become expensive problems.</p>
-                </div>
-                <div class="case-results">
-                    <span class="case-result">8 hours of management time saved every week</span>
-                    <span class="case-result">Underperforming sites flagged 3 days earlier on average</span>
-                </div>
-            </div>
+        <div class="how-grid rev">
+            <article class="card">
+                <div class="step-num">01</div>
+                <h3>Set the strategy</h3>
+                <p>We map the work, find where time and money leak, and decide exactly what AI should be doing for you — and what it shouldn't.</p>
+            </article>
+            <article class="card">
+                <div class="step-num">02</div>
+                <h3>Build the system</h3>
+                <p>We build the agents and automations, connected to the tools you already use, designed around how you already work. No rip-and-replace.</p>
+            </article>
+            <article class="card">
+                <div class="step-num">03</div>
+                <h3>Hand it over</h3>
+                <p>We train your team, write the documentation, and stay close while the system settles into the rhythm of your business.</p>
+            </article>
+            <article class="card">
+                <div class="step-num">04</div>
+                <h3>Stay close</h3>
+                <p>We remain on retainer as your AI partner. The system improves as your business grows — quietly, in the background.</p>
+            </article>
         </div>
     </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="testimonials" id="testimonials">
-    <div class="wrap">
-        <div class="sec-hd rev">
-            <span class="label">What clients say</span>
-            <h2>Don't take our word for it.</h2>
-        </div>
-        <div class="testimonials-grid rev">
-            <div class="testi-card">
-                <div class="testi-stars">★★★★★</div>
-                <p class="testi-quote">"SlowProof didn't just automate our processes — they made us rethink how the whole firm operates. Six weeks in and we've got hours back every week that we're now putting into actual client work."</p>
-                <div class="testi-attr">
-                    <p class="testi-name">Sarah Mitchell</p>
-                    <p class="testi-role">Managing Partner, Mitchell &amp; Co Solicitors</p>
-                </div>
-            </div>
-            <div class="testi-card">
-                <div class="testi-stars">★★★★★</div>
-                <p class="testi-quote">"The lead qualification agent paid for itself in the first month. Our negotiators aren't burning time on tyre-kickers anymore — they're in front of serious buyers. It's transformed how we work."</p>
-                <div class="testi-attr">
-                    <p class="testi-name">James Okafor</p>
-                    <p class="testi-role">Director, Okafor &amp; Partners Estate Agents</p>
-                </div>
-            </div>
-            <div class="testi-card">
-                <div class="testi-stars">★★★★★</div>
-                <p class="testi-quote">"I was sceptical — we'd tried AI tools before and ended up managing the tool more than the business. SlowProof built something that actually fits how we work. It just runs."</p>
-                <div class="testi-attr">
-                    <p class="testi-name">Priya Sharma</p>
-                    <p class="testi-role">CEO, Apex Recruitment Group</p>
-                </div>
-            </div>
-        </div>
+<!-- BREAK -->
+<div class="section-break" aria-hidden="true">
+    <div class="section-break-inner">
+        <span class="line"></span>
+        <span class="ornament"><span></span><span></span></span>
+        <span class="line"></span>
+    </div>
+</div>
+
+<!-- PULL QUOTE -->
+<section class="pull rev">
+    <div class="wrap-md">
+        <p class="pull-quote">Slow consultants for ambitious operators.</p>
+        <span class="pull-attr">
+            <span class="dotpair-mark"><span></span><span></span></span>
+            <span>From our colophon</span>
+        </span>
     </div>
 </section>
 
-<!-- WHY -->
-<section class="why" id="why">
+<!-- WHERE WE ARE -->
+<section class="where" id="where">
     <div class="wrap">
-        <div class="sec-hd rev">
-            <span class="label">Why SlowProof</span>
-            <h2>Why work with us.</h2>
-            <p>We're not here to sell you software or a strategy deck. We're here to save you time and money — and we measure ourselves on exactly that.</p>
-        </div>
-        <div class="why-grid rev">
-            <div class="card card-bg">
-                <h3>We build, we don't just advise</h3>
-                <p>Most consultants charge you for thinking about the problem. We charge you for solving it. We build the actual system, train your team, and stay until the savings are real and measurable.</p>
+        <div class="where-inner rev">
+            <div class="eyebrow" style="margin-bottom: var(--s-4);">
+                <span class="dotpair-mark"><span></span><span></span></span>
+                <span>Where we are</span>
             </div>
-            <div class="card card-bg">
-                <h3>Bespoke, not templated</h3>
-                <p>Your business is not like any other. Your AI system shouldn't be either. Everything we build is designed specifically around how you operate — not forced into a framework built for someone else.</p>
-            </div>
-            <div class="card card-bg">
-                <h3>Small business DNA</h3>
-                <p>Every pound and every hour matters at your stage. We don't build bloated systems with 12-month payback periods. We build things that start saving you time and money in weeks, not quarters.</p>
-            </div>
-            <div class="card card-bg">
-                <h3>Partners, not vendors</h3>
-                <p>We succeed when you succeed. We're not interested in upselling or locking you into long contracts. We're interested in getting you results — and the referrals that come from that.</p>
+            <h3>We are starting fresh.</h3>
+            <p>We are not going to fake case studies or recycle other people's logos. New work will land here when it ships. In the meantime, our past work — separately — lives on LinkedIn.</p>
+            <div class="where-links">
+                <a class="arrow-link" href="https://www.linkedin.com/in/karandb/" target="_blank" rel="noopener noreferrer">Karan on LinkedIn</a>
+                <a class="arrow-link" href="https://www.linkedin.com/in/chaplot/" target="_blank" rel="noopener noreferrer">Surendra on LinkedIn</a>
             </div>
         </div>
     </div>
@@ -904,66 +536,82 @@
 <!-- CONTACT -->
 <section class="contact" id="contact">
     <div class="wrap">
-        <div class="contact-wrap">
-            <div class="sec-hd sec-hd-center rev">
-                <span class="label label-accent">Get started</span>
-                <h2>Let's talk about your business.</h2>
-                <p>No sales pitch. No obligation. Just an honest conversation about where AI can save you the most time and money.</p>
+        <div class="contact-card surface-dotted-sm rev">
+            <div class="contact-hd">
+                <div class="eyebrow">
+                    <span class="dotpair-mark"><span></span><span></span></span>
+                    <span>Get in touch</span>
+                </div>
+                <h2>Tell us what's <em>eating your time</em>.</h2>
+                <p>No sales pitch. No retainer pressure. Just a conversation about what AI can do for the way you actually run.</p>
             </div>
-            <div class="contact-form-wrap rev">
-                <form id="contact-form" novalidate>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Your name</label>
-                            <input type="text" id="name" name="name" placeholder="Jane Smith" autocomplete="name">
-                            <span class="field-error" id="name-error"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="business">Business name</label>
-                            <input type="text" id="business" name="business" placeholder="Acme Ltd" autocomplete="organization">
-                            <span class="field-error" id="business-error"></span>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="jane@acme.co.uk" autocomplete="email">
-                            <span class="field-error" id="email-error"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone number</label>
-                            <input type="tel" id="phone" name="phone" placeholder="07700 900123" autocomplete="tel">
-                            <span class="field-error" id="phone-error"></span>
-                        </div>
+            <form id="contact-form" novalidate>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Your name</label>
+                        <input type="text" id="name" name="name" placeholder="A. Reader" autocomplete="name">
+                        <span class="field-error" id="name-error"></span>
                     </div>
                     <div class="form-group">
-                        <label for="message">What would you like to automate?</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Tell us about the repetitive work eating your team's time..."></textarea>
-                        <span class="field-error" id="message-error"></span>
+                        <label for="business">Business name</label>
+                        <input type="text" id="business" name="business" placeholder="Acme Ltd" autocomplete="organization">
+                        <span class="field-error" id="business-error"></span>
                     </div>
-                    <button type="submit" class="btn form-submit">Send message &rarr;</button>
-                    <div class="form-msg" id="form-msg"></div>
-                </form>
-                <div class="contact-aside">
-                    <p>Based in London, UK &mdash; working with businesses across the UK</p>
-                    <p>We'll reply within 24 hours.</p>
                 </div>
-            </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.co.uk" autocomplete="email">
+                        <span class="field-error" id="email-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone" placeholder="07700 900123" autocomplete="tel">
+                        <span class="field-error" id="phone-error"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Tell us more</label>
+                    <textarea id="message" name="message" rows="5" placeholder="A paragraph or two is plenty. We'd rather understand the shape of the thing than have every detail up front."></textarea>
+                    <span class="form-helper">No deadline pressure please. We work in weeks, not days.</span>
+                    <span class="field-error" id="message-error"></span>
+                </div>
+                <button type="submit" class="form-submit">Send <span aria-hidden="true">→</span></button>
+                <div class="form-msg" id="form-msg"></div>
+            </form>
+            <div class="form-foot">We don't run analytics on this form, sell your address, or add you to a list. You will just get a reply.</div>
         </div>
     </div>
 </section>
 
 <!-- FOOTER -->
-<footer>
+<footer class="site-footer">
     <div class="wrap">
-        <div class="footer-inner">
-            <a href="#" class="footer-logo">
-                <div class="footer-mark">
-                    <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                </div>
-                <span class="footer-name">Slow<em>Proof</em></span>
+        <div class="footer-top">
+            <a href="/" class="footer-mark" aria-label="Two Slow People">
+                <img src="assets/logo-twoslowpeople-vector.svg" alt="Two Slow People" />
             </a>
-            <p class="copy">&copy; 2026 SlowProof. Based in London, UK.</p>
+            <div class="footer-cols">
+                <div class="footer-col">
+                    <h6>Site</h6>
+                    <a href="/">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h6>Find us</h6>
+                    <a href="https://www.linkedin.com/in/karandb/" target="_blank" rel="noopener noreferrer">Karan on LinkedIn</a>
+                    <a href="https://www.linkedin.com/in/chaplot/" target="_blank" rel="noopener noreferrer">Surendra on LinkedIn</a>
+                </div>
+                <div class="footer-col">
+                    <h6>Hello</h6>
+                    <a href="#contact">Send us a note</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bot">
+            <span>© 2026 Two Slow People · London</span>
+            <span>Made slowly, on purpose.</span>
         </div>
     </div>
 </footer>
@@ -973,15 +621,25 @@
     // Mobile nav
     var mob   = document.getElementById('navMob');
     var links = document.getElementById('navLinks');
-    mob.addEventListener('click', function () { links.classList.toggle('open'); });
-    links.querySelectorAll('a').forEach(function (a) {
-        a.addEventListener('click', function () { links.classList.remove('open'); });
-    });
+    if (mob && links) {
+        mob.addEventListener('click', function () {
+            var open = links.classList.toggle('open');
+            mob.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        links.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', function () {
+                links.classList.remove('open');
+                mob.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
 
-    // Smooth scroll
+    // Smooth scroll for in-page anchors
     document.querySelectorAll('a[href^="#"]').forEach(function (a) {
         a.addEventListener('click', function (e) {
-            var t = document.querySelector(this.getAttribute('href'));
+            var href = this.getAttribute('href');
+            if (href === '#' || href.length < 2) return;
+            var t = document.querySelector(href);
             if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
         });
     });
@@ -998,16 +656,16 @@
     } catch (err) {
         revEls.forEach(function (el) { el.classList.add('in'); });
     }
-    // Fallback: reveal anything still hidden after 1.5s (covers cached/slow pages)
     setTimeout(function () {
         revEls.forEach(function (el) { el.classList.add('in'); });
     }, 1500);
 
-    // Contact form
+    // Contact form (mechanics preserved from previous version — same field names,
+    // same Google Apps Script endpoint, same URLSearchParams body)
     var form = document.getElementById('contact-form');
     var msg  = document.getElementById('form-msg');
+    if (!form) return;
 
-    // Clear a field's error when the user edits it
     form.querySelectorAll('input, textarea').forEach(function (el) {
         el.addEventListener('input', function () {
             this.classList.remove('invalid');
@@ -1051,9 +709,7 @@
 
         var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxXTZHqt9VokANGbA_xIFv-x7C_1rtGwkPDrFfb3cg8RIaZro7bOiLLqvdOsWTlAKs/exec';
         var btn = form.querySelector('.form-submit');
-        btn.disabled = true; btn.textContent = 'Sending…';
-        // URLSearchParams sends as application/x-www-form-urlencoded,
-        // which Apps Script e.parameter parses reliably (FormData does not)
+        btn.disabled = true; btn.innerHTML = 'Sending…';
         var params = new URLSearchParams();
         params.append('name', name);
         params.append('business', business);
@@ -1062,7 +718,7 @@
         params.append('message', message);
         fetch(SCRIPT_URL, { method: 'POST', body: params, mode: 'no-cors' })
           .then(function () {
-            show('success', "Thanks — we'll be in touch within 24 hours.");
+            show('success', "Sent. We'll write back within a week, sometimes two.");
             form.reset();
             setTimeout(function () { msg.style.display = 'none'; }, 6000);
           })
@@ -1070,7 +726,7 @@
             show('error', 'Something went wrong — please try again in a moment.');
           })
           .finally(function () {
-            btn.disabled = false; btn.textContent = 'Send message →';
+            btn.disabled = false; btn.innerHTML = 'Send <span aria-hidden="true">→</span>';
           });
     });
 
